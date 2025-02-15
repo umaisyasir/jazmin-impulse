@@ -1,0 +1,837 @@
+{%- liquid
+  assign show_selectors = false
+  assign currency_selector = false
+  assign locale_selector = false
+
+  if section.settings.show_currency_selector and shop.enabled_currencies.size > 1
+    assign currency_selector = true
+  endif
+
+  if section.settings.show_locale_selector and shop.enabled_locales.size > 1
+    assign locale_selector = true
+  endif
+
+  if currency_selector or locale_selector
+    assign show_selectors = true
+  endif
+-%}
+
+{%- if settings.color_footer == settings.color_body_bg -%}
+  {%- style -%}
+    .site-footer {
+      border-top: 1px solid {{ settings.color_borders }};
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<footer class="site-footer" data-section-id="{{ section.id }}" data-section-type="footer-section">
+  <div class="page-width">
+
+    <div class="grid">
+      {%- assign row_width = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign row_width = row_width | plus: block.settings.container_width -%}
+        {%- if row_width > 100 -%}
+          <div class="footer__clear small--hide"></div>
+          {%- assign row_width = row_width | minus: 100 -%}
+        {%- endif -%}
+
+        <div {{ block.shopify_attributes }} class="grid__item footer__item--{{ block.id }}" data-type="{{ block.type }}">
+          {%- style -%}
+            @media only screen and (min-width: 769px) and (max-width: 959px) {
+              .footer__item--{{ block.id }} {
+                width: 50%;
+                padding-top: 40px;
+              }
+              .footer__item--{{ block.id }}:nth-child(2n + 1) {
+                clear: left;
+              }
+            }
+            @media only screen and (min-width: 960px) {
+              .footer__item--{{ block.id }} {
+                width: {{ block.settings.container_width }}%;
+              }
+
+            }
+          {%- endstyle -%}
+
+          {%- liquid
+            case block.type
+              when 'logo_social'
+                render 'footer-logo', block: block
+              when 'custom'
+                render 'footer-custom-text', block: block, container_width: block.settings.container_width
+              when 'newsletter'
+                render 'footer-newsletter', block: block
+              when 'menu'
+                render 'footer-menu', block: block
+              when 'follow_shop_cta'
+                render 'follow-shop-cta', block: block
+            endcase
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if show_selectors -%}
+      <div class="footer__section">
+        {%- render 'multi-selectors',
+          locale_selector: locale_selector,
+          currency_selector: currency_selector,
+          show_currency_flags: section.settings.show_currency_flags
+          location: 'footer'
+        -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_payment_icons -%}
+      {%- unless shop.enabled_payment_types == empty -%}
+        <ul class="inline-list payment-icons footer__section">
+          {%- for type in shop.enabled_payment_types -%}
+            <li class="icon--payment">
+              {{ type | payment_type_svg_tag }}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endunless -%}
+    {%- endif -%}
+
+    {%- if section.settings.show_copyright -%}
+      <p class="footer__small-text">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+        {%- if section.settings.copyright_text != blank -%}
+          {{ section.settings.copyright_text }}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+    <p class="footer__small-text">{{ powered_by_link }}</p>
+
+  </div>
+</footer>
+
+<div class="custom-whatsapp-container">
+  <!-- WhatsApp Button -->
+  <div class="custom-whatsapp-button" id="whatsappButton">
+    <a href="javascript:void(0)" id="whatsappMainButton">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <span class="contact-label" id="contactLabel" style="display: block;">{{ section.settings.tooltip_text }}</span>
+  </div>
+
+  <!-- Suggestions Popup -->
+  <div class="whatsapp-suggestions" id="whatsappSuggestions" style="display: none;">
+    <!-- Welcome Content -->
+    <div class="welcome-content">
+      <div class="junior_code">
+        <h2>{{ section.settings.suggestions_heading }}</h2>
+        <p>{{ section.settings.suggestions_subheading }}</p>
+      </div>
+      <div class="senior_code">
+        <img src="{{ section.settings.suggestions_brandlogo | img_url: 'master' }}" alt="Welcome Image" style="width: 90px; border-radius: 50%;" />
+      </div>
+    </div>
+    <div class="suggestion-item">
+      <a href="javascript:void(0)" id="openOrderPopup">{{ section.settings.order_info_text }}</a>
+    </div>
+
+    <!-- Other Options -->
+    <div class="suggestion-item">
+      <a href="https://wa.me/{{ section.settings.whatsapp_number | remove: ' ' }}?text={{ section.settings.product_info_whatsapptext | url_encode }}" target="_blank">
+        {{ section.settings.product_info_text }}
+      </a>
+    </div>
+
+    <div class="suggestion-item">
+      <a href="https://wa.me/{{ section.settings.complaint_whatsapp_number | remove: ' ' }}?text={{ section.settings.complaint_whatsapptext | url_encode }}" target="_blank">
+        {{ section.settings.complaint_text }}
+      </a>
+    </div>
+
+    <!-- Close Button -->
+    <button id="closeSuggestions">{{ section.settings.close_btn }}</button>
+  </div>
+
+  <!-- Order Number Popup -->
+  <div class="whatsapp-order-popup" id="whatsappOrderPopup">
+    <div class="popup-content">
+      <span class="close-popup" id="closePopup">&times;</span>
+      <h2>Enter Your Order Number</h2>
+      <input type="tel" id="orderNumberInput" placeholder="Order Number" inputmode="numeric" pattern="[0-9]*" />
+      <button id="submitOrderButton">Submit</button>
+    </div>
+  </div>
+
+</div>
+
+<style>
+/* High-end WhatsApp Button */
+.custom-whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.custom-whatsapp-button {
+  background-color: #000; /* Black background */
+  border-radius: 50%;
+  box-shadow: 0px 6px 8px rgba(255, 255, 255, 0.2); /* White shadow */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.custom-whatsapp-button:hover {
+  background-color: #fff; /* White on hover */
+  color: #000; /* Black icon color */
+  cursor: pointer;
+  transform: scale(1.1); /* Hover animation */
+  box-shadow: 0px 8px 12px rgba(255, 255, 255, 0.3); /* Increased shadow on hover */
+}
+
+.custom-whatsapp-button a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  color: #fff; /* White icon */
+  transition: color 0.3s;
+}
+
+.custom-whatsapp-button:hover a {
+  color: #000; /* Black icon on hover */
+}
+
+/* Suggestions Popup Styling */
+.whatsapp-suggestions {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #000; /* Black background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 14px rgba(255, 255, 255, 0.3); /* White shadow */
+  width: 300px;
+  padding: 20px;
+  display: none;
+  z-index: 1500;
+  animation: slideIn 0.4s ease-in-out; /* Slide-in animation */
+}
+
+.welcome-content {
+  text-align: left;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+
+   .junior_code {
+    width: 70%;
+  }
+
+  .senior_code {
+    width: 40%;
+  }
+}
+
+.welcome-content h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff; /* White text */
+}
+
+.welcome-content p {
+  font-size: 11px;
+  color: #fff; /* White text */
+  margin-bottom: 0;
+}
+
+.suggestion-item {
+  margin-bottom: 10px;
+}
+
+.suggestion-item a {
+  display: block;
+  text-decoration: none;
+  color: #fff; /* White link */
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #333; /* Dark gray background */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.suggestion-item a:hover {
+  background-color: #444; /* Slightly lighter on hover */
+  transform: scale(1.05); /* Scale animation */
+}
+
+/* Close Button for Suggestions */
+#closeSuggestions {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #000; /* Black text */
+  background-color: #fff; /* White button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#closeSuggestions:hover {
+  background-color: #f0f0f0; /* Slightly lighter on hover */
+  transform: scale(1.05); /* Scale animation */
+}
+
+/* Order Number Popup */
+.whatsapp-order-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000; /* Black background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 1000000px rgb(0 0 0); /* White shadow */
+  width: 350px;
+  padding: 20px;
+  display: none;
+  z-index: 2000;
+  animation: scaleIn 0.4s ease-in-out; /* Scale-in animation */
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff; /* White text */
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #444; /* Darker border */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #222; /* Darker input background */
+  color: #fff; /* White text */
+  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.1); /* Light inset shadow */
+}
+
+.popup-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff; /* White button */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.popup-content button:hover {
+  background-color: #f0f0f0; /* Lighter on hover */
+  transform: scale(1.05); /* Scale animation */
+}
+
+.popup-content .close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff; /* White close icon */
+  transition: transform 0.3s;
+}
+
+.popup-content .close-popup:hover {
+  transform: rotate(90deg); /* Rotation on hover */
+}
+
+/* Tooltip Styling for Contact Label */
+.contact-label {
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+  padding: 4px 8px;
+  border-radius: 6px;
+  top: 60px;
+  right: 0;
+  transform: translateX(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.custom-whatsapp-button:hover + .contact-label {
+  opacity: 1;
+  transform: translateX(0); /* Slide in effect */
+}
+
+.contact-label:after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -6px;
+  border-style: solid;
+  border-width: 6px 6px 6px 0;
+  border-color: transparent rgba(255, 255, 255, 0.8) transparent transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const whatsappButton = document.getElementById("whatsappMainButton");
+  const whatsappSuggestions = document.getElementById("whatsappSuggestions");
+  const closeSuggestions = document.getElementById("closeSuggestions");
+  const orderPopup = document.getElementById("whatsappOrderPopup");
+  const openOrderPopup = document.getElementById("openOrderPopup");
+  const closePopup = document.getElementById("closePopup");
+  const submitOrderButton = document.getElementById("submitOrderButton");
+  const orderNumberInput = document.getElementById("orderNumberInput");
+
+  // Show suggestions popup when WhatsApp button is clicked
+  whatsappButton.addEventListener("click", function () {
+    whatsappSuggestions.style.display = "block";
+  });
+
+  // Close suggestions popup when close button is clicked
+  closeSuggestions.addEventListener("click", function () {
+    whatsappSuggestions.style.display = "none";
+  });
+
+  // Open order popup when the order info suggestion is clicked
+  openOrderPopup.addEventListener("click", function () {
+    whatsappSuggestions.style.display = "none";
+    orderPopup.style.display = "block";
+  });
+
+  // Close order popup when 'X' is clicked
+  closePopup.addEventListener("click", function () {
+    orderPopup.style.display = "none";
+  });
+
+  // Submit the order number and redirect to WhatsApp
+  submitOrderButton.addEventListener("click", function () {
+    const orderNumber = orderNumberInput.value.trim();
+
+    if (orderNumber) {
+      const whatsappNumber = "{{ section.settings.whatsapp_number | remove: ' ' }}"; // Add your WhatsApp number here
+      const message = encodeURIComponent("Hello, my order number is " + orderNumber);
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+      // Open WhatsApp with the order number
+      window.open(whatsappURL, "_blank");
+
+      // Close popup after submission
+      orderPopup.style.display = "none";
+    } else {
+      alert("Please enter your order number.");
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "color",
+      "id": "icon_bgcolor",
+      "label": "Background Color SVG",
+      "default": "#25D366"
+     },
+     {
+      "type": "color",
+      "id": "whatsapp_bghover",
+      "label": "Hover - Background Color SVG",
+      "default": "#128C7E"
+     },
+     {
+      "type": "text",
+      "id": "tooltip_text",
+      "label": "Tooltip Text",
+      "default": "Contact Us"
+     },
+     {
+      "type": "image_picker",
+      "id": "suggestions_background",
+      "label": "Background for Suggestions"
+     },
+     {
+      "type": "color",
+      "id": "bg_clorcustom",
+      "label": "Background Color Welcome Content",
+      "default": "#f42a64"
+     },
+     {
+      "type": "text",
+      "id": "suggestions_heading",
+      "label": "Heading for Suggestions"
+     },
+     {
+      "type": "text",
+      "id": "suggestions_subheading",
+      "label": "Heading for Suggestions"
+     },
+     {
+      "type": "image_picker",
+      "id": "suggestions_brandlogo",
+      "label": "Logo for Suggestions"
+     },
+     {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "Default WhatsApp Number",
+      "default": "+1234567890"
+    },
+    {
+      "type": "text",
+      "id": "complaint_whatsapp_number",
+      "label": "Complaint WhatsApp Number",
+      "default": "+0987654321"
+    },
+    {
+      "type": "color",
+      "id": "sgs_bgclr",
+      "label": "Suggestions Background Color",
+      "default": "#cb87a3"
+    },
+    {
+      "type": "color",
+      "id": "sgs_bgclrhover",
+      "label": "Hover - Suggestions Background Color",
+      "default": "#c72f6d"
+    },
+    {
+      "type": "text",
+      "id": "product_info_text",
+      "label": "Product Info Button Text",
+      "default": "I have a question about a product"
+    },
+    {
+      "type": "text",
+      "id": "product_info_whatsapptext",
+      "label": "Product Info Whatsapp Text",
+      "default": "Hi, I have a question about a product."
+    },
+    {
+      "type": "text",
+      "id": "order_info_text",
+      "label": "Order Info Button Text",
+      "default": "I need information about my order"
+    },
+    {
+      "type": "text",
+      "id": "order_info_whatsapptext",
+      "label": "Order Info Whatsapp Text",
+      "default": "Hi, I need information about my order."
+    },
+    {
+      "type": "text",
+      "id": "complaint_text",
+      "label": "Complaint Button Text",
+      "default": "I want to file a complaint"
+    },
+    {
+      "type": "text",
+      "id": "complaint_whatsapptext",
+      "label": "Complaint Whatsapp Text",
+      "default": "Hi, I want to file a complaint."
+    },
+    {
+      "type": "color",
+      "id": "closebtn_bg",
+      "label": "Close Button Color",
+      "default": "#f42a64"
+    },
+    {
+      "type": "color",
+      "id": "closebtn_bghover",
+      "label": "Hover - Close Button Color",
+      "default": "#c9302c"
+    },
+    {
+      "type": "text",
+      "id": "close_btn",
+      "label": "Close Button Text",
+      "default": "Close"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_scroll",
+      "label": "Show button only after scrolling",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header_language_selector",
+      "info": "t:sections.footer.settings.header_language_selector"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "t:sections.footer.settings.show_locale_selector.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header_currency_selector",
+      "info": "t:sections.footer.settings.header_currency_selector"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "t:sections.footer.settings.show_currency_selector.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_flags",
+      "label": "t:sections.footer.settings.show_currency_flags.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header_additional_footer_content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:sections.footer.settings.show_payment_icons.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "t:sections.footer.settings.show_copyright.label"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "t:sections.footer.settings.copyright_text.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_social",
+      "name": "t:sections.footer.blocks.logo.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "t:sections.footer.blocks.logo.settings.logo.label"
+        },
+        {
+          "type": "range",
+          "id": "desktop_logo_height",
+          "label": "t:sections.footer.blocks.logo.settings.desktop_logo_height.label",
+          "default": 50,
+          "min": 20,
+          "max": 120,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "container_width",
+          "label": "t:sections.footer.blocks.logo.settings.container_width.label",
+          "default": 25,
+          "min": 15,
+          "max": 95,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "t:sections.footer.blocks.navigation.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_footer_title",
+          "label": "t:sections.footer.blocks.navigation.settings.show_footer_title.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.footer.blocks.navigation.settings.menu.label",
+          "default": "footer",
+          "info": "t:sections.footer.blocks.navigation.settings.menu.info"
+        },
+        {
+          "type": "range",
+          "id": "container_width",
+          "label": "t:sections.footer.blocks.navigation.settings.container_width.label",
+          "default": 25,
+          "min": 15,
+          "max": 95,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "t:sections.footer.blocks.newsletter_and_social.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_footer_title",
+          "label": "t:sections.footer.blocks.newsletter_and_social.settings.show_footer_title.label",
+          "default": true
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.footer.blocks.newsletter_and_social.settings.content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.newsletter_and_social.settings.title.label",
+          "default": "Sign up and save"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.footer.blocks.newsletter_and_social.settings.text.label",
+          "info": "t:sections.footer.blocks.newsletter_and_social.settings.text.info",
+          "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+        },
+        {
+          "type": "range",
+          "id": "container_width",
+          "label": "t:sections.footer.blocks.newsletter_and_social.settings.container_width.label",
+          "default": 25,
+          "min": 15,
+          "max": 95,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "custom",
+      "name": "t:sections.footer.blocks.custom_text.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_footer_title",
+          "label": "t:sections.footer.blocks.custom_text.settings.show_footer_title.label",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.footer.blocks.custom_text.settings.title.label",
+          "default": "Custom text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.footer.blocks.custom_text.settings.image.label"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.footer.blocks.custom_text.settings.text.label",
+          "default": "<p>Add your own custom text here.</p>"
+        },
+        {
+          "type": "range",
+          "id": "container_width",
+          "label": "t:sections.footer.blocks.custom_text.settings.container_width.label",
+          "default": 25,
+          "min": 15,
+          "max": 95,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "follow_shop_cta",
+      "name": "t:common.follow_shop_cta.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:common.follow_shop_cta.paragraph.content"
+        },
+        {
+          "type": "range",
+          "id": "container_width",
+          "label": "t:sections.footer.blocks.custom_text.settings.container_width.label",
+          "default": 25,
+          "min": 20,
+          "max": 95,
+          "unit": "%"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      {
+        "type": "menu",
+        "settings": {}
+      },
+      {
+        "type": "logo_social",
+        "settings": {}
+      }
+    ]
+  },
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  }
+}
+{% endschema %}
