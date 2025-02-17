@@ -1,6 +1,136 @@
+<div class="slider-container custom-container">
+    <div class="slider-wrapper custom-wrapper">
+        {% for block in section.blocks %}
+            <div class="custom-slider-item slider-item {% if forloop.first %} main-item {% else %} small-item {% endif %}">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slider Image">
+                <p class="caption">{{ block.settings.slider_captions }}</p>
+                <p class="sub-caption">{{ block.settings.slider_sub_captions }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.custom-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.custom-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.custom-slider-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main-item img {
+    width: 100%;
+    height: auto;
+}
+
+.small-item {
+    width: 30%;
+    opacity: 0.7;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.small-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.slider-item:hover .small-item {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.sub-caption {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: gray;
+}
+</style>
+
+<script>
+let currentIndex = 0;
+const items = document.querySelectorAll('.slider-item');
+const totalItems = items.length;
+
+function moveSlider() {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function nextSlide() {
+    if (currentIndex < totalItems - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0;
+    }
+    moveSlider();
+}
+
+function prevSlide() {
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = totalItems - 1;
+    }
+    moveSlider();
+}
+
+// Add navigation buttons (left and right)
+document.addEventListener('DOMContentLoaded', () => {
+    setInterval(nextSlide, 3000);  // Auto slide every 3 seconds
+});
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "VB - Custom Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Reel",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Select Image",
+          "id": "image"
+        },
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "slider_captions"
+        },
+        {
+          "type": "text",
+          "label": "Sub Heading",
+          "id": "slider_sub_captions"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VB - Custom Slider"
+    }
+  ]
+}
 {% endschema %}
