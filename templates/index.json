@@ -131,7 +131,7 @@
         "block_3ptTVm"
       ],
       "settings": {
-        "heading": "What's<br>New"
+        "heading": "<p>What's<br/>New</p>"
       }
     },
     "rich-text": {
@@ -168,7 +168,7 @@
           "type": "reel",
           "settings": {
             "reel_url": "https://cdn.shopify.com/videos/c/o/v/d51dece7503640c1afeadc329040c440.mp4",
-            "product_handle": ""
+            "product_handle": "embroidered-lawn-use-9031"
           }
         },
         "reel_BdBTQd": {
