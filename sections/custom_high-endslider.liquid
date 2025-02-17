@@ -139,6 +139,24 @@
 }
 </style>
 
+<script>
+// Initialize Swiper
+const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 5,            // Set how many slides you want to show at once
+    spaceBetween: 10,             // Space between slides
+    loop: false,                  // Enable loop to make it infinite
+    pagination: {
+      el: '.swiper-pagination',  // Enable pagination (dots)
+      clickable: true,           // Allow users to click pagination
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',  // Next button
+      prevEl: '.swiper-button-prev',  // Previous button
+    },
+  });
+  
+</script>
+
 {% schema %}
   {
     "name": "VB - Custom What's New",
