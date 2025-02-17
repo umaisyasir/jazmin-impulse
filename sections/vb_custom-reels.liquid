@@ -36,32 +36,32 @@
 </div>
 
 <div id="reelPopup" class="reel-popup custom-popup">
-  <div class="popup-content">
-    <span class="close-popup fas fa-times" onclick="closePopup()" class="close-popup"></span>
-    <a href="{{ section.settings.logo_link }}" class="logo-link">
-      <img id="popupLogo" class="popup-logo popup-logo" src="" alt="Logo" />
+  <div class="custom-popup-content">
+    <span class="close-popup fas fa-times" onclick="closePopup()" class="custom-close-popup"></span>
+    <a href="{{ section.settings.logo_link }}" class="custom-logo-link">
+      <img id="popupLogo" class="popup-logo custom-popup-logo" src="" alt="Logo" />
     </a>
     <video id="popupVideo" autoplay muted loop class="popup-video"></video>
-    <div class="popup-product-details popup-product-details" id="popupProductDetails">
-      <div class="product_main-details product-main-details">
-        <img id="popupProductImage" src="" class="product-image popup-product-image">
-        <h3 id="popupProductTitle" class="popup-product-title">Loading...</h3>
-        <p id="popupProductPrice" class="popup-product-price"></p>
+    <div class="popup-product-details custom-popup-product-details" id="popupProductDetails">
+      <div class="product_main-details custom-product-main-details">
+        <img id="popupProductImage" src="" class="product-image custom-popup-product-image">
+        <h3 id="popupProductTitle" class="custom-popup-product-title">Loading...</h3>
+        <p id="popupProductPrice" class="custom-popup-product-price"></p>
       </div>
-      <form id="popupAddToCartForm" class="popup-add-to-cart-form popup-add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
+      <form id="popupAddToCartForm" class="popup-add-to-cart-form custom-popup-add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" id="popupProductId">
-        <button type="submit" class="popup-add-to-cart popup-add-to-cart">Add to Cart</button>
+        <button type="submit" class="popup-add-to-cart custom-popup-add-to-cart">Add to Cart</button>
       </form>
     </div>
-    <div class="popup-navigation popup-navigation">
-      <button class="popup-prev fas fa-chevron-left popup-prev" onclick="prevVideo()"></button>
-      <button class="popup-next fas fa-chevron-right popup-next" onclick="nextVideo()"></button>
+    <div class="popup-navigation custom-popup-navigation">
+      <button class="popup-prev fas fa-chevron-left custom-popup-prev" onclick="prevVideo()"></button>
+      <button class="popup-next fas fa-chevron-right custom-popup-next" onclick="nextVideo()"></button>
     </div>
-    <div class="popup-controls popup-controls">
-      <button class="popup-mute fas fa-volume-mute popup-mute" onclick="toggleMute()"></button>
-      <button class="popup-fullscreen fas fa-expand popup-fullscreen" onclick="toggleFullscreen()"></button>
-      <button class="popup-share fas fa-share popup-share" onclick="shareVideo()"></button>
-      <button class="popup-position fas fa-arrows-alt popup-position" onclick="togglePosition()"></button>
+    <div class="popup-controls custom-popup-controls">
+      <button class="popup-mute fas fa-volume-mute custom-popup-mute" onclick="toggleMute()"></button>
+      <button class="popup-fullscreen fas fa-expand custom-popup-fullscreen" onclick="toggleFullscreen()"></button>
+      <button class="popup-share fas fa-share custom-popup-share" onclick="shareVideo()"></button>
+      <button class="popup-position fas fa-arrows-alt custom-popup-position" onclick="togglePosition()"></button>
     </div>
   </div>
 </div>
