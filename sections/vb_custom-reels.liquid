@@ -741,33 +741,34 @@
       popupProductTitle.textContent = "Product not available";
       popupProductPrice.textContent = "";
       popupProductId.value = "";
-      popupAddToCartForm.style.display = "none";
+      popupAddToCartForm.style.display = "none";  // Hide the add to cart form
       popupProductDetails.style.display = "none";
     }
+    popupVideo.play();
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     initializeProductDetails();
 
-    // Initialize the Swiper instance
     const swiper = new Swiper(".swiper-container", {
-      slidesPerView: 1,
-      spaceBetween: 10,
-      loop: false,
+      slidesPerView: 2,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
       breakpoints: {
-        1200: {
-          slidesPerView: 5,
-          spaceBetween: 0,
-        },
-        992: {
-          slidesPerView: 4,
-          spaceBetween: 15,
+        1024: {
+          slidesPerView: {{ section.settings.laptop-pc_slides }},
         },
         768: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+          slidesPerView: {{ section.settings.tablet_slides }},
         },
+        480: {
+          slidesPerView: {{ section.settings.mobile_slides }},
+        }
       },
+      loop: false,
     });
   });
 </script>
