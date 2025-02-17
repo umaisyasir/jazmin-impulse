@@ -1,0 +1,56 @@
+{{ 'aj.css' | asset_url | stylesheet_tag }}
+{{ 'theaj.js' | asset_url | script_tag }}
+
+<div class="marquee-container">
+  <div class="marquee-wrapper">
+    {% for i in (1..9) %}
+      <!-- Loop five times for content -->
+      <ul class="collection-list">
+        {% for block in section.blocks %}
+          {% assign collection = block.settings.collection %}
+          {% if collection %}
+            <li class="collection-list__item">
+              <a href="{{ collection.url }}">
+                <img src="{{ collection.image | img_url: '300x300' }}" alt="{{ collection.title }}">
+                <h3>{{ collection.title }}</h3>
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "The Aj",
+  "settings": [
+    {
+      "type": "number",
+      "id": "items_to_display",
+      "label": "Items to Display",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The Aj",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
