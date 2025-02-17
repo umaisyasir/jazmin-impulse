@@ -61,6 +61,70 @@
         "lazyload_images": true
       }
     },
+    "custom_high_endslider_798t7R": {
+      "type": "custom_high-endslider",
+      "blocks": {
+        "block_Ngw3Hp": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
+            "Heading": "Luxe Pret"
+          }
+        },
+        "block_CWUz3y": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
+            "Heading": ""
+          }
+        },
+        "block_8HjrKW": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-luxe.jpg",
+            "Heading": ""
+          }
+        },
+        "block_qxDxDj": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
+            "Heading": ""
+          }
+        },
+        "block_z6AGiC": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
+            "Heading": ""
+          }
+        },
+        "block_4BCfUB": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
+            "Heading": ""
+          }
+        },
+        "block_3ptTVm": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
+            "Heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_Ngw3Hp",
+        "block_CWUz3y",
+        "block_8HjrKW",
+        "block_qxDxDj",
+        "block_z6AGiC",
+        "block_4BCfUB",
+        "block_3ptTVm"
+      ],
+      "settings": {}
+    },
     "rich-text": {
       "type": "rich-text",
       "blocks": {
@@ -382,74 +446,11 @@
         "show_button": true,
         "lazyload_images": true
       }
-    },
-    "custom_high_endslider_798t7R": {
-      "type": "custom_high-endslider",
-      "blocks": {
-        "block_Ngw3Hp": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
-            "Heading": ""
-          }
-        },
-        "block_CWUz3y": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
-            "Heading": ""
-          }
-        },
-        "block_8HjrKW": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-luxe.jpg",
-            "Heading": ""
-          }
-        },
-        "block_qxDxDj": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
-            "Heading": ""
-          }
-        },
-        "block_z6AGiC": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
-            "Heading": ""
-          }
-        },
-        "block_4BCfUB": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
-            "Heading": ""
-          }
-        },
-        "block_3ptTVm": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
-            "Heading": ""
-          }
-        }
-      },
-      "block_order": [
-        "block_Ngw3Hp",
-        "block_CWUz3y",
-        "block_8HjrKW",
-        "block_qxDxDj",
-        "block_z6AGiC",
-        "block_4BCfUB",
-        "block_3ptTVm"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "slideshow",
+    "custom_high_endslider_798t7R",
     "rich-text",
     "vb_custom_reels_9AdiwV",
     "promo-grid",
@@ -458,7 +459,6 @@
     "featured-collection",
     "background-image-text",
     "blog-posts",
-    "map",
-    "custom_high_endslider_798t7R"
+    "map"
   ]
 }
