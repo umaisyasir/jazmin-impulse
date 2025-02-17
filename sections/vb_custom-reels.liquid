@@ -6,8 +6,8 @@
         {% for reel in section.blocks %}
           <div class="swiper-slide custom-swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
             <div class="reel-wrapper custom-reel-wrapper">
-              <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline></video>
-              <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden" muted onclick="openPopup(this)" playsinline></video>
+              <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline class="custom-video"></video>
+              <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden custom-main-video" muted onclick="openPopup(this)" playsinline></video>
             </div>
 
             {% if reel.settings.product_handle %}
@@ -41,7 +41,7 @@
     <a href="{{ section.settings.logo_link }}" class="custom-logo-link">
       <img id="popupLogo" class="popup-logo custom-popup-logo" src="" alt="Logo" />
     </a>
-    <video id="popupVideo" autoplay muted loop class="popup-video"></video>
+    <video id="popupVideo" autoplay muted loop class="custom-popup-video"></video>
     <div class="popup-product-details custom-popup-product-details" id="popupProductDetails">
       <div class="product_main-details custom-product-main-details">
         <img id="popupProductImage" src="" class="product-image custom-popup-product-image">
