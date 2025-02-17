@@ -386,89 +386,64 @@
     "custom_high_endslider_798t7R": {
       "type": "custom_high-endslider",
       "blocks": {
-        "block_rHEwdW": {
+        "block_Ngw3Hp": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/A_adb0ef99-9fe9-438e-a684-31e287f377be.jpg",
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
+            "Heading": ""
           }
         },
-        "block_GLzDUH": {
+        "block_CWUz3y": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
+            "Heading": ""
           }
         },
-        "block_rbbhXf": {
+        "block_8HjrKW": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-luxe.jpg",
+            "Heading": ""
           }
         },
-        "block_JBFaxM": {
+        "block_qxDxDj": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
+            "Heading": ""
           }
         },
-        "block_4bEBCn": {
+        "block_z6AGiC": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
+            "Heading": ""
           }
         },
-        "block_iw7jVf": {
+        "block_4BCfUB": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
+            "Heading": ""
           }
         },
-        "block_YEjxT3": {
+        "block_3ptTVm": {
           "type": "block",
           "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
-          }
-        },
-        "block_P3g6cw": {
-          "type": "block",
-          "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
-          }
-        },
-        "block_WWwVmz": {
-          "type": "block",
-          "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
-          }
-        },
-        "block_7EPAWb": {
-          "type": "block",
-          "settings": {
-            "slider_captions": "",
-            "slider_sub_captions": ""
+            "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
+            "Heading": ""
           }
         }
       },
       "block_order": [
-        "block_rHEwdW",
-        "block_GLzDUH",
-        "block_rbbhXf",
-        "block_JBFaxM",
-        "block_4bEBCn",
-        "block_iw7jVf",
-        "block_YEjxT3",
-        "block_P3g6cw",
-        "block_WWwVmz",
-        "block_7EPAWb"
+        "block_Ngw3Hp",
+        "block_CWUz3y",
+        "block_8HjrKW",
+        "block_qxDxDj",
+        "block_z6AGiC",
+        "block_4BCfUB",
+        "block_3ptTVm"
       ],
       "settings": {}
     }
