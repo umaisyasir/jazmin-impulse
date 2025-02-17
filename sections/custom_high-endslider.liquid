@@ -1,6 +1,48 @@
+      <div class="custom-container">
+            <div class="custom-left-container">
+                <h1>What's New</h1>
+            </div>
+    
+            <!-- Swiper Slider Container -->
+            <div class="swiper-container custom-right-container">
+                <!-- Swiper Wrapper -->
+                <div class="swiper-wrapper">
+                  {% for block in section.blocks %}
+                    <div class="swiper-slide custom-slide">
+                        <img class="custom-image" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.heading }}">
+                        <h4 class="custom-heading">{{ block.settings.heading }}</h4>
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "VB - Custom What's New",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label": "Select Image",
+            "id": "image"
+          },
+          {
+            "type": "text",
+            "label": "Heading",
+            "id": "Heading"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "VB - Custom What's New"
+      }
+    ]
   }
 {% endschema %}
