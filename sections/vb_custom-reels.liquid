@@ -36,7 +36,7 @@
 </div>
 
 <div id="reelPopup" class="reel-popup">
-  <div class="popup-content">
+  <div class="custom-popup-content">
     <span class="close-popup fas fa-times" onclick="closePopup()"></span>
     <a href="{{ section.settings.logo_link }}">
       <img id="popupLogo" class="popup-logo" src="" alt="Logo" />
@@ -220,15 +220,15 @@
     width: calc(100% / 2);
   }
 
-  .popup-content.video-bottom-right {
+  .custom-popup-content.video-bottom-right {
     height: 290px !important;
   }
 
-  .popup-content.video-bottom-right .popup-controls button {
+  .custom-popup-content.video-bottom-right .popup-controls button {
     font-size: 20px !important;
   }
 
-  .popup-content.video-bottom-right .popup-logo {
+  .custom-popup-content.video-bottom-right .popup-logo {
     top: 10px;
     left: 10px;
     max-width: 70px;
@@ -253,7 +253,7 @@
   animation: fadeIn 0.5s ease forwards;
 }
 
-.popup-content {
+.custom-popup-content {
   position: relative;
   width: 90%;
   max-width: 800px;
@@ -384,7 +384,7 @@
   to { opacity: 1; }
 }
 
-.popup-content {
+.custom-popup-content {
   position: relative;
   width: 90%;
   max-width: 800px;
@@ -401,7 +401,7 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-.popup-content.video-bottom-right {
+.custom-popup-content.video-bottom-right {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -451,12 +451,12 @@
   display: none !important;
 }
 
-.popup-content.video-bottom-right .popup-controls {
+.custom-popup-content.video-bottom-right .popup-controls {
   bottom: 10px;
   left: 10px;
 }
 
-.popup-content video {
+.custom-popup-content video {
   width: 100%;
   height: 100%;
 }
