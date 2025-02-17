@@ -53,6 +53,7 @@
         "footer-promotions-1",
         "footer-promotions-2"
       ],
+      "disabled": true,
       "settings": {
         "hide_homepage": false
       }
@@ -60,6 +61,14 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "footer-0": {
+          "type": "logo_social",
+          "settings": {
+            "logo": "shopify://shop_images/jazmin_logo_2_0da81d1d-3e23-4558-a18a-79a55843801c.png",
+            "desktop_logo_height": 50,
+            "container_width": 25
+          }
+        },
         "footer-1": {
           "type": "menu",
           "settings": {
@@ -74,21 +83,14 @@
             "show_footer_title": true,
             "title": "Sign up and save",
             "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>",
-            "container_width": 33
-          }
-        },
-        "footer-0": {
-          "type": "logo_social",
-          "settings": {
-            "desktop_logo_height": 50,
-            "container_width": 95
+            "container_width": 25
           }
         }
       },
       "block_order": [
+        "footer-0",
         "footer-1",
-        "footer2",
-        "footer-0"
+        "footer2"
       ],
       "settings": {
         "icon_bgcolor": "#25d366",
