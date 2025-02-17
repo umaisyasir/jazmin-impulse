@@ -66,6 +66,7 @@
       "blocks": {
         "block_YemzLK": {
           "type": "block",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
             "heading": "",
