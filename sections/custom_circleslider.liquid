@@ -158,6 +158,10 @@
 }
 </style>
 
+<!-- Add Slick Slider JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 {% javascript %}
 $(document).ready(function() {
     $('.slick-slider').slick({
@@ -166,14 +170,15 @@ $(document).ready(function() {
         autoplay: true,             // Enable autoplay
         autoplaySpeed: 2000,        // Speed for autoplay (2 seconds)
         dots: true,                 // Show dots for navigation
-        arrows: true,               // Show arrows for navigation
+        arrows: false,              // Disable arrows for mobile version (optional)
+        infinite: true,             // Enable infinite scroll
         responsive: [
             {
                 breakpoint: 1200,
                 settings: {
                     slidesToShow: 5,
                     slidesToScroll: 1,
-                    spaceBetween: 0
+                    spaceBetween: 0         // Custom space between slides
                 }
             },
             {
@@ -181,7 +186,7 @@ $(document).ready(function() {
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 1,
-                    spaceBetween: 15
+                    spaceBetween: 15        // Custom space between slides
                 }
             },
             {
@@ -189,7 +194,7 @@ $(document).ready(function() {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    spaceBetween: 10
+                    spaceBetween: 10        // Custom space between slides
                 }
             }
         ]
