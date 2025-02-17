@@ -318,13 +318,61 @@
         "reel_CWpWrz": {
           "type": "reel",
           "settings": {
-            "reel_url": "",
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/d51dece7503640c1afeadc329040c440.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_BdBTQd": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a5fb9f03f3a041ffaa8fd0a2934b1951.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_GrWE9B": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/251a994911534c5ab5c14a74c12b31cf.mov",
+            "product_handle": ""
+          }
+        },
+        "reel_3rpngU": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/c770378873f0451e83a961e6178d5043.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_i4Rnm6": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/60f3eb9bfde04ee1af59a600f9d0d07a.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_Y8RY3t": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a252bd37dc334c18aeb7d55798fe8bcb.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_wgikNk": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/8e682f2922af4620aed61d7ec386231a.mov",
             "product_handle": ""
           }
         }
       },
       "block_order": [
-        "reel_CWpWrz"
+        "reel_CWpWrz",
+        "reel_BdBTQd",
+        "reel_GrWE9B",
+        "reel_3rpngU",
+        "reel_i4Rnm6",
+        "reel_Y8RY3t",
+        "reel_wgikNk"
       ],
       "settings": {
         "logo_url": "https://cdn.shopify.com/s/files/1/0011/0277/4316/files/Jazmin_White_Logo.png?v=1739607771",
