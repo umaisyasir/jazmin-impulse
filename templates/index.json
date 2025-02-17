@@ -130,7 +130,9 @@
         "block_4BCfUB",
         "block_3ptTVm"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "What's<br>New"
+      }
     },
     "rich-text": {
       "type": "rich-text",
