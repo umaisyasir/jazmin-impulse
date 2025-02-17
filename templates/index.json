@@ -61,104 +61,77 @@
         "lazyload_images": true
       }
     },
-    "custom_high_endslider_798t7R": {
-      "type": "custom_high-endslider",
+    "custom_circleslider_EHADMi": {
+      "type": "custom_circleslider",
       "blocks": {
-        "block_Ngw3Hp": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
-            "heading": "Luxe Pret",
-            "url": "shopify://collections/shahkaar-vol-2"
-          }
-        },
-        "block_CWUz3y": {
+        "block_YemzLK": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         },
-        "block_8HjrKW": {
+        "block_Kwdz7H": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
+            "heading": "",
+            "url": ""
+          }
+        },
+        "block_GxWpyn": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-luxe.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         },
-        "block_qxDxDj": {
+        "block_RHT8G8": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         },
-        "block_z6AGiC": {
+        "block_fFnaf8": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         },
-        "block_4BCfUB": {
+        "block_deaVkw": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         },
-        "block_3ptTVm": {
+        "block_9hEkVA": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
-            "heading": "Luxe Pret",
+            "heading": "",
             "url": ""
           }
         }
       },
       "block_order": [
-        "block_Ngw3Hp",
-        "block_CWUz3y",
-        "block_8HjrKW",
-        "block_qxDxDj",
-        "block_z6AGiC",
-        "block_4BCfUB",
-        "block_3ptTVm"
+        "block_YemzLK",
+        "block_Kwdz7H",
+        "block_GxWpyn",
+        "block_RHT8G8",
+        "block_fFnaf8",
+        "block_deaVkw",
+        "block_9hEkVA"
       ],
       "settings": {
         "heading": "<p>What's New</p>"
-      }
-    },
-    "rich-text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "title": "Rich text"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "enlarge_text": true,
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "align_text": "center",
-        "narrow_column": true,
-        "divider": false
       }
     },
     "vb_custom_reels_9AdiwV": {
@@ -230,6 +203,33 @@
         "laptop-pc_slides": 5,
         "tablet_slides": 3,
         "mobile_slides": 2
+      }
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "title": "Rich text"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
       }
     },
     "promo-grid": {
@@ -459,9 +459,9 @@
   },
   "order": [
     "slideshow",
-    "custom_high_endslider_798t7R",
-    "rich-text",
+    "custom_circleslider_EHADMi",
     "vb_custom_reels_9AdiwV",
+    "rich-text",
     "promo-grid",
     "featured-collections",
     "promo-grid2",
