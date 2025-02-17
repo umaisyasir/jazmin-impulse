@@ -1,7 +1,7 @@
 <div class="slider-container custom-container">
     <div class="slider-wrapper custom-wrapper">
         {% for block in section.blocks %}
-            <div class="custom-slider-item slider-item {% if forloop.first %} main-item {% else %} small-item {% endif %}">
+            <div class="custom-slider-item swiper-slide {% if forloop.first %} main-item {% else %} small-item {% endif %}">
                 <img src="{{ block.settings.image | img_url: 'master' }}" alt="Slider Image">
                 <p class="caption">{{ block.settings.slider_captions }}</p>
                 <p class="sub-caption">{{ block.settings.slider_sub_captions }}</p>
