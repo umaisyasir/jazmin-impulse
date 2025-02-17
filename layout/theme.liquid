@@ -27,6 +27,7 @@
   {%- render 'social-meta-tags' -%}
 
   {%- render 'font-face' -%}
+  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
   {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
   {%- render 'css-variables' -%}
 
@@ -85,7 +86,7 @@
   {%- if shop.enabled_currencies.size > 1 -%}
     <link rel="stylesheet" href="{{ 'country-flags.css' | asset_url | split: '?' | first }}">
   {%- endif -%}
-
+  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
   {%- if request.page_type contains 'customers/' -%}
