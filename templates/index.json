@@ -168,7 +168,7 @@
           "type": "reel",
           "settings": {
             "reel_url": "https://cdn.shopify.com/videos/c/o/v/d51dece7503640c1afeadc329040c440.mp4",
-            "product_handle": "embroidered-lawn-use-9031"
+            "product_handle": ""
           }
         },
         "reel_BdBTQd": {
@@ -226,7 +226,7 @@
       "settings": {
         "logo_url": "https://cdn.shopify.com/s/files/1/0011/0277/4316/files/Jazmin_White_Logo.png?v=1739607771",
         "logo_link": "/",
-        "arrows_position": "42",
+        "arrows_position": "54",
         "laptop-pc_slides": 5,
         "tablet_slides": 3,
         "mobile_slides": 2
