@@ -68,49 +68,56 @@
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
-            "heading": "Luxe Pret"
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_CWUz3y": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_8HjrKW": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-luxe.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_qxDxDj": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_z6AGiC": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_4BCfUB": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         },
         "block_3ptTVm": {
           "type": "block",
           "settings": {
             "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
-            "heading": ""
+            "heading": "Luxe Pret",
+            "url": ""
           }
         }
       },
