@@ -1,67 +1,67 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="custom-reels-section" id="video-gallery">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
+  <div class="swiper-container custom-swiper-container">
+    <div class="swiper-wrapper custom-swiper-wrapper">
         {% for reel in section.blocks %}
-          <div class="swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
-            <div class="reel-wrapper">
-              <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline></video>
-              <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden" muted onclick="openPopup(this)" playsinline></video>
+          <div class="swiper-slide custom-swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
+            <div class="reel-wrapper custom-reel-wrapper">
+              <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline class="custom-video"></video>
+              <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden custom-main-video" muted onclick="openPopup(this)" playsinline></video>
             </div>
 
             {% if reel.settings.product_handle %}
               {% assign product = all_products[reel.settings.product_handle] %}
               {% if product %}
-                <div class="product-info">
-                  <h3>{{ product.title }}</h3>
-                  <p class="product-price">{{ product.price | money }}</p>
+                <div class="product-info custom-product-info">
+                  <h3 class="custom-product-title">{{ product.title }}</h3>
+                  <p class="product-price custom-product-price">{{ product.price | money }}</p>
 
                   <!-- Add to Cart Form -->
-                  <form action="/cart/add" method="post" enctype="multipart/form-data">
+                  <form action="/cart/add" method="post" enctype="multipart/form-data" class="custom-add-to-cart-form">
                     <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                    <button type="submit" class="product-link">Add to Cart</button>
+                    <button type="submit" class="product-link custom-product-link">Add to Cart</button>
                   </form>
                 </div>
               {% else %}
-                <p>Product not available.</p>
+                <p class="custom-product-unavailable">Product not available.</p>
               {% endif %}
             {% endif %}
           </div>
         {% endfor %}
     </div>
-    <div class="swiper-button-next fas fa-chevron-right"></div>
-    <div class="swiper-button-prev fas fa-chevron-left"></div>
+    <div class="swiper-button-next fas fa-chevron-right custom-swiper-next"></div>
+    <div class="swiper-button-prev fas fa-chevron-left custom-swiper-prev"></div>
   </div>
 </div>
 
-<div id="reelPopup" class="reel-popup">
+<div id="reelPopup" class="reel-popup custom-popup">
   <div class="custom-popup-content">
-    <span class="close-popup fas fa-times" onclick="closePopup()"></span>
-    <a href="{{ section.settings.logo_link }}">
-      <img id="popupLogo" class="popup-logo" src="" alt="Logo" />
+    <span class="close-popup fas fa-times" onclick="closePopup()" class="custom-close-popup"></span>
+    <a href="{{ section.settings.logo_link }}" class="custom-logo-link">
+      <img id="popupLogo" class="popup-logo custom-popup-logo" src="" alt="Logo" />
     </a>
-    <video id="popupVideo" autoplay muted loop></video>
-    <div class="popup-product-details" id="popupProductDetails">
-      <div class="product_main-details">
-        <img id="popupProductImage" src="" class="product-image">
-        <h3 id="popupProductTitle">Loading...</h3>
-        <p id="popupProductPrice"></p>
+    <video id="popupVideo" autoplay muted loop class="custom-popup-video"></video>
+    <div class="popup-product-details custom-popup-product-details" id="popupProductDetails">
+      <div class="product_main-details custom-product-main-details">
+        <img id="popupProductImage" src="" class="product-image custom-popup-product-image">
+        <h3 id="popupProductTitle" class="custom-popup-product-title">Loading...</h3>
+        <p id="popupProductPrice" class="custom-popup-product-price"></p>
       </div>
-      <form id="popupAddToCartForm" class="popup-add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
+      <form id="popupAddToCartForm" class="popup-add-to-cart-form custom-popup-add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" id="popupProductId">
-        <button type="submit" class="popup-add-to-cart">Add to Cart</button>
+        <button type="submit" class="popup-add-to-cart custom-popup-add-to-cart">Add to Cart</button>
       </form>
     </div>
-    <div class="popup-navigation">
-      <button class="popup-prev fas fa-chevron-left" onclick="prevVideo()"></button>
-      <button class="popup-next fas fa-chevron-right" onclick="nextVideo()"></button>
+    <div class="popup-navigation custom-popup-navigation">
+      <button class="popup-prev fas fa-chevron-left custom-popup-prev" onclick="prevVideo()"></button>
+      <button class="popup-next fas fa-chevron-right custom-popup-next" onclick="nextVideo()"></button>
     </div>
-    <div class="popup-controls">
-      <button class="popup-mute fas fa-volume-mute" onclick="toggleMute()"></button>
-      <button class="popup-fullscreen fas fa-expand" onclick="toggleFullscreen()"></button>
-      <button class="popup-share fas fa-share" onclick="shareVideo()"></button>
-      <button class="popup-position fas fa-arrows-alt" onclick="togglePosition()"></button>
+    <div class="popup-controls custom-popup-controls">
+      <button class="popup-mute fas fa-volume-mute custom-popup-mute" onclick="toggleMute()"></button>
+      <button class="popup-fullscreen fas fa-expand custom-popup-fullscreen" onclick="toggleFullscreen()"></button>
+      <button class="popup-share fas fa-share custom-popup-share" onclick="shareVideo()"></button>
+      <button class="popup-position fas fa-arrows-alt custom-popup-position" onclick="togglePosition()"></button>
     </div>
   </div>
 </div>
@@ -138,16 +138,16 @@
   color: #000;
 }
 
-.swiper-container {
+.custom-swiper-container {
   position: relative;
   overflow: hidden;
 }
 
-.swiper-wrapper {
+.custom-swiper-wrapper {
   display: flex;
 }
 
-.swiper-slide {
+.custom-swiper-slide {
   flex-shrink: 0;
   width: calc(100% / 5);
   display: flex;
@@ -210,13 +210,13 @@
 }
 
 @media (max-width: 1024px) {
-  .swiper-slide {
+  .custom-swiper-slide {
     width: calc(100% / 3);
   }
 }
 
 @media (max-width: 768px) {
-  .swiper-slide {
+  .custom-swiper-slide {
     width: calc(100% / 2);
   }
 
