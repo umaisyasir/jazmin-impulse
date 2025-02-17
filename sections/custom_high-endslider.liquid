@@ -1,6 +1,6 @@
       <div class="custom-container">
             <div class="custom-left-container">
-                <h1>What's New</h1>
+                <h1>{{ section.settings.heading }}</h1>
             </div>
     
             <!-- Swiper Slider Container -->
@@ -185,7 +185,13 @@ const swiper = new Swiper('.swiper-container', {
 {% schema %}
   {
     "name": "VB - Custom What's New",
-    "settings": [],
+    "settings": [
+      {
+         "type": "text",
+         "label": "Heading",
+         "id": "heading"
+      }
+    ],
     "blocks": [
       {
         "type": "block",
