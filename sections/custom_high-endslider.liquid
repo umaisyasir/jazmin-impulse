@@ -6,6 +6,10 @@
                 <p class="caption">{{ block.settings.slider_captions }}</p>
                 <p class="sub-caption">{{ block.settings.slider_sub_captions }}</p>
             </div>
+            <div class="nav-buttons">
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
         {% endfor %}
     </div>
 </div>
@@ -15,6 +19,8 @@
     width: 100%;
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .custom-wrapper {
@@ -28,11 +34,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    text-align: center;
 }
 
 .main-item img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
 }
 
 .small-item {
@@ -40,12 +48,14 @@
     opacity: 0.7;
     transform: scale(0.8);
     transition: transform 0.3s ease, opacity 0.3s ease;
+    margin: 0 15px;
 }
 
 .small-item img {
     width: 100%;
     height: auto;
     object-fit: cover;
+    border-radius: 8px;
 }
 
 .slider-item:hover .small-item {
@@ -57,6 +67,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 10px;
+    color: #333;
 }
 
 .sub-caption {
@@ -64,15 +75,39 @@
     margin-top: 5px;
     color: gray;
 }
+
+/* Adding styles for next/prev buttons */
+.nav-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.nav-buttons .prev, .nav-buttons .next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.nav-buttons .prev:hover, .nav-buttons .next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
 </style>
 
 <script>
 let currentIndex = 0;
-const items = document.querySelectorAll('.swiper-slide');
+const items = document.querySelectorAll('.custom-slider-item');
 const totalItems = items.length;
 
 function moveSlider() {
-    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const sliderWrapper = document.querySelector('.custom-wrapper');
     sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
@@ -94,9 +129,9 @@ function prevSlide() {
     moveSlider();
 }
 
-// Add navigation buttons (left and right)
+// Add automatic sliding
 document.addEventListener('DOMContentLoaded', () => {
-    setInterval(nextSlide, 3000);  // Auto slide every 3 seconds
+    setInterval(nextSlide, 3000); // Auto slide every 3 seconds
 });
 </script>
 
