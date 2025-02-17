@@ -1,24 +1,25 @@
-      <div class="custom-container">
-            <div class="custom-left-container">
-                <h1>{{ section.settings.heading }}</h1>
-            </div>
-    
-            <!-- Swiper Slider Container -->
-            <div class="swiper-container custom-right-container">
-                <!-- Swiper Wrapper -->
-                <div class="swiper-wrapper custom-wrapper-1">
-                  {% for block in section.blocks %}
-                    <div class="swiper-slide custom-slide">
-                      <a href="{{ block.settings.url }}">
+<div class="custom-container">
+    <div class="custom-left-container">
+        <h1>{{ section.settings.heading }}</h1>
+    </div>
+
+    <!-- Slick Slider Container -->
+    <div class="custom-right-container">
+        <!-- Slick Slider Items -->
+        <div class="slick-slider custom-wrapper-1">
+            {% for block in section.blocks %}
+                <div class="custom-slide">
+                    <a href="{{ block.settings.url }}">
                         <img class="custom-image" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.heading }}">
                         <h4 class="custom-heading">{{ block.settings.heading }}</h4>
-                      </a>
-                    </div>
-                  {% endfor %}
+                    </a>
                 </div>
-            </div>
+            {% endfor %}
         </div>
+    </div>
+</div>
 
+<!-- Slick Slider Styles -->
 <style>
 /* Default Desktop Styles */
 .custom-container {
@@ -32,8 +33,6 @@
 }
 
 .custom-right-container {
-    display: flex;
-    column-gap: 15px;
     width: 80%;
 }
 
@@ -148,30 +147,57 @@
         width: 100%;
     }
 }
+
+/* Slick Slider Styles */
+.slick-slider .slick-slide {
+    padding: 10px;
+}
+.slick-slide img {
+    width: 100%;
+    border-radius: 50%;
+}
 </style>
 
+<!-- Add Slick Slider JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 {% javascript %}
-const swiper = new Swiper('.custom-right-container', {
-  slidesPerView: 1,            // Default: how many slides you want to show at once
-  spaceBetween: 10,            // Default space between slides
-  loop: false,  
-  breakpoints: {
-    // When the screen width is >= 1200px, show 5 slides with 20px space between
-    1200: {
-      slidesPerView: 5,
-      spaceBetween: 0,         // Custom space between slides
-    },
-    // When the screen width is >= 992px, show 4 slides with 15px space between
-    992: {
-      slidesPerView: 4,
-      spaceBetween: 15,         // Custom space between slides
-    },
-    // When the screen width is >= 768px, show 3 slides with 10px space between
-    768: {
-      slidesPerView: 1,
-      spaceBetween: 10,         // Custom space between slides
-    }
-  },
+$(document).ready(function() {
+    $('.slick-slider').slick({
+        slidesToShow: 1,            // Default: How many slides to show at once
+        slidesToScroll: 1,          // Default: How many slides to scroll at once
+        autoplay: true,             // Enable autoplay
+        autoplaySpeed: 2000,        // Speed for autoplay (2 seconds)
+        dots: true,                 // Show dots for navigation
+        arrows: true,               // Show arrows for navigation
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    spaceBetween: 0
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    spaceBetween: 15
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    spaceBetween: 10
+                }
+            }
+        ]
+    });
 });
 {% endjavascript %}
 
