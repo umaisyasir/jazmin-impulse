@@ -216,7 +216,7 @@
         "tablet_slides": 3,
         "mobile_slides": 2,
         "autoplay_live": true,
-        "autoplay": "3000"
+        "autoplay": "5000"
       }
     }
   },
