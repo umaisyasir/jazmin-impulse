@@ -65,11 +65,36 @@
             "page": ""
           }
         },
-        "contact": {
-          "type": "contact",
+        "tab_bbMDBM": {
+          "type": "tab",
           "settings": {
-            "title": "Ask a question",
-            "phone": false
+            "title": "Shipping Information",
+            "content": "<p>{{ product.metafields.custom.shipping_reference.value.timeline | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "tab_MqMXnV": {
+          "type": "tab",
+          "settings": {
+            "title": "Care Instructions",
+            "content": "<p>{{ product.metafields.descriptors.care_guide | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "tab_ARHKiG": {
+          "type": "tab",
+          "settings": {
+            "title": "Model Size",
+            "content": "<p>{{ product.metafields.custom.model_size | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "tab_Y99dRd": {
+          "type": "tab",
+          "settings": {
+            "title": "Please Note",
+            "content": "<p>{{ product.metafields.custom.additional_product_info_reference.value.please_note_product_page | metafield_tag }}</p>",
+            "page": ""
           }
         },
         "share": {
@@ -86,7 +111,10 @@
         "buy_buttons",
         "description",
         "tab",
-        "contact",
+        "tab_bbMDBM",
+        "tab_MqMXnV",
+        "tab_ARHKiG",
+        "tab_Y99dRd",
         "share"
       ],
       "settings": {
