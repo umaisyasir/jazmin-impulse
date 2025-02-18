@@ -757,6 +757,11 @@
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+      {% if section.settings.autoplay_live %}
+        autoplay: {
+          delay: {{ section.settings.autoplay }},
+        },
+      {% endif %}
       breakpoints: {
         1024: {
           slidesPerView: {{ section.settings.laptop-pc_slides }},
@@ -770,7 +775,6 @@
       },
       loop: false,
     });
-  });
 </script>
 
 {% schema %}
@@ -828,6 +832,21 @@
       "max": 3,
       "step": 1,
       "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_live",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay",
+      "label": "Autoplay Delay (ms)",
+      "min": 1000,
+      "max": 5000,
+      "step": 500,
+      "default": 3000
     }
   ],
   "blocks": [
