@@ -146,6 +146,52 @@
         "divider": false
       }
     },
+    "slideshow_YGwaYW": {
+      "type": "slideshow",
+      "blocks": {
+        "image_zxXEGh": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Endless\npossibilities.",
+            "title_size": 80,
+            "subheading": "Bring your brand to life",
+            "link": "",
+            "link_text": "Optional button",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_zxXEGh"
+      ],
+      "settings": {
+        "section_height": "650px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "lazyload_images": true
+      }
+    },
+    "featured_collection_ndhJMQ": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "home_featured_products": "shahkaar-luxury-lawn",
+        "per_row": 4,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
     "vb_custom_reels_9AdiwV": {
       "type": "vb_custom-reels",
       "blocks": {
@@ -223,6 +269,8 @@
   "order": [
     "slideshow",
     "custom_circleslider_EHADMi",
+    "featured_collection_ndhJMQ",
+    "slideshow_YGwaYW",
     "featured-collection",
     "vb_custom_reels_9AdiwV"
   ]
