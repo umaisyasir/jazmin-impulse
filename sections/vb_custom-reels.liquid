@@ -760,6 +760,7 @@
       {% if section.settings.autoplay_live %}
         autoplay: {
           delay: {{ section.settings.autoplay }},
+          disableOnInteraction: false,
         },
       {% endif %}
       breakpoints: {
