@@ -26,7 +26,6 @@
             "color_accent": "#000000",
             "text_align": "vertical-center horizontal-center",
             "image": "shopify://shop_images/1920-1080_6570fd61-7b94-4373-81bc-0a8e72331f82.jpg",
-            "image_mobile": "shopify://shop_images/1200-2400.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -45,7 +44,6 @@
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-left",
             "image": "shopify://shop_images/1920-1080-2_c9bbd05b-04d1-43ca-aa0b-c87930cb3e14.jpg",
-            "image_mobile": "shopify://shop_images/1200-2400-2.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
