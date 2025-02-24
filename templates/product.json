@@ -29,13 +29,6 @@
             "color_swatches": false
           }
         },
-        "kiwi_size_chart_recommender_kiwi_sizing_86W7Cq": {
-          "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
-          "settings": {
-            "product": "{{product}}",
-            "waitForElementSelector": ""
-          }
-        },
         "sales_point": {
           "type": "sales_point",
           "settings": {
@@ -113,7 +106,6 @@
         "price",
         "separator",
         "variant_picker",
-        "kiwi_size_chart_recommender_kiwi_sizing_86W7Cq",
         "sales_point",
         "inventory_status",
         "buy_buttons",
