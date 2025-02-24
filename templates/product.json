@@ -33,7 +33,7 @@
           "type": "shopify://apps/kiwi-size-chart-recommender/blocks/kiwiSizing/b7369922-bf15-44ce-a121-a22a8fcbc4b0",
           "settings": {
             "product": "{{product}}",
-            "waitForElementSelector": ""
+            "waitForElementSelector": ".variant-input-wrap"
           }
         },
         "sales_point": {
