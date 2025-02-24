@@ -53,7 +53,7 @@
       ],
       "settings": {
         "section_height": "100vh",
-        "mobile_height": "100vh",
+        "mobile_height": "auto",
         "parallax": true,
         "style": "bars",
         "autoplay": true,
