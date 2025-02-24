@@ -35,15 +35,17 @@
           "type": "image",
           "settings": {
             "top_subheading": "",
-            "title": "Two line\ntitle slide.",
+            "title": "",
             "title_size": 80,
-            "subheading": "And optional subtext",
-            "link": "shopify://collections/all",
-            "link_text": "Shop all",
-            "link_2": "shopify://collections/all",
-            "link_text_2": "Shop all",
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-left",
+            "image": "shopify://shop_images/1920-1080-2.jpg",
+            "image_mobile": "shopify://shop_images/1200-2400-2.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -155,15 +157,17 @@
           "type": "image",
           "settings": {
             "top_subheading": "",
-            "title": "Endless\npossibilities.",
+            "title": "",
             "title_size": 80,
-            "subheading": "Bring your brand to life",
+            "subheading": "",
             "link": "",
-            "link_text": "Optional button",
+            "link_text": "",
             "link_2": "",
             "link_text_2": "",
             "color_accent": "rgba(0,0,0,0)",
             "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/1500-650.jpg",
+            "image_mobile": "shopify://shop_images/750-1000_6f197b55-9ded-42b9-be61-6a60e2407848.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -173,9 +177,9 @@
         "image_zxXEGh"
       ],
       "settings": {
-        "section_height": "450px",
+        "section_height": "100vh",
         "mobile_height": "auto",
-        "parallax": true,
+        "parallax": false,
         "style": "bars",
         "autoplay": true,
         "autoplay_speed": 5,
