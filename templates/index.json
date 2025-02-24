@@ -26,6 +26,7 @@
             "color_accent": "#000000",
             "text_align": "vertical-center horizontal-center",
             "image": "shopify://shop_images/1920-1080_6570fd61-7b94-4373-81bc-0a8e72331f82.jpg",
+            "image_mobile": "shopify://shop_images/1200-2400_2736f6f4-e116-4976-ae2a-c2d66f667611.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -44,6 +45,7 @@
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-left",
             "image": "shopify://shop_images/1920-1080-2_c9bbd05b-04d1-43ca-aa0b-c87930cb3e14.jpg",
+            "image_mobile": "shopify://shop_images/1200-2400-2_be455ece-957c-4f67-9062-d4ef3f7012a6.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -55,7 +57,7 @@
       ],
       "settings": {
         "section_height": "100vh",
-        "mobile_height": "auto",
+        "mobile_height": "100vh",
         "parallax": false,
         "style": "bars",
         "autoplay": true,
