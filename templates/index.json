@@ -56,8 +56,8 @@
         "slideshow-1"
       ],
       "settings": {
-        "section_height": "100vh",
-        "mobile_height": "100vh",
+        "section_height": "natural",
+        "mobile_height": "auto",
         "parallax": false,
         "style": "dots",
         "autoplay": true,
