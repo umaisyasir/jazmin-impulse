@@ -8351,3 +8351,178 @@ theme.recentlyViewed = {
   });
 
 })();
+
+// Custom Js
+
+
+
+function productGridChanger() {
+  const body = document.querySelector('body');
+
+  if (body.classList.contains('template-collection')) {
+
+    const firstColumnMobile = document.querySelector('.grid-view-first-column-mobile');
+    const secondColumnMobile = document.querySelector('.grid-view-second-column-mobile');
+    const gridView = document.querySelectorAll('.grid__item.grid-product');
+
+    
+  
+    if (firstColumnMobile) {
+      firstColumnMobile.addEventListener('click', function () {
+        gridView.forEach((item) => {
+          item.classList.remove('small--one-half');
+          item.classList.add('medium-up--one-third');
+        });
+        firstColumnMobile.classList.add('active');
+        secondColumnMobile.classList.remove('active');
+      });
+    }
+
+    if (secondColumnMobile) {
+      secondColumnMobile.addEventListener('click', function () {
+        gridView.forEach((item) => {
+          item.classList.remove('medium-up--one-third');
+          item.classList.add('small--one-half');
+        });
+        firstColumnMobile.classList.remove('active');
+        secondColumnMobile.classList.add('active');
+      });
+    }
+  }
+}
+
+productGridChanger();
+
+document.addEventListener('DOMContentLoaded', function() {
+  var customSizeInputs = document.querySelectorAll('.custom_size_option_addon_input input');
+
+  customSizeInputs.forEach(function(input) {
+    input.addEventListener('keyup', function() {
+      var inputSize = this.getAttribute('data-name');
+      var sSize = document.querySelector('span[data-size-name="' + inputSize + '"]');
+      sSize.innerHTML = this.value;
+    });
+  });
+});
+
+
+window.addEventListener("load", function() {
+    
+    var radioInputs = document.querySelectorAll('input[type="radio"][name="Type"]');
+    var sizeRadioInputs = document.querySelectorAll('input[type="radio"][name="Size"]');
+    var customSizeInputs = document.querySelector('input[type="radio"][value="Custom"]');
+    var mainProductInfoWrap = document.getElementById('ymq-box');
+    var addOnOption = document.querySelector('.custom_size_option_addon');
+    var addOnOptionInputs = document.querySelectorAll('.custom_size_option_addon input');
+    var sizeFieldset = document.querySelector('input[type="radio"][name="Size"]').closest('.variant-wrapper');
+    var customStyleOption = document.querySelector('.custom-style-options');
+    var customStyleOptionInput = document.querySelectorAll('.custom-style-options input');
+    var customStyleOptionInputChecked = document.querySelector('.custom-style-options input:checked');
+    var Customtextarea = document.getElementById('custom-note-textarea');
+    var customSizeOptionOutputs = document.querySelectorAll('.custom_size_option_addon_img  span[data-size-name]');
+    var hiddenStyleInput = document.getElementById('hidden_style_input');
+    var selectedStyleOption = document.querySelector('input[name="properties[Style]"]:checked');
+    addOnOptionInputs.forEach(function(input) {
+        input.disabled = true;
+    });
+    Customtextarea.value = '';
+      customStyleOptionInput.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+      var checkedValues = [];
+      
+      customStyleOptionInput.forEach(function (checkbox) {
+        if (checkbox.checked) {
+          checkedValues.push(checkbox.value);
+        }
+      });
+  
+      hiddenStyleInput.value = checkedValues.join(', '); // You can customize the delimiter as needed
+    });
+  });
+
+  
+    function updateSizeFieldset() {
+           if (selectedStyleOption && hiddenStyleInput) {
+  // Set the value of the hidden input to the value of the checked radio button
+  hiddenStyleInput.value = selectedStyleOption.value;
+  console.log("Assigned value to hidden input: " + hiddenStyleInput.value);
+} else {
+  console.log("No radio button is checked, or the hidden input is not found.");
+}
+    var selectedValue = document.querySelector('input[type="radio"][name="Type"]:checked').value;
+
+      if (selectedValue === "Unstitched") {
+        hiddenStyleInput.value = '';
+        Customtextarea.value = '';
+        if(mainProductInfoWrap){
+        mainProductInfoWrap.classList.add('unstitched');
+        mainProductInfoWrap.classList.remove('stitched');
+        }
+         addOnOptionInputs.forEach(function(input) {
+              input.disabled = true;
+          });
+        sizeRadioInputs[0].click(); 
+        sizeFieldset.style.display = 'none';
+        customStyleOption.style.display = 'none';
+        customStyleOptionInput.forEach(function(input) {
+              input.disabled = true;
+          });
+      }else{
+        sizeRadioInputs[1].click();
+        Customtextarea.value = '';
+        if(mainProductInfoWrap){
+        mainProductInfoWrap.classList.remove('unstitched');
+        mainProductInfoWrap.classList.add('stitched');
+        }
+        sizeFieldset.style.display = 'block';
+        customStyleOption.style.display = 'block';
+         customStyleOptionInput.forEach(function(input) {
+              input.disabled = false;
+          });
+      }    
+  }
+  if(customSizeInputs){
+    customSizeInputs.addEventListener('click', function () {
+      addOnOption.style.display = 'block';
+       addOnOptionInputs.forEach(function(input) {
+              input.disabled = false;
+          });
+    })
+  }
+  updateSizeFieldset()
+
+   radioInputs.forEach(function(radio) {
+    radio.addEventListener("change", updateSizeFieldset);
+  });
+
+     radioInputs.forEach(function(radio) {
+      radio.addEventListener("click", function(){
+      addOnOption.style.display = 'none';
+      Customtextarea.value = '';
+       addOnOptionInputs.forEach(input => {
+         input.value = '';
+        });
+        customSizeOptionOutputs.forEach(output => {
+              output.innerText = '';
+          });
+    });
+  });
+
+sizeRadioInputs.forEach(function(radio, index) {
+    if (index !== sizeRadioInputs.length - 1) {
+        radio.addEventListener("click", function () {
+           addOnOptionInputs.forEach(function(input) {
+            input.disabled = true;
+          });
+        Customtextarea.value = '';
+        addOnOption.style.display = "none";
+        addOnOptionInputs.forEach(input => {
+         input.value = '';
+        });
+        customSizeOptionOutputs.forEach(output => {
+              output.innerText = '';
+          });
+        });
+    }
+});
+})
