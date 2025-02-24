@@ -56,10 +56,10 @@
         "slideshow-1"
       ],
       "settings": {
-        "section_height": "natural",
+        "section_height": "100vh",
         "mobile_height": "auto",
         "parallax": false,
-        "style": "dots",
+        "style": "bars",
         "autoplay": true,
         "autoplay_speed": 7,
         "lazyload_images": true
