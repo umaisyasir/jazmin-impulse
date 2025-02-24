@@ -25,6 +25,8 @@
             "link_text_2": "Shop all",
             "color_accent": "#000000",
             "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/1920-1080.jpg",
+            "image_mobile": "shopify://shop_images/1200-2400.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -53,8 +55,8 @@
       ],
       "settings": {
         "section_height": "100vh",
-        "mobile_height": "auto",
-        "parallax": true,
+        "mobile_height": "100vh",
+        "parallax": false,
         "style": "bars",
         "autoplay": true,
         "autoplay_speed": 7,
