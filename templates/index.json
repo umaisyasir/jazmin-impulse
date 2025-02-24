@@ -25,6 +25,8 @@
             "link_text_2": "Shop all",
             "color_accent": "#000000",
             "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/wb1_7ceebccf-9330-4636-8a19-6a56477d87cf.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER-1.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -134,11 +136,11 @@
         "heading": "<p>What's New</p>"
       }
     },
-    "featured-collection": {
+    "featured_collection_ndhJMQ": {
       "type": "featured-collection",
       "settings": {
         "title": "Featured collection",
-        "home_featured_products": "formals",
+        "home_featured_products": "shahkaar-luxury-lawn",
         "per_row": 4,
         "rows": 1,
         "mobile_scrollable": true,
@@ -180,11 +182,11 @@
         "lazyload_images": true
       }
     },
-    "featured_collection_ndhJMQ": {
+    "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "title": "Featured collection",
-        "home_featured_products": "shahkaar-luxury-lawn",
+        "home_featured_products": "formals",
         "per_row": 4,
         "rows": 1,
         "mobile_scrollable": true,
