@@ -29,19 +29,9 @@
             "color_swatches": false
           }
         },
-        "sales_point": {
-          "type": "sales_point",
-          "settings": {
-            "icon": "globe",
-            "text": "Free worldwide shipping"
-          }
-        },
-        "inventory_status": {
-          "type": "inventory_status",
-          "settings": {
-            "inventory_threshold": 10,
-            "inventory_transfers_enable": true
-          }
+        "quantity_selector_47Q3Vx": {
+          "type": "quantity_selector",
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -106,8 +96,7 @@
         "price",
         "separator",
         "variant_picker",
-        "sales_point",
-        "inventory_status",
+        "quantity_selector_47Q3Vx",
         "buy_buttons",
         "description",
         "tab",
