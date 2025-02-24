@@ -13038,6 +13038,7 @@ html[dir=rtl] .product-single__meta .rte{
   }
 }
 
-.variant-input:has(input[value=Default]), .product-single__meta.stitched #ymq-box {
+.variant-input:has(input[value=Default]), .product-single__meta.stitched #ymq-box,
+body:has(.variant-wrapper input[value="Unstitched"]:checked) .variant-wrapper:has(input[name="Size"]) {
   display: none;
 }
