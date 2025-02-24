@@ -25,8 +25,6 @@
             "link_text_2": "Shop all",
             "color_accent": "#000000",
             "text_align": "vertical-center horizontal-center",
-            "image": "shopify://shop_images/wb1_7ceebccf-9330-4636-8a19-6a56477d87cf.jpg",
-            "image_mobile": "shopify://shop_images/MOB-BANNER-1.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
