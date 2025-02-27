@@ -60,7 +60,7 @@
                     mobile_flush_grid: block.settings.mobile_flush_grid,
                     quick_shop_enable: settings.quick_shop_enable
                   %}
-                  {%- if paginate.pages > 1 -%}
+                  {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll == false -%}
                     {%- render 'pagination', paginate: paginate -%}
                   {%- endif -%}
                 </div>
@@ -104,6 +104,40 @@
   {% endif %}
   "name": {{ collection.title | json }}
 }
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if ({{ section.settings.enable_infinite_scroll | json }}) {
+      let currentPage = {{ paginate.current_page }};
+      const totalPages = {{ paginate.pages }};
+      let isFetching = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !isFetching && currentPage < totalPages) {
+          isFetching = true;
+          currentPage++;
+
+          fetch('{{ collection.url }}?page=' + currentPage + ' .collection-content', {
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+          })
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const products = doc.querySelector('.collection-content .grid__item--content').innerHTML;
+            document.querySelector('.collection-content .grid__item--content').insertAdjacentHTML('beforeend', products);
+            isFetching = false;
+          })
+          .catch(() => {
+            isFetching = false;
+          });
+        }
+      });
+
+      observer.observe(document.querySelector('.collection-content .grid__item--content'));
+    }
+  });
 </script>
 
 {% schema %}
@@ -160,6 +194,12 @@
       "id": "enable_sort",
       "label": "t:sections.main-collection.settings.enable_sort.label",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "label": "Enable infinite scroll",
+      "default": false
     }
   ],
   "blocks": [
@@ -222,8 +262,24 @@
           "max": 5,
           "step": 1
         }
-      ],
-      "limit": 1
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.main-collection.presets.default.name",
+      "category": "t:sections.main-collection.presets.default.category",
+      "blocks": [
+        {
+          "type": "collection_description"
+        },
+        {
+          "type": "subcollections"
+        },
+        {
+          "type": "product_grid"
+        }
+      ]
     }
   ]
 }
