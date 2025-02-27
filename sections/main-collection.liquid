@@ -60,7 +60,7 @@
                     mobile_flush_grid: block.settings.mobile_flush_grid,
                     quick_shop_enable: settings.quick_shop_enable
                   %}
-                  {%- if paginate.pages > 1 -%}
+                  {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll == false -%}
                     {%- render 'pagination', paginate: paginate -%}
                   {%- endif -%}
                 </div>
@@ -160,6 +160,12 @@
       "id": "enable_sort",
       "label": "t:sections.main-collection.settings.enable_sort.label",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "label": "Enable infinite scroll",
+      "default": false
     }
   ],
   "blocks": [
@@ -230,8 +236,11 @@
 {% endschema %}
 
 <script>
-// Infinite scroll logic
 document.addEventListener('DOMContentLoaded', function() {
+  const enableInfiniteScroll = {{ section.settings.enable_infinite_scroll | json }};
+  
+  if (!enableInfiniteScroll) return;
+
   let currentPage = {{ paginate.current_page }};
   const totalPages = {{ paginate.pages }};
   let isFetching = false;
@@ -259,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(html => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
-      const newContent = doc.querySelector('#CollectionAjaxContent').innerHTML;
+      const newContent = doc.getElementById('CollectionAjaxContent').innerHTML;
       productGrid.insertAdjacentHTML('beforeend', newContent);
       currentPage++;
       isFetching = false;
