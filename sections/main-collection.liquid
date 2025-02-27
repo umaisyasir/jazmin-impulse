@@ -228,3 +228,55 @@
   ]
 }
 {% endschema %}
+
+<script>
+// Infinite scroll logic
+document.addEventListener('DOMContentLoaded', function() {
+  let currentPage = {{ paginate.current_page }};
+  const totalPages = {{ paginate.pages }};
+  let isFetching = false;
+  const productGrid = document.getElementById('CollectionAjaxContent');
+  const loader = document.createElement('div');
+  loader.innerHTML = '<p style="text-align:center;">Loading more products...</p>';
+  loader.style.display = 'none';
+  productGrid.appendChild(loader);
+
+  function loadMoreProducts() {
+    if (currentPage >= totalPages || isFetching) {
+      return;
+    }
+
+    isFetching = true;
+    loader.style.display = 'block';  // Show loader
+
+    // Fetch the next page of products
+    fetch('{{ collection.url }}?page=' + (currentPage + 1) + ' #CollectionAjaxContent', {
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(response => response.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newContent = doc.querySelector('#CollectionAjaxContent').innerHTML;
+      productGrid.insertAdjacentHTML('beforeend', newContent);
+      currentPage++;
+      isFetching = false;
+      loader.style.display = 'none';  // Hide loader
+    })
+    .catch(error => {
+      console.error('Error loading more products:', error);
+      isFetching = false;
+      loader.style.display = 'none';  // Hide loader
+    });
+  }
+
+  // Detect when user scrolls to bottom
+  window.addEventListener('scroll', function() {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+      loadMoreProducts();
+    }
+  });
+});
+</script>
