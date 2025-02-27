@@ -34,39 +34,46 @@
             endfor
           -%}
           {%- paginate collection.products by paginate_by -%}
-          {%- for block in section.blocks -%}
-            <div {{ block.shopify_attributes }} {%- if block.type == 'product-grid' -%}data-scroll-to{%- endif -%}>
-              {%- case block.type -%}
-              {%- when 'collection_description' -%}
-                {%- if collection.description != blank and current_filter_size == 0 -%}
-                  <div class="rte collection__description">
-                    {{ collection.description }}
-                  </div>
-                {%- endif -%}
-              {%- when 'subcollections' -%}
-                {%- if paginate.current_page == 1 and current_filter_size == 0 -%}
-                  {%- render 'subcollections', per_row: block.settings.subcollections_per_row -%}
-                {%- endif -%}
-              {%- when 'product_grid' -%}
-                <div data-scroll-to>
-                  {% render 'collection-grid',
-                    collection: collection,
-                    items: collection.products,
-                    enable_sidebar: section.settings.enable_sidebar,
-                    filter_style: section.settings.filter_style,
-                    enable_sort: section.settings.enable_sort,
-                    enable_collection_count: block.settings.enable_collection_count,
-                    per_row: block.settings.per_row,
-                    mobile_flush_grid: block.settings.mobile_flush_grid,
-                    quick_shop_enable: settings.quick_shop_enable
-                  %}
-                  {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll == false -%}
-                    {%- render 'pagination', paginate: paginate -%}
+          <div id="product-grid">
+            {%- for block in section.blocks -%}
+              <div {{ block.shopify_attributes }} {%- if block.type == 'product-grid' -%}data-scroll-to{%- endif -%}>
+                {%- case block.type -%}
+                {%- when 'collection_description' -%}
+                  {%- if collection.description != blank and current_filter_size == 0 -%}
+                    <div class="rte collection__description">
+                      {{ collection.description }}
+                    </div>
                   {%- endif -%}
-                </div>
-              {%- endcase -%}
-            </div>
-          {%- endfor -%}
+                {%- when 'subcollections' -%}
+                  {%- if paginate.current_page == 1 and current_filter_size == 0 -%}
+                    {%- render 'subcollections', per_row: block.settings.subcollections_per_row -%}
+                  {%- endif -%}
+                {%- when 'product_grid' -%}
+                  <div class="product-grid-container">
+                    {% render 'collection-grid',
+                      collection: collection,
+                      items: collection.products,
+                      enable_sidebar: section.settings.enable_sidebar,
+                      filter_style: section.settings.filter_style,
+                      enable_sort: section.settings.enable_sort,
+                      enable_collection_count: block.settings.enable_collection_count,
+                      per_row: block.settings.per_row,
+                      mobile_flush_grid: block.settings.mobile_flush_grid,
+                      quick_shop_enable: settings.quick_shop_enable
+                    %}
+                  </div>
+                {%- endcase -%}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <div id="loader" style="text-align: center; display: none;">
+            <img src="{{ 'loader.gif' | asset_url }}" alt="Loading..." />
+          </div>
+
+          {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll == false -%}
+            {%- render 'pagination', paginate: paginate -%}
+          {%- endif -%}
 
           {%- endpaginate -%}
         </div>
@@ -112,30 +119,34 @@
       let currentPage = {{ paginate.current_page }};
       const totalPages = {{ paginate.pages }};
       let isFetching = false;
+      const loader = document.getElementById('loader');
 
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && !isFetching && currentPage < totalPages) {
           isFetching = true;
-          currentPage++;
+          loader.style.display = 'block';  // Show loader
 
-          fetch('{{ collection.url }}?page=' + currentPage + ' .collection-content', {
+          fetch('{{ collection.url }}?page=' + (currentPage + 1) + ' .product-grid-container', {
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
           })
           .then(response => response.text())
           .then(html => {
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            const products = doc.querySelector('.collection-content .grid__item--content').innerHTML;
-            document.querySelector('.collection-content .grid__item--content').insertAdjacentHTML('beforeend', products);
+            const products = doc.querySelector('.product-grid-container').innerHTML;
+            document.querySelector('.product-grid-container').insertAdjacentHTML('beforeend', products);
+            currentPage++;
             isFetching = false;
+            loader.style.display = 'none';  // Hide loader
           })
           .catch(() => {
             isFetching = false;
+            loader.style.display = 'none';  // Hide loader on error
           });
         }
       });
 
-      observer.observe(document.querySelector('.collection-content .grid__item--content'));
+      observer.observe(document.querySelector('.grid__item--content'));
     }
   });
 </script>
@@ -242,22 +253,17 @@
           "label": "t:sections.main-collection.blocks.products.settings.mobile_flush_grid.label",
           "default": false
         }
-      ],
-      "limit": 1
+      ]
     },
     {
       "type": "subcollections",
       "name": "t:sections.main-collection.blocks.subcollections.name",
       "settings": [
         {
-          "type": "paragraph",
-          "content": "t:sections.main-collection.blocks.subcollections.settings.content"
-        },
-        {
           "type": "range",
           "id": "subcollections_per_row",
           "label": "t:sections.main-collection.blocks.subcollections.settings.subcollections_per_row.label",
-          "default": 5,
+          "default": 3,
           "min": 2,
           "max": 5,
           "step": 1
