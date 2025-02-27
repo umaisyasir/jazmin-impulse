@@ -60,7 +60,7 @@
                     mobile_flush_grid: block.settings.mobile_flush_grid,
                     quick_shop_enable: settings.quick_shop_enable
                   %}
-                  {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll == false -%}
+                  {%- if paginate.pages > 1 -%}
                     {%- render 'pagination', paginate: paginate -%}
                   {%- endif -%}
                 </div>
@@ -160,12 +160,6 @@
       "id": "enable_sort",
       "label": "t:sections.main-collection.settings.enable_sort.label",
       "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_infinite_scroll",
-      "label": "Enable infinite scroll",
-      "default": false
     }
   ],
   "blocks": [
@@ -234,58 +228,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const enableInfiniteScroll = {{ section.settings.enable_infinite_scroll | json }};
-  
-  if (!enableInfiniteScroll) return;
-
-  let currentPage = {{ paginate.current_page }};
-  const totalPages = {{ paginate.pages }};
-  let isFetching = false;
-  const productGrid = document.getElementById('CollectionAjaxContent');
-  const loader = document.createElement('div');
-  loader.innerHTML = '<p style="text-align:center;">Loading more products...</p>';
-  loader.style.display = 'none';
-  productGrid.appendChild(loader);
-
-  function loadMoreProducts() {
-    if (currentPage >= totalPages || isFetching) {
-      return;
-    }
-
-    isFetching = true;
-    loader.style.display = 'block';  // Show loader
-
-    // Fetch the next page of products
-    fetch('{{ collection.url }}?page=' + (currentPage + 1) + ' #CollectionAjaxContent', {
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-    .then(response => response.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      const newContent = doc.getElementById('CollectionAjaxContent').innerHTML;
-      productGrid.insertAdjacentHTML('beforeend', newContent);
-      currentPage++;
-      isFetching = false;
-      loader.style.display = 'none';  // Hide loader
-    })
-    .catch(error => {
-      console.error('Error loading more products:', error);
-      isFetching = false;
-      loader.style.display = 'none';  // Hide loader
-    });
-  }
-
-  // Detect when user scrolls to bottom
-  window.addEventListener('scroll', function() {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
-      loadMoreProducts();
-    }
-  });
-});
-</script>
