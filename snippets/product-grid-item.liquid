@@ -63,7 +63,7 @@ Arguments
           {%- assign discount = product.compare_at_price | minus: product.price -%}
           {%- assign discount_percentage = discount | times: 100 | divided_by: product.compare_at_price -%}
           <span class="discount-percentage">
-            {{ discount_percentage | round }}% off
+            {{ discount_percentage | round }}% OFF
           </span>
         </div>
       {%- endif -%}
