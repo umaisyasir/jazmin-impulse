@@ -63,6 +63,7 @@
       "blocks": {
         "footer-0": {
           "type": "logo_social",
+          "disabled": true,
           "settings": {
             "logo": "shopify://shop_images/jazmin_logo_2_0da81d1d-3e23-4558-a18a-79a55843801c.png",
             "desktop_logo_height": 50,
@@ -74,11 +75,28 @@
           "settings": {
             "show_footer_title": true,
             "menu": "help",
-            "container_width": 25
+            "container_width": 33
+          }
+        },
+        "menu_QkTpP6": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": true,
+            "menu": "services",
+            "container_width": 33
+          }
+        },
+        "menu_49VxGk": {
+          "type": "menu",
+          "settings": {
+            "show_footer_title": true,
+            "menu": "policies",
+            "container_width": 33
           }
         },
         "footer2": {
           "type": "newsletter",
+          "disabled": true,
           "settings": {
             "show_footer_title": true,
             "title": "Sign up and save",
@@ -90,6 +108,8 @@
       "block_order": [
         "footer-0",
         "footer-1",
+        "menu_QkTpP6",
+        "menu_49VxGk",
         "footer2"
       ],
       "settings": {
