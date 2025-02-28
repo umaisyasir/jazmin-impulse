@@ -101,11 +101,6 @@ Arguments
               <div class="product-image--placeholder">{{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}</div>
             {%- endif -%}
           </div>
-          {%- unless product.available -%}
-        <div class="grid-product__tag grid-product__tag--sold-out">
-          {{ 'products.product.sold_out' | t }}
-        </div>
-      {%- endunless -%}
         {%- else -%}
           <div class="image-wrap"
             {% if preview_image != blank %}
@@ -129,6 +124,12 @@ Arguments
               <div class="product-image--placeholder">{{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}</div>
             {%- endif -%}
           </div>
+
+          {%- unless product.available -%}
+          <div class="grid-product__tag grid-product__tag--sold-out">
+            {{ 'products.product.sold_out' | t }}
+          </div>
+        {%- endunless -%}
         {%- endif -%}
 
         {%- if settings.product_hover_image and product.media.size > 1 -%}
