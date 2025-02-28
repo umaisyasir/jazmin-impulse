@@ -113,7 +113,8 @@
         "footer2"
       ],
       "custom_css": [
-        ".grid__item {text-align: center;}"
+        ".grid__item {text-align: center;}",
+        ".grid {margin: 0 auto;}"
       ],
       "settings": {
         "icon_bgcolor": "#25d366",
