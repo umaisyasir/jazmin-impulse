@@ -84,7 +84,7 @@
           "type": "product_grid",
           "settings": {
             "enable_collection_count": true,
-            "per_row": 3,
+            "per_row": 4,
             "rows_per_page": 7,
             "mobile_flush_grid": true
           }
@@ -101,8 +101,7 @@
         "filter_style": "sidebar",
         "enable_color_swatches": false,
         "enable_swatch_labels": true,
-        "enable_sort": true,
-        "enable_infinite_scroll": false
+        "enable_sort": true
       }
     }
   },
