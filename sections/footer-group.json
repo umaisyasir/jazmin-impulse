@@ -112,6 +112,9 @@
         "menu_49VxGk",
         "footer2"
       ],
+      "custom_css": [
+        ".grid__item {text-align: center;}"
+      ],
       "settings": {
         "icon_bgcolor": "#25d366",
         "whatsapp_bghover": "#128c7e",
