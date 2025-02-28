@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "custom_r3Dddz": {
+          "type": "custom",
+          "settings": {
+            "code": "<p class = \"variant-sku text-sm text-subdued\" style = \"margin-block-start: -1rem; margin-block-end: -1rem; text-transform:uppercase\">\n{{ product.metafields.custom.pieces}} </p>"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -99,6 +105,7 @@
         }
       },
       "block_order": [
+        "custom_r3Dddz",
         "price",
         "separator",
         "variant_picker",
