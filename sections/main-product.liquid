@@ -244,6 +244,99 @@
     }
   ]
 },
+    {
+      "type": "line_item_property",
+      "name": "t:sections.main_product.blocks.line_item_property.name",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.main_product.blocks.line_item_property.line_item_info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_in_stitched",
+          "label": "Show In Stitched"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:sections.main_product.blocks.line_item_property.line_item_label",
+          "default": "Your label"
+        },
+         {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "type",
+          "label": "t:sections.main_product.blocks.line_item_property.line_item_type",
+          "options": [
+            {
+              "value": "text",
+              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.text"
+            },
+            {
+              "value": "checkbox",
+              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.checkbox"
+            },
+            {
+              "value": "dropdown",
+              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.dropdown"
+            }
+          ],
+          "default": "text"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "t:sections.main_product.blocks.line_item_property.required",
+          "info": "t:sections.main_product.blocks.line_item_property.required_info",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "t:sections.main_product.blocks.line_item_property.text_type_category",
+          "info": "t:sections.main_product.blocks.line_item_property.text_type_category_info"
+        },
+        {
+          "type": "checkbox",
+          "id": "allow_long_text",
+          "label": "t:sections.main_product.blocks.line_item_property.text_type_allow_long_text",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "max_length",
+          "label": "t:sections.main_product.blocks.line_item_property.text_type_max_length"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.main_product.blocks.line_item_property.checkbox_type_category",
+          "info": "t:sections.main_product.blocks.line_item_property.checkbox_type_category_info"
+        },
+        {
+          "type": "text",
+          "id": "checkbox_value",
+          "label": "t:sections.main_product.blocks.line_item_property.checkbox_value",
+          "info": "t:sections.main_product.blocks.line_item_property.checkbox_value_info",
+          "default": "Yes"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.main_product.blocks.line_item_property.dropdown_type_category",
+          "info": "t:sections.main_product.blocks.line_item_property.dropdown_type_category_info"
+        },
+        {
+          "type": "text",
+          "id": "select_values",
+          "label": "t:sections.main_product.blocks.line_item_property.dropdown_values",
+          "info": "t:sections.main_product.blocks.line_item_property.dropdown_values_info",
+          "default": "Value 1,Value 2,Value 3"
+        }
+      ]
+    },
 {
   "type": "size_chart",
   "name": "t:product_block.size_chart.name",
