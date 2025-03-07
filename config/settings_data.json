@@ -53,7 +53,7 @@
     "button_style": "square",
     "icon_weight": "2px",
     "icon_linecaps": "miter",
-    "quick_shop_enable": true,
+    "quick_shop_enable": false,
     "quick_shop_text": "ADD TO CART",
     "product_grid_image_size": "natural",
     "product_hover_image": true,
