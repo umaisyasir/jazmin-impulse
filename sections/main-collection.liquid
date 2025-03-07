@@ -10,7 +10,6 @@
   class="collection-content"
   data-section-id="{{ section.id }}"
   data-section-type="collection-grid"
-  data-infinite-scroll="{{ section.settings.enable_infinite_scroll }}"
 >
   <div id="CollectionAjaxContent">
     <div class="page-width">
@@ -62,12 +61,13 @@
                     quick_shop_enable: settings.quick_shop_enable
                   %}
                   {%- if paginate.pages > 1 -%}
-                    <div id="load-more" data-next-page="{{ paginate.next.url }}" class="btn">Load More</div>
+                    {%- render 'pagination', paginate: paginate -%}
                   {%- endif -%}
                 </div>
               {%- endcase -%}
             </div>
           {%- endfor -%}
+
           {%- endpaginate -%}
         </div>
       </div>
@@ -104,53 +104,6 @@
   {% endif %}
   "name": {{ collection.title | json }}
 }
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const infiniteScrollEnabled = document.querySelector('.collection-content').dataset.infiniteScroll === 'true';
-
-  if (infiniteScrollEnabled) {
-    let loading = false;
-    const loadMoreButton = document.querySelector('#load-more');
-
-    window.addEventListener('scroll', function () {
-      if (loading || !loadMoreButton) return;
-
-      const windowHeight = window.innerHeight;
-      const loadMorePosition = loadMoreButton.getBoundingClientRect().top;
-      
-      if (loadMorePosition - windowHeight <= 100) {
-        loading = true;
-
-        const nextPageUrl = loadMoreButton.getAttribute('data-next-page');
-        if (nextPageUrl) {
-          fetch(nextPageUrl)
-            .then(response => response.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const newProducts = doc.querySelectorAll('.collection-grid-item');
-              const nextPageButton = doc.querySelector('#load-more');
-              
-              document.querySelector('.grid__item--content').append(...newProducts);
-              
-              if (nextPageButton) {
-                loadMoreButton.setAttribute('data-next-page', nextPageButton.getAttribute('data-next-page'));
-              } else {
-                loadMoreButton.remove();
-              }
-              
-              loading = false;
-            })
-            .catch(() => { loading = false; });
-        } else {
-          loadMoreButton.remove();
-        }
-      }
-    });
-  }
-});
 </script>
 
 {% schema %}
@@ -207,12 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "id": "enable_sort",
       "label": "t:sections.main-collection.settings.enable_sort.label",
       "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_infinite_scroll",
-      "label": "Enable Infinite Scroll",
-      "default": false
     }
   ],
   "blocks": [
@@ -244,33 +191,39 @@ document.addEventListener("DOMContentLoaded", function () {
           "type": "range",
           "id": "rows_per_page",
           "label": "t:sections.main-collection.blocks.products.settings.rows_per_page.label",
-          "default": 4,
-          "min": 2,
-          "max": 12,
+          "default": 7,
+          "min": 3,
+          "max": 20,
           "step": 1
         },
         {
           "type": "checkbox",
           "id": "mobile_flush_grid",
           "label": "t:sections.main-collection.blocks.products.settings.mobile_flush_grid.label",
-          "default": true
+          "default": false
         }
-      ]
+      ],
+      "limit": 1
     },
     {
       "type": "subcollections",
       "name": "t:sections.main-collection.blocks.subcollections.name",
       "settings": [
         {
+          "type": "paragraph",
+          "content": "t:sections.main-collection.blocks.subcollections.settings.content"
+        },
+        {
           "type": "range",
           "id": "subcollections_per_row",
           "label": "t:sections.main-collection.blocks.subcollections.settings.subcollections_per_row.label",
-          "default": 4,
+          "default": 5,
           "min": 2,
           "max": 5,
           "step": 1
         }
-      ]
+      ],
+      "limit": 1
     }
   ]
 }
