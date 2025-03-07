@@ -24,6 +24,12 @@
   {%- endstyle -%}
 {%- endif -%}
 
+<style>
+.site-footer {
+   background: {{ section.settings.footer_background }};
+}
+</style>
+
 <footer class="site-footer" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="page-width">
 
@@ -114,6 +120,11 @@
   "name": "t:sections.footer.name",
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "color",
+      "id": "footer_background",
+      "label": "Footer Background"
+    },
     {
       "type": "header",
       "content": "t:sections.footer.settings.header_language_selector",
