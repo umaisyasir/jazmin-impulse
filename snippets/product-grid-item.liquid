@@ -193,7 +193,6 @@ Arguments
           
       </div>
         <div class="grid-product__meta">
-          {%- capture vendor_class -%}smallcaps {% if settings.product_card_text_font == 'heading' %}heading{% endif %}{% endcapture %}
           <div class="grid-product__title grid-product__title--{{ settings.type_product_style }}">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
             <div class="grid-product__vendor">{{ product.vendor }}</div>
