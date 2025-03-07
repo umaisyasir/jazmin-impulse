@@ -94,13 +94,12 @@
             "container_width": 33
           }
         },
-        "footer2": {
+        "newsletter_EpzyB8": {
           "type": "newsletter",
-          "disabled": true,
           "settings": {
             "show_footer_title": true,
-            "title": "Sign up and save",
-            "text": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>",
+            "title": "",
+            "text": "",
             "container_width": 25
           }
         }
@@ -110,34 +109,13 @@
         "footer-1",
         "menu_QkTpP6",
         "menu_49VxGk",
-        "footer2"
+        "newsletter_EpzyB8"
       ],
       "custom_css": [
         ".grid__item {text-align: center;}",
         ".grid {margin: 0 auto;}"
       ],
       "settings": {
-        "icon_bgcolor": "#25d366",
-        "whatsapp_bghover": "#128c7e",
-        "tooltip_text": "Contact Us",
-        "bg_clorcustom": "#f42a64",
-        "suggestions_heading": "Hi there! 👋",
-        "suggestions_subheading": "Welcome to JAZMIN Chat Support. Ask us anything 🎉",
-        "suggestions_brandlogo": "shopify://shop_images/Untitled_design.jpg",
-        "whatsapp_number": "923484848914",
-        "complaint_whatsapp_number": "923484848914",
-        "sgs_bgclr": "#cb87a3",
-        "sgs_bgclrhover": "#c72f6d",
-        "product_info_text": "I have a question about a product",
-        "product_info_whatsapptext": "Hi, I have a question about a product.",
-        "order_info_text": "I need information about my order",
-        "order_info_whatsapptext": "Hi, I need information about my order.",
-        "complaint_text": "I want to file a complaint",
-        "complaint_whatsapptext": "Hi, I want to file a complaint.",
-        "closebtn_bg": "#f42a64",
-        "closebtn_bghover": "#c9302c",
-        "close_btn": "Close",
-        "show_on_scroll": false,
         "show_locale_selector": true,
         "show_currency_selector": true,
         "show_currency_flags": true,
