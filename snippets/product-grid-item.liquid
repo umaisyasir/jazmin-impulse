@@ -194,19 +194,19 @@ Arguments
       </div>
         <div class="grid-product__meta">
           {% if collection.handle == 'ready-to-wear' %}
-              {%- if  product.metafields.custom.pieces != blank  %}
-                 {% assign options_string = product.metafields.custom.pieces %}
-                 {%- render 'vendor' with options_string, class: vendor_class -%}
+              {%- if product.metafields.custom.pieces != blank  %}
+                  {% assign options_string = product.metafields.custom.pieces %}
+                  {{ options_string }}
               {% endif %}
-           {% endif %}
-             {% unless collection.handle == 'ready-to-wear' %}
-              {%- if  product.metafields.custom.stitched_unstitched != blank  %}
+          {% endif %}
+          {% unless collection.handle == 'ready-to-wear' %}
+              {%- if product.metafields.custom.stitched_unstitched != blank  %}
                   {% assign options_string = product.metafields.custom.stitched_unstitched | replace: '["', '' | replace: '"]', '' | replace: '","', ' | ' %}
-                  {%- render 'vendor' with options_string, class: vendor_class -%}
+                  {{ options_string }}
               {%- else -%}           
-                {%- render 'vendor' with product.vendor, class: vendor_class -%}
+                  {{ product.vendor }}
               {% endif %}
-             {% endunless %}
+          {% endunless %}
           
           <div class="grid-product__title grid-product__title--{{ settings.type_product_style }}">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
