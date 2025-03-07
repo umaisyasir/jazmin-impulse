@@ -203,7 +203,7 @@ Arguments
               <!-- Display only the first product option -->
               {%- assign first_option = product.options_with_values.first -%}
               <div class="grid-product__option">
-                <strong>{{ first_option.name }}:</strong> {{ first_option.values | join: ' | ' }}
+                {{ first_option.values | join: ' | ' }}
               </div>
             </div>
           {%- endif -%}
