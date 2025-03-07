@@ -197,11 +197,13 @@ Arguments
   {%- if settings.vendor_enable -%}
     <div class="grid-product__vendor">{{ product.vendor }}</div>
   {%- endif -%}
-  
-  {%- if product.variants.size > 0 -%}
-    <div class="grid-product__variants">
-      {%- for variant in product.variants limit: 2 -%}  <!-- Limit to first 2 variants -->
-        <div class="grid-product__variant">{{ variant.title }}</div>
+
+  {%- if product.options.size > 0 -%}
+    <div class="grid-product__options">
+      {%- for option in product.options_with_values limit: 2 -%}  <!-- Limit to first 2 main options -->
+        <div class="grid-product__option">
+          <strong>{{ option.name }}:</strong> {{ option.values | join: ', ' }}
+        </div>
       {%- endfor -%}
     </div>
   {%- endif -%}
@@ -305,6 +307,7 @@ Arguments
     {%- endfor -%}
   {%- endif -%}
 </div>
+
       </a>
     </div>
   </div>
