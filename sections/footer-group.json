@@ -113,7 +113,8 @@
       ],
       "custom_css": [
         ".grid__item {text-align: center;}",
-        ".grid {margin: 0 auto;}"
+        ".grid {margin: 0 auto;}",
+        ".grid__item:last-child {padding-left: 0;}"
       ],
       "settings": {
         "show_locale_selector": true,
