@@ -193,15 +193,20 @@ Arguments
           
       </div>
         <div class="grid-product__meta">
-          {%- if product.options.size > 0 -%}
-            <div class="grid-product__options grid-product__title" style="margin-bottom: 5px; font-size: 12px;">
-              <!-- Display only the first product option -->
-              {%- assign first_option = product.options_with_values.first -%}
-              <div class="grid-product__option">
-                {{ first_option.values | join: ' | ' }}
-              </div>
-            </div>
-          {%- endif -%}
+          {% if collection.handle == 'ready-to-wear' %}
+              {%- if  product.metafields.custom.pieces != blank  %}
+                 {% assign options_string = product.metafields.custom.pieces %}
+                 {%- render 'vendor' with options_string, class: vendor_class -%}
+              {% endif %}
+           {% endif %}
+             {% unless collection.handle == 'ready-to-wear' %}
+              {%- if  product.metafields.custom.stitched_unstitched != blank  %}
+                  {% assign options_string = product.metafields.custom.stitched_unstitched | replace: '["', '' | replace: '"]', '' | replace: '","', ' | ' %}
+                  {%- render 'vendor' with options_string, class: vendor_class -%}
+              {%- else -%}           
+                {%- render 'vendor' with product.vendor, class: vendor_class -%}
+              {% endif %}
+             {% endunless %}
           
           <div class="grid-product__title grid-product__title--{{ settings.type_product_style }}">{{ product.title }}</div>
           {%- if settings.vendor_enable -%}
