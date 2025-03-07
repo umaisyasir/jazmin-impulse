@@ -80,6 +80,42 @@ Arguments
     -%}
 
     <div class="grid__item-image-wrapper">
+      {%- assign custom_badges = product.metafields.custom.badges.value -%}
+        {%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
+        
+        {%- if collection.handle == "best-sellers" -%}
+          <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
+            Best Seller
+          </span>
+        {%- else -%}
+          {%- for custom_badge in custom_badges -%}
+            {%- if custom_badge == "New In" -%}
+              <span class="badge badge--custom badge--{{ custom_badge | handle }}" id="badge-{{ custom_badge | handle }}"
+                    data-expiration-time="{{ expiration_time | date: '%s' }}">
+                {{ custom_badge }}
+              </span>
+            {%- else -%}
+              <span class="badge badge--custom badge--{{ custom_badge | handle }}" id="badge-{{ custom_badge | handle }}">
+                {{ custom_badge }}
+              </span>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var newInBadge = document.getElementById('badge-new-in');
+          
+          if (newInBadge) {
+            var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
+            var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+        
+            if (currentTime > expirationTime) {
+              newInBadge.style.display = 'none';
+            }
+          }
+        });
+      </script>
       <a href="{{ product.url | within: collection }}" class="grid-product__link">
         <div class="grid-product__image-mask">
         {%- if fixed_aspect_ratio -%}
