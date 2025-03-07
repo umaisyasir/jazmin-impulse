@@ -200,11 +200,11 @@ Arguments
 
   {%- if product.options.size > 0 -%}
     <div class="grid-product__options">
-      {%- for option in product.options_with_values limit: 2 -%}  <!-- Limit to first 2 main options -->
-        <div class="grid-product__option">
-          <strong>{{ option.name }}:</strong> {{ option.values | join: ', ' }}
-        </div>
-      {%- endfor -%}
+      <!-- Display only the first product option -->
+      {%- assign first_option = product.options_with_values.first -%}
+      <div class="grid-product__option">
+        <strong>{{ first_option.name }}:</strong> {{ first_option.values | join: ', ' }}
+      </div>
     </div>
   {%- endif -%}
 
