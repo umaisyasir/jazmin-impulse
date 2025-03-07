@@ -117,7 +117,7 @@
         ".grid__item:last-child {padding-left: 0;}"
       ],
       "settings": {
-        "footer_background": "#000000",
+        "footer_background": "#191919",
         "footer_textclr": "#ffffff",
         "show_locale_selector": true,
         "show_currency_selector": true,
