@@ -98,13 +98,20 @@
 
     {%- if section.settings.show_copyright -%}
       <p class="footer__small-text">
-        &copy; {{ 'now' | date: '%Y' }} - {{ shop.name }}
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
         {%- if section.settings.copyright_text != blank -%}
           {{ section.settings.copyright_text }}
         {%- endif -%}
       </p>
     {%- endif -%}
-    {% comment %} <p class="footer__small-text">{{ powered_by_link }}</p> {% endcomment %}
+    <!-- <p class="footer__small-text">{{ powered_by_link }}</p> -->
+   <p style="font-size: 14px; margin-top: 10px; text-align: center;">
+   <strong>Developed and Managed by:</strong> <br>
+   <a href="https://www.ecomatives.com/" target="_blank" style="color: #258D8E; text-decoration: none;">
+      <img src="https://cdn.shopify.com/s/files/1/0515/4802/9092/files/Ecomatives-Logo.png?v=1740490095" 
+           alt="Ecomatives Techno-Marketing Agency" width="45" style="margin: 0 auto;display: block;height: 70px;width: 70px;">
+   </a>
+</p>
 
   </div>
 </footer>
