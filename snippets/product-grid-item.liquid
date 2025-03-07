@@ -88,7 +88,7 @@ Arguments
     Best Seller
   </span>
 {%- else -%}
-  {%- for custom_badge in custom_badges limit: 3 -%} {# Limit badges to 3 for layout purposes #}
+  {%- for custom_badge in custom_badges limit: 3 -%}
     {%- if custom_badge == "New In" -%}
       <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}"
             data-expiration-time="{{ expiration_time | date: '%s' }}">
