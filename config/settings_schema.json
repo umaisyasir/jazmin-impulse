@@ -930,8 +930,7 @@
       {
         "type": "text",
         "id": "whatsapp_link",
-        "label": "t:settings_schema.social_media.settings.whatsapp_link.label",
-        "info": "t:settings_schema.social_media.settings.whatsapp_link.info"
+        "label": "WhatsApp"
       },
       {
         "type": "header",
