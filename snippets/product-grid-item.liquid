@@ -81,87 +81,101 @@ Arguments
 
     <div class="grid__item-image-wrapper">
       {%- assign custom_badges = product.metafields.custom.badges.value -%}
-        {%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
-        
-        {%- if collection.handle == "best-sellers" -%}
-          <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
-            Best Seller
-          </span>
-        {%- else -%}
-          {%- for custom_badge in custom_badges -%}
-            {%- if custom_badge == "New In" -%}
-              <span class="badge badge--custom badge--{{ custom_badge | handle }}" id="badge-{{ custom_badge | handle }}"
-                    data-expiration-time="{{ expiration_time | date: '%s' }}">
-                {{ custom_badge }}
-              </span>
-            {%- else -%}
-              <span class="badge badge--custom badge--{{ custom_badge | handle }}" id="badge-{{ custom_badge | handle }}">
-                {{ custom_badge }}
-              </span>
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endif -%}
+{%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          var newInBadge = document.getElementById('badge-new-in');
-          
-          if (newInBadge) {
-            var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
-            var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
-        
-            if (currentTime > expirationTime) {
-              newInBadge.style.display = 'none';
-            }
-          }
-        });
-      </script>
+{%- if collection.handle == "best-sellers" -%}
+  <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
+    Best Seller
+  </span>
+{%- else -%}
+  {%- for custom_badge in custom_badges limit: 3 -%} {# Limit badges to 3 for layout purposes #}
+    {%- if custom_badge == "New In" -%}
+      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}"
+            data-expiration-time="{{ expiration_time | date: '%s' }}">
+        {{ custom_badge }}
+      </span>
+    {%- else -%}
+      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}">
+        {{ custom_badge }}
+      </span>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
-      <style>
-        .badge--custom {
-          display: inline-block;
-          padding: 8px 12px;
-          font-size: 14px;
-          font-weight: 600;
-          text-transform: uppercase;
-          color: #fff;
-          background-color: #333;
-          border: 2px solid transparent;
-          border-radius: 0; /* Straight borders */
-          transition: all 0.3s ease;
-          letter-spacing: 1px;
-          white-space: nowrap;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          position: absolute !important;
-          z-index: 1;
-        }
-        
-        .badge--custom.badge--best-seller {
-          background-color: #ff6f61; /* Custom color for best seller */
-          border-color: #ff6f61;
-        }
-        
-        .badge--custom:hover {
-          background-color: #fff;
-          color: #333;
-          border-color: #333;
-          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        #badge-best-seller {
-          background-color: #ff6f61;
-          color: white;
-        }
-        
-        .badge--custom[data-expiration-time] {
-          position: relative;
-        }
-        
-        .badge--custom.badge--new-in {
-          background-color: #2ecc71; /* Custom color for New In */
-          border-color: #2ecc71;
-        }
-      </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var newInBadge = document.getElementById('badge-new-in');
+    
+    if (newInBadge) {
+      var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
+      var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+  
+      if (currentTime > expirationTime) {
+        newInBadge.style.display = 'none';
+      }
+    }
+  });
+</script>
+
+<style>
+  .badge--custom {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #333;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 1;
+  }
+
+  .badge--position-1 {
+    top: 10px;
+    left: 10px;
+  }
+
+  .badge--position-2 {
+    top: 40px; /* Adjust for spacing between badges */
+    left: 10px;
+    font-size: 12px;
+    padding: 4px 8px; /* Smaller size */
+  }
+
+  .badge--position-3 {
+    top: 60px; /* Further adjust spacing */
+    left: 10px;
+    font-size: 10px;
+    padding: 2px 6px; /* Even smaller size */
+  }
+
+  .badge--custom.badge--best-seller {
+    background-color: #ff6f61;
+    border-color: #ff6f61;
+  }
+
+  .badge--custom.badge--new-in {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+  }
+
+  .badge--custom:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .badge--custom[data-expiration-time] {
+    position: relative;
+  }
+</style>
+
       <a href="{{ product.url | within: collection }}" class="grid-product__link">
         <div class="grid-product__image-mask">
         {%- if fixed_aspect_ratio -%}
