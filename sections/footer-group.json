@@ -118,6 +118,7 @@
       ],
       "settings": {
         "footer_background": "#ffffff",
+        "footer_textclr": "#ffffff",
         "show_locale_selector": true,
         "show_currency_selector": true,
         "show_currency_flags": false,
