@@ -13178,36 +13178,88 @@ html.js {
 }
 
 .payment-buttons {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  flex-direction: column;
+  display: flex !important;
+  gap: 20px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 20px !important;
 }
 
 .payment-buttons button,
 .shopify-payment-button__button--unbranded {
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 12px 24px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  padding: 16px 32px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+  text-transform: uppercase !important;
 }
 
 .add-to-cart {
-  background: linear-gradient(45deg, #4a90e2, #50e3c2);
-  color: #fff;
+  background: linear-gradient(45deg, #3498db, #2ecc71) !important;
+  color: #fff !important;
 }
 
+.shopify-payment-button__button--unbranded {
+  background-color: #e74c3c !important;
+  color: #fff !important;
+}
+
+.payment-buttons button::before,
+.shopify-payment-button__button--unbranded::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 100% !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  transition: width 0.3s ease !important;
+  z-index: 1 !important;
+}
+
+.payment-buttons button:hover::before,
+.shopify-payment-button__button--unbranded:hover::before {
+  width: 100% !important;
+}
+
+.add-to-cart:hover {
+  background: linear-gradient(45deg, #2ecc71, #3498db) !important;
+}
+
+.shopify-payment-button__button--unbranded:hover {
+  background-color: #c0392b !important;
+}
+
+.payment-buttons button span,
+.shopify-payment-button__button--unbranded {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#shopify-buyer-consent {
+  margin-top: 10px !important;
+  font-size: 12px !important;
+  color: #7f8c8d !important;
+}
+
+#shopify-subscription-policy-button {
+  color: #3498db !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+#shopify-subscription-policy-button:hover {
+  color: #2980b9 !important;
+}
 .shopify-payment-button__button--unbranded {
   background-color: #f39c12;
   color: #fff;
