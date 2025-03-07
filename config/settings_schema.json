@@ -928,6 +928,12 @@
         "info": "t:settings_schema.social_media.settings.social_vimeo_link.info"
       },
       {
+        "type": "text",
+        "id": "whatsapp_link",
+        "label": "t:settings_schema.social_media.settings.whatsapp_link.label",
+        "info": "t:settings_schema.social_media.settings.whatsapp_link.info"
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.social_media.settings.header_sharing_options"
       },
