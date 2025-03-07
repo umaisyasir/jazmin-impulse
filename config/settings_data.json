@@ -77,6 +77,8 @@
     "social_linkedin_link": "https://www.linkedin.com/company/102874888",
     "social_youtube_link": "https://www.youtube.com/channel/UCW_TvIVtH8DBcR3IuztkeOA/",
     "whatsapp_link": "https://wa.me/923484848914",
+    "show_breadcrumbs": true,
+    "show_breadcrumbs_collection_link": false,
     "breadcrumb": false,
     "checkout_accent_color": "#111111",
     "checkout_body_background_color": "#ffffff",
