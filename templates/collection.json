@@ -98,11 +98,10 @@
       "settings": {
         "enable_sidebar": true,
         "collapsed": false,
-        "filter_style": "sidebar",
+        "filter_style": "drawer",
         "enable_color_swatches": false,
         "enable_swatch_labels": true,
-        "enable_sort": true,
-        "enable_infinite_scroll": true
+        "enable_sort": true
       }
     }
   },
