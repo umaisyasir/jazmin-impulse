@@ -80,8 +80,8 @@ Arguments
     -%}
 
     <div class="grid__item-image-wrapper">
-      {%- assign custom_badges = product.metafields.custom.badges.value -%}
-{%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
+      {%- assign custom_badges = card_product.metafields.custom.badges.value -%}
+{%- assign expiration_time = card_product.metafields.custom.expiration_time.value -%}
 
 {%- if collection.handle == "best-sellers" -%}
   <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
