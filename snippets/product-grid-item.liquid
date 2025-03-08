@@ -107,11 +107,11 @@ Arguments
     var newInBadge = document.getElementById('badge-new-in');
     
     if (newInBadge) {
-      var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
+      var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10); 
       var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
-  
-      if (currentTime > expirationTime) {
-        newInBadge.style.display = 'none';
+      
+      if (expirationTime && currentTime >= expirationTime) { // Make sure expirationTime is defined
+        newInBadge.style.display = 'none'; // Hide the badge if time has passed
       }
     }
   });
