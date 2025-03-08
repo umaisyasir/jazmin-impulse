@@ -242,6 +242,10 @@
         "view_all": true,
         "divider": false
       }
+    },
+    "swiper_slider_highly_i9KN4C": {
+      "type": "swiper-slider-highly",
+      "settings": {}
     }
   },
   "order": [
@@ -250,6 +254,7 @@
     "newsletter_9KbQxr",
     "featured_collection_ndhJMQ",
     "slideshow_YGwaYW",
-    "featured-collection"
+    "featured-collection",
+    "swiper_slider_highly_i9KN4C"
   ]
 }
