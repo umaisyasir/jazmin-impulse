@@ -249,15 +249,15 @@
         "image_zB87cq": {
           "type": "image",
           "settings": {
-            "top_subheading": "",
-            "title": "Two line\ntitle slide."
+            "image_content": "Shahkaar",
+            "image": "shopify://shop_images/DSC1987_fece36ce-ca97-42af-b49f-b639bd813927.jpg"
           }
         },
         "image_CLYR3m": {
           "type": "image",
           "settings": {
-            "top_subheading": "",
-            "title": "Two line\ntitle slide."
+            "image_content": "Lawn",
+            "image": "shopify://shop_images/DSC06048_67ef2540-c61c-4cc9-8008-705288c7ccd1.jpg"
           }
         }
       },
