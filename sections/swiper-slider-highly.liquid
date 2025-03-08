@@ -10,13 +10,13 @@
             <!-- slide title wrap -->
             <div class="fashion-slider-title" data-swiper-parallax="-130%">
               <!-- slide title text -->
-              <div class="fashion-slider-title-text">Nike</div>
+              <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
             </div>
             <!-- slide image wrap -->
             <div class="fashion-slider-scale">
               <!-- slide image -->
               <img
-                src="https://cdn.pixabay.com/photo/2023/03/17/02/42/architecture-7857832_1280.jpg"
+                src="{{ block.settings.image | img_url: 'master' }}"
               />
             </div>
           </div>
