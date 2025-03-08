@@ -110,50 +110,10 @@ Arguments
       var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
       var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
 
+      // Hide the badge if current time exceeds expiration time
       if (currentTime > expirationTime) {
         newInBadge.style.display = 'none';
-
-        // If the badge is expired, remove it from the metafield
-        removeExpiredBadge();
       }
-    }
-
-    function removeExpiredBadge() {
-      var productId = "{{ product.id }}";
-      var metafieldKey = "custom.badges";
-
-      fetch(`/admin/api/2021-07/products/${productId}/metafields.json`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Shopify-Access-Token": "{{ shopify_api_token }}"  // Add your access token here
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        var metafieldId = data.metafields.find(m => m.key === metafieldKey).id;
-        var badges = JSON.parse(data.metafields.find(m => m.key === metafieldKey).value);
-        
-        // Remove the "New In" badge from the array
-        badges = badges.filter(badge => badge !== "New In");
-
-        // Update the metafield with the new badges array
-        fetch(`/admin/api/2021-07/metafields/${metafieldId}.json`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Shopify-Access-Token": "{{ shopify_api_token }}"  // Add your access token here
-          },
-          body: JSON.stringify({
-            metafield: {
-              id: metafieldId,
-              value: JSON.stringify(badges),
-              value_type: "json_string"
-            }
-          })
-        });
-      })
-      .catch(error => console.error('Error:', error));
     }
   });
 </script>
