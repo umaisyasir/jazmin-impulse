@@ -81,41 +81,43 @@ Arguments
 
     <div class="grid__item-image-wrapper">
       {%- assign custom_badges = product.metafields.custom.badges.value -%}
-{%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
-
-{%- if collection.handle == "best-sellers" -%}
-  <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
-    Best Seller
-  </span>
-{%- else -%}
-  {%- for custom_badge in custom_badges limit: 3 -%}
-    {%- if custom_badge == "New In" -%}
-      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}"
-            data-expiration-time="{{ expiration_time | date: '%s' }}">
-        {{ custom_badge }}
-      </span>
-    {%- else -%}
-      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}">
-        {{ custom_badge }}
-      </span>
-    {%- endif -%}
-  {%- endfor -%}
-{%- endif -%}
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var newInBadge = document.getElementById('badge-new-in');
-    
-    if (newInBadge) {
-      var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10); 
-      var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+      {%- assign expiration_time = product.metafields.custom.expiration_time.value -%}
       
-      if (expirationTime && currentTime >= expirationTime) { // Make sure expirationTime is defined
-        newInBadge.style.display = 'none'; // Hide the badge if time has passed
-      }
-    }
-  });
-</script>
+      {%- if collection.handle == "best-sellers" -%}
+        <span class="badge badge--custom badge--best-seller" id="badge-best-seller">
+          Best Seller
+        </span>
+      {%- else -%}
+        {%- if custom_badges and expiration_time -%}
+          {%- for custom_badge in custom_badges limit: 3 -%}
+            {%- if custom_badge == "New In" -%}
+              <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}"
+                    data-expiration-time="{{ expiration_time | date: '%s' }}">
+                {{ custom_badge }}
+              </span>
+            {%- else -%}
+              <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}">
+                {{ custom_badge }}
+              </span>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endif -%}
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var newInBadge = document.getElementById('badge-new-in');
+          
+          if (newInBadge) {
+            var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10); 
+            var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+            
+            if (expirationTime && currentTime >= expirationTime) { // Ensure expirationTime is valid
+              newInBadge.style.display = 'none'; // Hide the badge if expiration time has passed
+            }
+          }
+        });
+      </script>
 
 <style>
   .badge--custom {
