@@ -9,6 +9,30 @@
  */
 {
   "sections": {
+    "swiper_slider_highly_i9KN4C": {
+      "type": "swiper-slider-highly",
+      "blocks": {
+        "image_zB87cq": {
+          "type": "image",
+          "settings": {
+            "image_content": "Shahkaar",
+            "image": "shopify://shop_images/DSC1987_fece36ce-ca97-42af-b49f-b639bd813927.jpg"
+          }
+        },
+        "image_CLYR3m": {
+          "type": "image",
+          "settings": {
+            "image_content": "Lawn",
+            "image": "shopify://shop_images/DSC06048_67ef2540-c61c-4cc9-8008-705288c7ccd1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_zB87cq",
+        "image_CLYR3m"
+      ],
+      "settings": {}
+    },
     "slideshow": {
       "type": "slideshow",
       "blocks": {
@@ -55,6 +79,7 @@
         "slideshow-0",
         "slideshow-1"
       ],
+      "disabled": true,
       "settings": {
         "section_height": "100vh",
         "mobile_height": "100vh",
@@ -242,39 +267,15 @@
         "view_all": true,
         "divider": false
       }
-    },
-    "swiper_slider_highly_i9KN4C": {
-      "type": "swiper-slider-highly",
-      "blocks": {
-        "image_zB87cq": {
-          "type": "image",
-          "settings": {
-            "image_content": "Shahkaar",
-            "image": "shopify://shop_images/DSC1987_fece36ce-ca97-42af-b49f-b639bd813927.jpg"
-          }
-        },
-        "image_CLYR3m": {
-          "type": "image",
-          "settings": {
-            "image_content": "Lawn",
-            "image": "shopify://shop_images/DSC06048_67ef2540-c61c-4cc9-8008-705288c7ccd1.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "image_zB87cq",
-        "image_CLYR3m"
-      ],
-      "settings": {}
     }
   },
   "order": [
+    "swiper_slider_highly_i9KN4C",
     "slideshow",
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "featured_collection_ndhJMQ",
     "slideshow_YGwaYW",
-    "featured-collection",
-    "swiper_slider_highly_i9KN4C"
+    "featured-collection"
   ]
 }
