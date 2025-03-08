@@ -245,6 +245,26 @@
     },
     "swiper_slider_highly_i9KN4C": {
       "type": "swiper-slider-highly",
+      "blocks": {
+        "image_zB87cq": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Two line\ntitle slide."
+          }
+        },
+        "image_CLYR3m": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Two line\ntitle slide."
+          }
+        }
+      },
+      "block_order": [
+        "image_zB87cq",
+        "image_CLYR3m"
+      ],
       "settings": {}
     }
   },
