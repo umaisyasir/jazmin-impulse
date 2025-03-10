@@ -267,7 +267,7 @@
         "rows": 1,
         "mobile_scrollable": true,
         "view_all": true,
-        "divider": false
+        "divider": true
       }
     },
     "testimonials_AthRxb": {
