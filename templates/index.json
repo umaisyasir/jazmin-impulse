@@ -308,6 +308,60 @@
         "hotspot_color": "#000000",
         "lazyload_images": true
       }
+    },
+    "testimonials_AthRxb": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_XqYLcf": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Very responsive and reliable service. ordered from Australia then received on time. no compromised with materials. really happy with their service. look forward to order more</p>",
+            "author": "Nehal Majumdar",
+            "author_info": ""
+          }
+        },
+        "testimonial_rp8Gxb": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>My experience is awesome with jazmin as always they delivered beautiful dresses. They are very cooperative. I recommend jazmin</p>",
+            "author": "ISHRAT SEHAR",
+            "author_info": ""
+          }
+        },
+        "testimonial_zKKxhf": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Gorgeous dress, Exactly like shown in the picture. The delivery was on time I really recommend everyone to buy clothes from this brand. I bought 2nd time from their website. Awesome experience.</p>",
+            "author": "AREESHA ASLAM",
+            "author_info": ""
+          }
+        },
+        "testimonial_R48hwd": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "testimonial": "<p>Received my dress, Its amazing and quality is more than my expectation. Will definitly buy again</p>",
+            "author": "Anila Sultana",
+            "author_info": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_XqYLcf",
+        "testimonial_rp8Gxb",
+        "testimonial_zKKxhf",
+        "testimonial_R48hwd"
+      ],
+      "settings": {
+        "title": "WHAT OUR CUSTOMER SAYS",
+        "align_text": "center",
+        "round_images": true,
+        "color_background": "#ffffff",
+        "color_text": "#1c1d1d"
+      }
     }
   },
   "order": [
@@ -317,6 +371,7 @@
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
     "featured-collection",
-    "hotspots_nfXXPU"
+    "hotspots_nfXXPU",
+    "testimonials_AthRxb"
   ]
 }
