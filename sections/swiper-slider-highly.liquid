@@ -16,7 +16,10 @@
             <div class="fashion-slider-scale">
               <!-- slide image -->
               <img
-                src="{{ block.settings.image | img_url: 'master' }}"
+                src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
+              />
+              <img
+                src="{{ block.settings.mobile_image | img_url: 'master' }}" class="mobile_image"
               />
             </div>
           </div>
@@ -72,6 +75,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "Select Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
         }
       ]
     }
