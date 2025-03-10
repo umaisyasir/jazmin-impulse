@@ -12,14 +12,13 @@
 .slider-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  will-change: transform;
 }
 
 .slider-item {
   min-width: 100%;
   box-sizing: border-box;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .slider-item.active {
@@ -121,33 +120,48 @@ h2.section-title {
 
 {% javascript %}
 document.addEventListener('DOMContentLoaded', function() {
-  let currentIndex = 0;
+  const sliderTrack = document.querySelector('.slider-track');
   const items = document.querySelectorAll('.slider-item');
-  const totalItems = items.length;
   const nextButton = document.querySelector('.slider-button-next');
   const prevButton = document.querySelector('.slider-button-prev');
+  let currentIndex = 0;
+  let totalItems = items.length;
+  let slideWidth = items[0].clientWidth;
 
-  function showSlide(index) {
-    items.forEach((item, i) => {
-      item.classList.remove('active');
-      if (i === index) {
-        item.classList.add('active');
-      }
-    });
+  // Function to move to the next slide
+  function moveToNext() {
+    if (currentIndex < totalItems - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    sliderTrack.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
   }
 
-  nextButton.addEventListener('click', function() {
-    currentIndex = (currentIndex + 1) % totalItems;
-    showSlide(currentIndex);
-  });
+  // Function to move to the previous slide
+  function moveToPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = totalItems - 1;
+    }
+    sliderTrack.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  }
 
-  prevButton.addEventListener('click', function() {
-    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-    showSlide(currentIndex);
-  });
+  // Event listeners for buttons
+  nextButton.addEventListener('click', moveToNext);
+  prevButton.addEventListener('click', moveToPrev);
 
-  // Initialize first slide
-  showSlide(currentIndex);
+  // Autoplay functionality (optional)
+  if ({{ section.settings.autoplay | default: true }}) {
+    setInterval(moveToNext, {{ section.settings.autoplay_delay | default: 5000 }});
+  }
+
+  // Recalculate slide width on window resize
+  window.addEventListener('resize', function() {
+    slideWidth = items[0].clientWidth;
+    sliderTrack.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  });
 });
 {% endjavascript %}
 
@@ -170,10 +184,17 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     {
       "type": "number",
-      "label": "Number of Products",
-      "id": "num_products",
-      "default": 4,
-      "info": "Set the number of products to display at once"
+      "label": "Autoplay Delay (ms)",
+      "id": "autoplay_delay",
+      "default": 5000,
+      "info": "Set the delay for autoplay in milliseconds"
+    },
+    {
+      "type": "checkbox",
+      "label": "Enable Autoplay",
+      "id": "autoplay",
+      "default": true,
+      "info": "Toggle autoplay functionality"
     }
   ],
   "presets": [
