@@ -1,25 +1,27 @@
 <style>
-/* Main container for the slider */
-.fashion-slider-scale {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Hide desktop image on mobile and show mobile image */
+/* Hide desktop image on mobile devices and show mobile image */
 @media screen and (max-width: 768px) {
-  .fashion-slider-scale {
-    background-image: url('{{ block.settings.mobile_image }}');
+  .desktop_image {
+    display: none !important;
+  }
+  
+  .mobile_image {
+    display: block !important;
+    width: 100%;
+    height: auto;
   }
 }
 
-/* Hide mobile image on desktop and show desktop image */
+/* Hide mobile image on desktop devices and show desktop image */
 @media screen and (min-width: 769px) {
-  .fashion-slider-scale {
-    background-image: url('{{ block.settings.image }}');
+  .desktop_image {
+    display: block !important;
+    width: 100%;
+    height: auto;
+  }
+  
+  .mobile_image {
+    display: none !important;
   }
 }
 </style>
@@ -38,8 +40,19 @@
           <!-- slide title text -->
           <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
         </div>
-        <!-- slide image wrap with background image -->
-        <div class="fashion-slider-scale"></div>
+        <!-- slide image wrap with both desktop and mobile images -->
+        <div class="fashion-slider-scale">
+          <!-- Desktop image -->
+          <img
+            src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
+            alt="Desktop Image"
+          />
+          <!-- Mobile image -->
+          <img
+            src="{{ block.settings.mobile_image | img_url: 'master' }}" class="mobile_image"
+            alt="Mobile Image"
+          />
+        </div>
       </div>
       {% endfor %}
     </div>
