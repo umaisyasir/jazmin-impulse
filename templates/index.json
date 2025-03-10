@@ -210,15 +210,48 @@
         "bottom_padding": true
       }
     },
-    "custom_featuredcollection_Ngwp7P": {
-      "type": "custom_featuredcollection",
-      "settings": {
-        "collection": "shahkaar-luxury-lawn",
-        "section_title": "New Arrivals",
-        "num_products": 4,
-        "autoplay": true,
-        "autoplay_delay": 5000
-      }
+    "custom_slider_11_W3FHmL": {
+      "type": "custom_slider-11",
+      "blocks": {
+        "image_hpMtn7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0073_6_de1ad4fb-915b-4dd4-b071-32123ced60c1.png"
+          }
+        },
+        "image_3VKgRq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0073_2_a98cfaf8-9af8-48fe-bce0-e35a8458f8f7.png"
+          }
+        },
+        "image_6LJH79": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0073_3_d7eecc98-e80d-4892-aca7-96f1d3c37239.png"
+          }
+        },
+        "image_CUPCct": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0073_4_712ed70a-6aa0-4d46-9de3-fdb7efe0461a.png"
+          }
+        },
+        "image_XHmdQ4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/0073_5_6230063c-64da-41d7-9eeb-5893921c2af2.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_hpMtn7",
+        "image_3VKgRq",
+        "image_6LJH79",
+        "image_CUPCct",
+        "image_XHmdQ4"
+      ],
+      "settings": {}
     },
     "slideshow_YGwaYW": {
       "type": "slideshow",
@@ -274,7 +307,7 @@
     "slideshow",
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
-    "custom_featuredcollection_Ngwp7P",
+    "custom_slider_11_W3FHmL",
     "slideshow_YGwaYW",
     "featured-collection"
   ]
