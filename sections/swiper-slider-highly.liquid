@@ -1,10 +1,24 @@
+<style>
+@media screen and (min-width: 769px) {
+  .slider_height {
+    height: calc (100vh - 42px)
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .slider_height {
+    height: calc (100vh - 90px);
+  }
+}
+</style>
+
 <link rel="stylesheet" href="https://fashion-slider.uiinitiative.com/assets/index.fca86069.css"/>
 <link rel="modulepreload" href="https://fashion-slider.uiinitiative.com/assets/vendor.688a9bfa.js"/>
 <script type="module" crossorigin src="https://fashion-slider.uiinitiative.com/assets/index.ff8f4572.js"></script>
 
 <div class="fashion-slider">
       <div class="swiper">
-        <div class="swiper-wrapper" style="height: calc(100vh - 42px);">
+        <div class="swiper-wrapper slider_height">
           {% for block in section.blocks %}
           <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
             <!-- slide title wrap -->
