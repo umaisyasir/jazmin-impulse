@@ -13,11 +13,6 @@
   flex-wrap: nowrap;
 }
 
-.swiper-container.featured-collection-slider.swiper-initialized.swiper-horizontal .medium-up--one-quarter {
-  width: 100% !important;
-  padding: 0 !important;
-}
-
 .swiper-slide {
   display: flex;
   justify-content: center;
@@ -167,7 +162,7 @@ h2.section-title {
 
 @media (min-width: 769px) {
   .swiper-slide {
-    width: calc(25% - 20px);
+    width: calc(20% - 20px); /* 5 products on desktop */
   }
 
   .swiper-container {
@@ -186,7 +181,7 @@ h2.section-title {
     <h2 class="section-title">{{ section.settings.section_title }}</h2>
   
     <div class="swiper-wrapper">
-        {% assign products = collections[section.settings.collection].products %}
+        {% assign products = collections[section.settings.collection].products | slice: 0, 5 %}
         {% for product in products %}
           <div class="swiper-slide">
             {% render 'product-grid-item', product: product %}
@@ -204,13 +199,10 @@ h2.section-title {
 {% javascript %}
 document.addEventListener('DOMContentLoaded', function() {
   var swiper = new Swiper('.featured-collection-slider', {
-    slidesPerView: 1,
+    slidesPerView: 5,  // Show only 5 products
     spaceBetween: 20,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    loop: true,
+    autoplay: false,    // Disable autoplay
+    loop: false,        // Disable looping
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -218,11 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 4, // 4 products on desktop
-      },
     },
   });
 });
@@ -249,22 +236,15 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "number",
       "label": "Number of Products",
       "id": "num_products",
-      "default": 4,
+      "default": 5,
       "info": "Set the number of products to display at once"
     },
     {
       "type": "checkbox",
       "label": "Enable Autoplay",
       "id": "autoplay",
-      "default": true,
+      "default": false,
       "info": "Toggle autoplay functionality"
-    },
-    {
-      "type": "number",
-      "label": "Autoplay Delay (ms)",
-      "id": "autoplay_delay",
-      "default": 5000,
-      "info": "Set the delay for autoplay in milliseconds"
     }
   ],
   "presets": [
