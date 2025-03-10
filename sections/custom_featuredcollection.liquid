@@ -1,27 +1,33 @@
 <style>
-/* Swiper Slider Styling */
-.swiper-container {
+/* Custom Slider Styling */
+.custom-slider {
   position: relative;
   width: 100%;
-  padding: 30px 0;
-  margin: 0 auto;
+  overflow: hidden;
   max-width: 90%;
+  margin: 0 auto;
+  padding: 30px 0;
 }
 
-.swiper-wrapper {
+.slider-track {
   display: flex;
-  flex-wrap: nowrap;
+  transition: transform 0.5s ease-in-out;
 }
 
-.swiper-container.featured-collection-slider.swiper-initialized.swiper-horizontal .medium-up--one-quarter {
-  width: 100% !important;
-  padding: 0 !important;
-}
-
-.swiper-slide {
+.slider-item {
+  min-width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  transition: transform 0.3s ease;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slider-item.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .product-card {
@@ -31,7 +37,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 275px;
   background-color: #fff;
-  box-sizing: border-box;
 }
 
 .product-card:hover {
@@ -77,14 +82,13 @@
   color: #333;
 }
 
-/* Swiper Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
+/* Custom Navigation Buttons */
+.slider-button {
   color: black;
   font-size: 22px;
   z-index: 10;
   position: absolute;
-  top: 47%;
+  top: 50%;
   transform: translateY(-50%);
   background-color: white;
   padding: 10px;
@@ -95,136 +99,123 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.swiper-button-next:before,
-.swiper-button-prev:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-}
-
-.swiper-button-next {
+.slider-button-next {
   right: 20px;
 }
 
-.swiper-button-prev {
+.slider-button-prev {
   left: 20px;
 }
 
 /* Hover effect for navigation buttons */
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
+.slider-button:hover {
   background-color: #333;
   color: white;
 }
 
-/* Hide pagination */
-.swiper-pagination {
-  display: none;
-}
-
+/* Section title */
 h2.section-title {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.container_featuredcollection {
-    max-width: 100%;
-    overflow: hidden;
-    width: 95% !important;
-    margin: 0 auto;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .swiper-slide {
-    width: 100% !important;
+  .slider-item {
+    min-width: 100% !important;
   }
 
-  .swiper-container {
-    padding: 15px 0;
+  .custom-slider {
     max-width: 75%;
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
+  .slider-button {
     font-size: 24px;
     padding: 8px;
   }
 
-  .swiper-button-next {
-      right: 10px;
+  .slider-button-next {
+    right: 10px;
   }
 
-  .swiper-button-prev {
-      left: 10px;
-  }
-
-  .container_featuredcollection {
-      width: 100%;
+  .slider-button-prev {
+    left: 10px;
   }
 }
 
 @media (min-width: 769px) {
-  .swiper-slide {
-    width: calc(25% - 20px);
+  .slider-item {
+    min-width: calc(25% - 20px);
   }
 
-  .swiper-container {
+  .custom-slider {
     padding: 30px 0;
   }
 }
 </style>
 
-{% comment %}
-  Featured Collection Section with Swiper Slider
-{% endcomment %}
+<div class="custom-slider">
+  <h2 class="section-title">{{ section.settings.section_title }}</h2>
 
-<div class="container_featuredcollection">
-  <div class="swiper-container featured-collection-slider">
-    <!-- Heading from Schema Settings -->
-    <h2 class="section-title">{{ section.settings.section_title }}</h2>
-  
-    <div class="swiper-wrapper">
-        {% assign products = collections[section.settings.collection].products %}
-        {% for product in products %}
-          <div class="swiper-slide">
-            {% render 'product-grid-item', product: product %}
+  <div class="slider-track">
+    {% assign products = collections[section.settings.collection].products %}
+    {% for product in products %}
+      <div class="slider-item">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
           </div>
-        {% endfor %}
-    </div>
-  
-    <!-- Pagination controls for Swiper (hidden) -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
-    <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+          <div class="product-info">
+            <h3 class="product-title">{{ product.title }}</h3>
+            <p class="product-price">
+              {% if product.compare_at_price %}
+                <span class="product-price__old">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+              <span class="product-price__new">{{ product.price | money }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
+
+  <!-- Custom Navigation Controls -->
+  <div class="slider-button slider-button-prev">&lt;</div>
+  <div class="slider-button slider-button-next">&gt;</div>
 </div>
 
 {% javascript %}
 document.addEventListener('DOMContentLoaded', function() {
-  var swiper = new Swiper('.featured-collection-slider', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 4, // 4 products on desktop
-      },
-    },
+  let currentIndex = 0;
+  const items = document.querySelectorAll('.slider-item');
+  const totalItems = items.length;
+  const nextButton = document.querySelector('.slider-button-next');
+  const prevButton = document.querySelector('.slider-button-prev');
+
+  function showSlide(index) {
+    items.forEach((item, i) => {
+      item.classList.remove('active');
+      if (i === index) {
+        item.classList.add('active');
+      }
+    });
+  }
+
+  nextButton.addEventListener('click', function() {
+    currentIndex = (currentIndex + 1) % totalItems;
+    showSlide(currentIndex);
   });
+
+  prevButton.addEventListener('click', function() {
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    showSlide(currentIndex);
+  });
+
+  // Initialize first slide
+  showSlide(currentIndex);
 });
 {% endjavascript %}
 
@@ -251,20 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "id": "num_products",
       "default": 4,
       "info": "Set the number of products to display at once"
-    },
-    {
-      "type": "checkbox",
-      "label": "Enable Autoplay",
-      "id": "autoplay",
-      "default": true,
-      "info": "Toggle autoplay functionality"
-    },
-    {
-      "type": "number",
-      "label": "Autoplay Delay (ms)",
-      "id": "autoplay_delay",
-      "default": 5000,
-      "info": "Set the delay for autoplay in milliseconds"
     }
   ],
   "presets": [
