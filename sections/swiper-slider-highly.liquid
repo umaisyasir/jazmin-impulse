@@ -12,14 +12,14 @@
 /* Hide desktop image on mobile and show mobile image */
 @media screen and (max-width: 768px) {
   .fashion-slider-scale {
-    background-image: url('{{ block.settings.mobile_image | img_url: 'master' }}');
+    background-image: url('{{ block.settings.mobile_image }}');
   }
 }
 
 /* Hide mobile image on desktop and show desktop image */
 @media screen and (min-width: 769px) {
   .fashion-slider-scale {
-    background-image: url('{{ block.settings.image | img_url: 'master' }}');
+    background-image: url('{{ block.settings.image }}');
   }
 }
 </style>
