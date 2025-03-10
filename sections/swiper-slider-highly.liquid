@@ -69,7 +69,13 @@
     </div>
 
 <script>
-  window.addEventListener('resize', updateSliderImage);
+  let resizeTimeout;
+  
+  window.addEventListener('resize', () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateSliderImage, 100); // Debounce resize event (adjust 100ms if needed)
+  });
+  
   window.addEventListener('load', updateSliderImage);
 
   function updateSliderImage() {
@@ -80,10 +86,12 @@
       const imageElement = slide.querySelector('img.desktop_image');
       if (imageElement) {
         const mobileImage = imageElement.getAttribute('data-mobile-image'); // Get mobile image URL from data attribute
-        if (isMobile) {
-          imageElement.setAttribute('src', mobileImage); // Set the mobile image
-        } else {
-          imageElement.setAttribute('src', imageElement.src.replace('mobile', 'master')); // Reset to desktop version for larger screens
+        const currentSrc = imageElement.src;
+
+        if (isMobile && !currentSrc.includes(mobileImage)) {
+          imageElement.setAttribute('src', mobileImage); // Set the mobile image if not already set
+        } else if (!isMobile && !currentSrc.includes('master')) {
+          imageElement.setAttribute('src', currentSrc.replace('mobile', 'master')); // Reset to desktop version for larger screens
         }
       }
     });
