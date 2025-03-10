@@ -269,21 +269,6 @@
         "view_all": true,
         "divider": false
       }
-    },
-    "blog_posts_Wi7tPW": {
-      "type": "blog-posts",
-      "settings": {
-        "title": "Blog posts",
-        "blog": "news",
-        "post_limit": 3,
-        "blog_show_tags": false,
-        "blog_show_date": true,
-        "blog_show_comments": false,
-        "blog_show_author": false,
-        "view_all": true,
-        "blog_image_size": "wide",
-        "divider": false
-      }
     }
   },
   "order": [
@@ -292,7 +277,6 @@
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
-    "featured-collection",
-    "blog_posts_Wi7tPW"
+    "featured-collection"
   ]
 }
