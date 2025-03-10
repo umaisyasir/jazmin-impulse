@@ -1,141 +1,141 @@
 <style>
-    .slider-container {
-      width: 100%;
-      max-width: 1200px;
-      position: relative;
-      left: 50%;
-      transform: translate(-50%, 0);
-      z-index: 2;
-    }
+  .slider-container {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+  }
 
-    .slider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      perspective: 1000px;
-    }
+  .slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+  }
 
+  .slide {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slide img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateZ(300px) scale(1.3);
+    z-index: 2;
+  }
+
+  .slide.left {
+    opacity: 0.6;
+    transform: translateX(-300px) scale(0.8);
+  }
+
+  .slide.right {
+    opacity: 0.6;
+    transform: translateX(300px) scale(0.8);
+  }
+
+  /* Navigation buttons */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .nav-btn:hover {
+    background: #000;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
     .slide {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 200px;
+      height: 200px;
     }
-
-    .slide img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
     .slide.active {
-      opacity: 1;
-      transform: translateZ(300px) scale(1.3);
-      z-index: 2;
+      transform: translateZ(200px) scale(1.3);
     }
-
-    .slide.left {
-      opacity: 0.6;
-      transform: translateX(-300px) scale(0.8);
+    .slide.left, .slide.right {
+      transform: translateX(-200px) scale(0.8);
     }
-
-    .slide.right {
-      opacity: 0.6;
-      transform: translateX(300px) scale(0.8);
-    }
-
-    /* Navigation buttons */
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 10;
-      font-size: 20px;
-    }
-
-    .prev-btn {
-      left: 10px;
-    }
-
-    .next-btn {
-      right: 10px;
-    }
-
-    .nav-btn:hover {
-      background: #000;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .slide {
-        width: 200px;
-        height: 200px;
-      }
-      .slide.active {
-        transform: translateZ(200px) scale(1.3);
-      }
-      .slide.left, .slide.right {
-        transform: translateX(-200px) scale(0.8);
-      }
-    }
+  }
 </style>
 
-  <div class="slider-container">
-    <div class="slider">
-      {% for block in section.blocks %}
-        <div class="slide active">
-          <a href="{{ block.settings.link }}"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
-        </div>
-      {% endfor %}
-    </div>
-
-    <!-- Navigation buttons -->
-    <div class="nav-btn prev-btn">&#10094;</div>
-    <div class="nav-btn next-btn">&#10095;</div>
+<div class="slider-container">
+  <div class="slider">
+    {% for block in section.blocks %}
+      <div class="slide">
+        <a href="{{ block.settings.link }}"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
+      </div>
+    {% endfor %}
   </div>
 
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let current = 0;
+  <!-- Navigation buttons -->
+  <div class="nav-btn prev-btn">&#10094;</div>
+  <div class="nav-btn next-btn">&#10095;</div>
+</div>
 
-    function updateSlides() {
-      slides.forEach((slide, index) => {
-        slide.classList.remove('active', 'left', 'right');
-        if (index === current) {
-          slide.classList.add('active');
-        } else if (index === (current + 1) % slides.length) {
-          slide.classList.add('right');
-        } else if (index === (current - 1 + slides.length) % slides.length) {
-          slide.classList.add('left');
-        }
-      });
-    }
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let current = 0;
 
-    nextBtn.addEventListener('click', () => {
-      current = (current + 1) % slides.length;
-      updateSlides();
+  function updateSlides() {
+    slides.forEach((slide, index) => {
+      slide.classList.remove('active', 'left', 'right');
+      if (index === current) {
+        slide.classList.add('active');
+      } else if (index === (current + 1) % slides.length) {
+        slide.classList.add('right');
+      } else if (index === (current - 1 + slides.length) % slides.length) {
+        slide.classList.add('left');
+      }
     });
+  }
 
-    prevBtn.addEventListener('click', () => {
-      current = (current - 1 + slides.length) % slides.length;
-      updateSlides();
-    });
-
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
     updateSlides();
-  </script>
+  });
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    updateSlides();
+  });
+
+  updateSlides();
+</script>
 
 {% schema %}
 {
@@ -144,7 +144,7 @@
   "blocks": [
     {
       "type": "image",
-      "name": "t:sections.slideshow.blocks.slide.name",
+      "name": "Slide",
       "settings": [
         {
           "type": "url",
@@ -154,14 +154,15 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Select Desktop Image"
+          "label": "Select Image"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "VB - Custom Triple Slider"
+      "name": "VB - Custom Triple Slider",
+      "category": "Sliders"
     }
   ]
 }
