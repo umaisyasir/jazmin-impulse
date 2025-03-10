@@ -2,7 +2,7 @@
   .main-containerslider {
     height: 70vh;
   }
-  
+
   .slider-container {
     width: 100%;
     max-width: 1200px;
@@ -11,6 +11,7 @@
     transform: translate(-50%, -50%);
     z-index: 2;
     top: 50%;
+    overflow: hidden;
   }
 
   .slider {
@@ -55,7 +56,6 @@
     transform: translateX(300px) scale(0.8);
   }
 
-  /* Navigation buttons */
   .nav-btn {
     position: absolute;
     top: 50%;
@@ -81,7 +81,6 @@
     background: #000;
   }
 
-  /* Responsive adjustments */
   @media (max-width: 768px) {
     .slide {
       width: 200px;
@@ -98,6 +97,7 @@
     }
   }
 </style>
+
 <div class="main-containerslider">
   <div class="slider-container">
     <div class="slider">
@@ -107,7 +107,7 @@
         </div>
       {% endfor %}
     </div>
-  
+
     <!-- Navigation buttons -->
     <div class="nav-btn prev-btn">&#10094;</div>
     <div class="nav-btn next-btn">&#10095;</div>
@@ -119,6 +119,12 @@
   const prevBtn = document.querySelector('.prev-btn');
   const nextBtn = document.querySelector('.next-btn');
   let current = 0;
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationID;
+  const slider = document.querySelector('.slider');
 
   function updateSlides() {
     slides.forEach((slide, index) => {
@@ -142,6 +148,79 @@
     current = (current - 1 + slides.length) % slides.length;
     updateSlides();
   });
+
+  slider.addEventListener('touchstart', touchStart);
+  slider.addEventListener('touchend', touchEnd);
+  slider.addEventListener('touchmove', touchMove);
+  slider.addEventListener('mousedown', mouseStart);
+  slider.addEventListener('mouseup', mouseEnd);
+  slider.addEventListener('mouseleave', mouseEnd);
+  slider.addEventListener('mousemove', mouseMove);
+
+  function touchStart(event) {
+    isDragging = true;
+    startPos = event.touches[0].clientX;
+    animationID = requestAnimationFrame(animation);
+  }
+
+  function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    if (currentTranslate - prevTranslate > 100) {
+      current = (current - 1 + slides.length) % slides.length;
+    } else if (prevTranslate - currentTranslate > 100) {
+      current = (current + 1) % slides.length;
+    }
+    setPositionByIndex();
+    updateSlides();
+  }
+
+  function touchMove(event) {
+    if (isDragging) {
+      const currentPosition = event.touches[0].clientX;
+      currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+  }
+
+  function mouseStart(event) {
+    isDragging = true;
+    startPos = event.clientX;
+    animationID = requestAnimationFrame(animation);
+  }
+
+  function mouseEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    if (currentTranslate - prevTranslate > 100) {
+      current = (current - 1 + slides.length) % slides.length;
+    } else if (prevTranslate - currentTranslate > 100) {
+      current = (current + 1) % slides.length;
+    }
+    setPositionByIndex();
+    updateSlides();
+  }
+
+  function mouseMove(event) {
+    if (isDragging) {
+      const currentPosition = event.clientX;
+      currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+  }
+
+  function animation() {
+    setSliderPosition();
+    if (isDragging) requestAnimationFrame(animation);
+  }
+
+  function setSliderPosition() {
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+  }
+
+  function setPositionByIndex() {
+    currentTranslate = current * -slider.clientWidth;
+    prevTranslate = currentTranslate;
+    setSliderPosition();
+  }
 
   updateSlides();
 </script>
