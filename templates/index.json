@@ -258,6 +258,57 @@
       ],
       "settings": {}
     },
+    "featured_product_yyRz9D": {
+      "type": "featured-product",
+      "blocks": {
+        "price_wEKTnn": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_rHfikt": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "variant_picker_tVrzVX": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "buy_buttons_6mjzii": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "price_wEKTnn",
+        "description_rHfikt",
+        "variant_picker_tVrzVX",
+        "buy_buttons_6mjzii"
+      ],
+      "settings": {
+        "featured_product": "embroidered-luxury-lawn-sl25-d9",
+        "divider": false,
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -277,6 +328,7 @@
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
+    "featured_product_yyRz9D",
     "featured-collection"
   ]
 }
