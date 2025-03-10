@@ -17,7 +17,7 @@
               <!-- slide image -->
               <img
                 src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
-              />
+                data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" />
             </div>
           </div>
           {% endfor %}
@@ -53,6 +53,28 @@
         </div>
       </div>
     </div>
+
+<script>
+  window.addEventListener('resize', updateSliderImage);
+  window.addEventListener('load', updateSliderImage);
+
+  function updateSliderImage() {
+    const isMobile = window.innerWidth <= 768; // Adjust this value based on your mobile breakpoint
+    const slides = document.querySelectorAll('.swiper-slide');
+
+    slides.forEach(slide => {
+      const imageElement = slide.querySelector('img.desktop_image');
+      if (imageElement) {
+        const mobileImage = imageElement.getAttribute('data-mobile-image'); // Get mobile image URL from data attribute
+        if (isMobile) {
+          imageElement.setAttribute('src', mobileImage); // Set the mobile image
+        } else {
+          imageElement.setAttribute('src', imageElement.src.replace('mobile', 'master')); // Reset to desktop version for larger screens
+        }
+      }
+    });
+  }
+</script>
 
 {% schema %}
 {
