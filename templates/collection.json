@@ -103,11 +103,32 @@
         "enable_swatch_labels": true,
         "enable_sort": true
       }
+    },
+    "rich_text_73CTzD": {
+      "type": "rich-text",
+      "blocks": {
+        "text_3wJyPP": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "{{ collection.metafields.custom.notes | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "text_3wJyPP"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
     }
   },
   "order": [
     "collection-header",
     "promo-grid",
-    "main-collection"
+    "main-collection",
+    "rich_text_73CTzD"
   ]
 }
