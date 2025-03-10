@@ -143,6 +143,29 @@
     updateSlides();
   });
 
+  // Touch functionality
+  let startX = 0;
+  let endX = 0;
+
+  document.querySelector('.slider-container').addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.querySelector('.slider-container').addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  document.querySelector('.slider-container').addEventListener('touchend', () => {
+    if (startX > endX + 50) {
+      // Swipe left (next slide)
+      current = (current + 1) % slides.length;
+    } else if (startX < endX - 50) {
+      // Swipe right (previous slide)
+      current = (current - 1 + slides.length) % slides.length;
+    }
+    updateSlides();
+  });
+
   updateSlides();
 </script>
 
