@@ -212,12 +212,12 @@
     },
     "custom_featured_collection_FHcDzb": {
       "type": "custom-featured_collection",
+      "disabled": true,
       "settings": {
         "collection": "shahkaar-luxury-lawn",
         "section_title": "New Arrivals",
         "num_products": 4,
-        "autoplay": true,
-        "autoplay_delay": 5000
+        "autoplay": true
       }
     },
     "slideshow_YGwaYW": {
