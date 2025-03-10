@@ -90,19 +90,20 @@
     }
   }
 </style>
-
-<div class="slider-container">
-  <div class="slider">
-    {% for block in section.blocks %}
-      <div class="slide">
-        <a href="{{ block.settings.link }}"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
-      </div>
-    {% endfor %}
+<div class="main-containerslider">
+  <div class="slider-container">
+    <div class="slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <a href="{{ block.settings.link }}"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
+        </div>
+      {% endfor %}
+    </div>
+  
+    <!-- Navigation buttons -->
+    <div class="nav-btn prev-btn">&#10094;</div>
+    <div class="nav-btn next-btn">&#10095;</div>
   </div>
-
-  <!-- Navigation buttons -->
-  <div class="nav-btn prev-btn">&#10094;</div>
-  <div class="nav-btn next-btn">&#10095;</div>
 </div>
 
 <script>
