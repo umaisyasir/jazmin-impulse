@@ -11,24 +11,24 @@
     transform: translate(-50%, -50%);
     z-index: 2;
     top: 50%;
+    overflow: hidden;
   }
 
   .slider {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
+    transition: transform 0.5s ease;
+    position: relative;
+    width: 100%;
   }
 
   .slide {
-    position: absolute;
-    width: 300px;
+    min-width: 100%;
     height: 300px;
-    opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 1;
   }
 
   .slide img {
@@ -39,22 +39,11 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   }
 
-  .slide.active {
-    opacity: 1;
-    transform: translateZ(300px) scale(1.3);
-    z-index: 2;
+  .slide.hidden {
+    opacity: 0;
   }
 
-  .slide.left {
-    opacity: 0.6;
-    transform: translateX(-300px) scale(0.8);
-  }
-
-  .slide.right {
-    opacity: 0.6;
-    transform: translateX(300px) scale(0.8);
-  }
-
+  /* Navigation buttons */
   .nav-btn {
     position: absolute;
     top: 50%;
@@ -81,15 +70,9 @@
   }
 
   @media (max-width: 768px) {
-    .slide {
+    .slide img {
       width: 200px;
       height: 200px;
-    }
-    .slide.active {
-      transform: translateZ(200px) scale(1.3);
-    }
-    .slide.left, .slide.right {
-      transform: translateX(-200px) scale(0.8);
     }
     .main-containerslider {
       height: 90vh;
@@ -115,46 +98,30 @@
 
 <script>
   const slides = document.querySelectorAll('.slide');
+  const slider = document.querySelector('.slider');
   const prevBtn = document.querySelector('.prev-btn');
   const nextBtn = document.querySelector('.next-btn');
-  let current = 0;
+
+  let currentIndex = 0;
   let isDragging = false;
   let startPos = 0;
   let currentTranslate = 0;
   let prevTranslate = 0;
   let animationID;
-  const slider = document.querySelector('.slider');
+
+  function setPositionByIndex() {
+    currentTranslate = currentIndex * -slider.clientWidth;
+    slider.style.transform = `translateX(${currentTranslate}px)`;
+  }
 
   function updateSlides() {
     slides.forEach((slide, index) => {
-      slide.classList.remove('active', 'left', 'right');
-      if (index === current) {
-        slide.classList.add('active');
-      } else if (index === (current + 1) % slides.length) {
-        slide.classList.add('right');
-      } else if (index === (current - 1 + slides.length) % slides.length) {
-        slide.classList.add('left');
+      slide.classList.remove('hidden');
+      if (index !== currentIndex) {
+        slide.classList.add('hidden');
       }
     });
   }
-
-  nextBtn.addEventListener('click', () => {
-    current = (current + 1) % slides.length;
-    updateSlides();
-  });
-
-  prevBtn.addEventListener('click', () => {
-    current = (current - 1 + slides.length) % slides.length;
-    updateSlides();
-  });
-
-  slider.addEventListener('touchstart', touchStart);
-  slider.addEventListener('touchend', touchEnd);
-  slider.addEventListener('touchmove', touchMove);
-  slider.addEventListener('mousedown', mouseStart);
-  slider.addEventListener('mouseup', mouseEnd);
-  slider.addEventListener('mouseleave', mouseEnd);
-  slider.addEventListener('mousemove', mouseMove);
 
   function touchStart(event) {
     isDragging = true;
@@ -162,23 +129,26 @@
     animationID = requestAnimationFrame(animation);
   }
 
-  function touchEnd() {
-    isDragging = false;
-    cancelAnimationFrame(animationID);
-    if (currentTranslate - prevTranslate > 100) {
-      current = (current - 1 + slides.length) % slides.length;
-    } else if (prevTranslate - currentTranslate > 100) {
-      current = (current + 1) % slides.length;
-    }
-    setPositionByIndex();
-    updateSlides();
-  }
-
   function touchMove(event) {
     if (isDragging) {
       const currentPosition = event.touches[0].clientX;
       currentTranslate = prevTranslate + currentPosition - startPos;
+      slider.style.transform = `translateX(${currentTranslate}px)`;
     }
+  }
+
+  function touchEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+
+    const movedBy = currentTranslate - prevTranslate;
+
+    if (movedBy < -100 && currentIndex < slides.length - 1) currentIndex += 1;
+    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+
+    setPositionByIndex();
+    prevTranslate = currentTranslate;
+    updateSlides();
   }
 
   function mouseStart(event) {
@@ -187,41 +157,56 @@
     animationID = requestAnimationFrame(animation);
   }
 
-  function mouseEnd() {
-    isDragging = false;
-    cancelAnimationFrame(animationID);
-    if (currentTranslate - prevTranslate > 100) {
-      current = (current - 1 + slides.length) % slides.length;
-    } else if (prevTranslate - currentTranslate > 100) {
-      current = (current + 1) % slides.length;
-    }
-    setPositionByIndex();
-    updateSlides();
-  }
-
   function mouseMove(event) {
     if (isDragging) {
       const currentPosition = event.clientX;
       currentTranslate = prevTranslate + currentPosition - startPos;
+      slider.style.transform = `translateX(${currentTranslate}px)`;
     }
   }
 
-  function animation() {
-    setSliderPosition();
-    if (isDragging) requestAnimationFrame(animation);
-  }
+  function mouseEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationID);
 
-  function setSliderPosition() {
-    slider.style.transform = `translateX(${currentTranslate}px)`;
-  }
+    const movedBy = currentTranslate - prevTranslate;
 
-  function setPositionByIndex() {
-    currentTranslate = current * -slider.clientWidth;
+    if (movedBy < -100 && currentIndex < slides.length - 1) currentIndex += 1;
+    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+
+    setPositionByIndex();
     prevTranslate = currentTranslate;
-    setSliderPosition();
+    updateSlides();
   }
 
-  updateSlides();
+  function animation() {
+    if (isDragging) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  slider.addEventListener('touchstart', touchStart);
+  slider.addEventListener('touchmove', touchMove);
+  slider.addEventListener('touchend', touchEnd);
+
+  slider.addEventListener('mousedown', mouseStart);
+  slider.addEventListener('mousemove', mouseMove);
+  slider.addEventListener('mouseup', mouseEnd);
+  slider.addEventListener('mouseleave', mouseEnd);
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < slides.length - 1) currentIndex++;
+    setPositionByIndex();
+    updateSlides();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) currentIndex--;
+    setPositionByIndex();
+    updateSlides();
+  });
+
+  updateSlides(); // Initialize the first slide as visible
 </script>
 
 {% schema %}
