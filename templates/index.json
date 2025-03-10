@@ -270,45 +270,6 @@
         "divider": false
       }
     },
-    "hotspots_nfXXPU": {
-      "type": "hotspots",
-      "blocks": {
-        "product_ycrRdf": {
-          "type": "product",
-          "settings": {
-            "featured_product": "digital-printed-lawn-use-9155",
-            "vertical": 26,
-            "horizontal": 27
-          }
-        },
-        "product_aNndDr": {
-          "type": "product",
-          "settings": {
-            "featured_product": "digital-printed-lawn-use-9154",
-            "vertical": 35,
-            "horizontal": 65
-          }
-        }
-      },
-      "block_order": [
-        "product_ycrRdf",
-        "product_aNndDr"
-      ],
-      "custom_css": [
-        ".hotspots-wrapper {max-width: 1200px;}"
-      ],
-      "settings": {
-        "title": "Shop the look",
-        "heading_size": "h1",
-        "heading_position": "center",
-        "image": "shopify://shop_images/STL.jpg",
-        "indent_image": false,
-        "image_position": "left",
-        "hotspot_style": "bag",
-        "hotspot_color": "#000000",
-        "lazyload_images": true
-      }
-    },
     "testimonials_AthRxb": {
       "type": "testimonials",
       "blocks": {
@@ -362,6 +323,45 @@
         "color_background": "#ffffff",
         "color_text": "#1c1d1d"
       }
+    },
+    "hotspots_nfXXPU": {
+      "type": "hotspots",
+      "blocks": {
+        "product_ycrRdf": {
+          "type": "product",
+          "settings": {
+            "featured_product": "digital-printed-lawn-use-9155",
+            "vertical": 26,
+            "horizontal": 27
+          }
+        },
+        "product_aNndDr": {
+          "type": "product",
+          "settings": {
+            "featured_product": "digital-printed-lawn-use-9154",
+            "vertical": 35,
+            "horizontal": 65
+          }
+        }
+      },
+      "block_order": [
+        "product_ycrRdf",
+        "product_aNndDr"
+      ],
+      "custom_css": [
+        ".hotspots-wrapper {max-width: 1200px;}"
+      ],
+      "settings": {
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "heading_position": "center",
+        "image": "shopify://shop_images/STL.jpg",
+        "indent_image": false,
+        "image_position": "left",
+        "hotspot_style": "bag",
+        "hotspot_color": "#000000",
+        "lazyload_images": true
+      }
     }
   },
   "order": [
@@ -371,7 +371,7 @@
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
     "featured-collection",
-    "hotspots_nfXXPU",
-    "testimonials_AthRxb"
+    "testimonials_AthRxb",
+    "hotspots_nfXXPU"
   ]
 }
