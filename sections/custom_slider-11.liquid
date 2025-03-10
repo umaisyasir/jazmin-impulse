@@ -92,7 +92,7 @@
     <div class="slider">
       {% for block in section.blocks %}
         <div class="slide active">
-          <a href="#"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
+          <a href="{{ block.settings.link }}"><img src="{{ block.settings.image | img_url: 'master' }}" alt="Slide {{ forloop.index }}"></a>
         </div>
       {% endfor %}
     </div>
@@ -143,6 +143,11 @@
       "type": "image",
       "name": "t:sections.slideshow.blocks.slide.name",
       "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Select URL"
+        },
         {
           "type": "image_picker",
           "id": "image",
