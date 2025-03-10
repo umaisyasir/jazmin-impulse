@@ -3,35 +3,11 @@
     .slider_height {
       height: calc(100vh - 42px) !important;
     }
-
-    .mobile-image {
-      display: none;
-    }
-
-    .desktop-image {
-      display: block;
-    }
   }
 
   @media screen and (max-width: 768px) {
     .slider_height {
       height: calc(100vh - 140px) !important;
-    }
-
-    .fashion-slider-title-text {
-        font-size: xx-large !important;
-    }
-
-    .fashion-slider-scale img {
-      transform: scale(1.0) translate(0%) !important;
-    }
-
-    .desktop-image {
-      display: none;
-    }
-
-    .mobile-image {
-      display: block;
     }
   }
 </style>
@@ -52,17 +28,12 @@
         </div>
         <!-- slide image wrap -->
         <div class="fashion-slider-scale">
-          <!-- Desktop Image -->
-          <img 
+          <!-- slide image -->
+          <img
             src="{{ block.settings.image | img_url: 'master' }}" 
-            class="desktop-image" 
-            alt="Desktop Image"
-          />
-          <!-- Mobile Image -->
-          <img 
-            src="{{ block.settings.mobile_image | img_url: 'master' }}" 
-            class="mobile-image" 
-            alt="Mobile Image"
+            class="desktop_image"
+            data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" 
+            alt="Slider Image"
           />
         </div>
       </div>
@@ -97,49 +68,30 @@
 
 <script>
   let resizeTimeout;
-  
+
   window.addEventListener('resize', () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateSliderImage, 100); // Debounce resize event (adjust 100ms if needed)
   });
 
-  window.addEventListener('load', () => {
-    updateSliderImage();
-    initializeSwiper(); // Initialize Swiper after images are set
-  });
+  window.addEventListener('load', updateSliderImage);
 
   function updateSliderImage() {
     const isMobile = window.innerWidth <= 768; // Adjust this value based on your mobile breakpoint
     const slides = document.querySelectorAll('.swiper-slide');
 
     slides.forEach(slide => {
-      const desktopImage = slide.querySelector('img.desktop-image');
-      const mobileImage = slide.querySelector('img.mobile-image');
+      const imageElement = slide.querySelector('img.desktop_image');
+      if (imageElement) {
+        const mobileImage = imageElement.getAttribute('data-mobile-image'); // Get mobile image URL from data attribute
+        const currentSrc = imageElement.src;
 
-      if (desktopImage && mobileImage) {
-        if (isMobile) {
-          desktopImage.style.display = 'none'; // Hide desktop image on mobile
-          mobileImage.style.display = 'block'; // Show mobile image on mobile
-        } else {
-          desktopImage.style.display = 'block'; // Show desktop image on desktop
-          mobileImage.style.display = 'none'; // Hide mobile image on desktop
+        if (isMobile && !currentSrc.includes(mobileImage)) {
+          imageElement.setAttribute('src', mobileImage); // Set the mobile image if not already set
+        } else if (!isMobile && !currentSrc.includes('master')) {
+          imageElement.setAttribute('src', currentSrc.replace('mobile', 'master')); // Reset to desktop version for larger screens
         }
       }
-    });
-  }
-
-  function initializeSwiper() {
-    // Initialize Swiper after images are set to ensure the slider functions properly
-    const swiper = new Swiper('.swiper', {
-      loop: true,
-      navigation: {
-        nextEl: '.fashion-slider-button-next',
-        prevEl: '.fashion-slider-button-prev',
-      },
-      autoplay: {
-        delay: 5000, // Adjust autoplay speed (5 seconds)
-      },
-      effect: 'slide', // Adjust slider effect (you can use 'fade', 'slide', 'cube', etc.)
     });
   }
 </script>
