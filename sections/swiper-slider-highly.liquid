@@ -17,7 +17,7 @@
           <!-- slide image -->
           <img
             src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
-            data-mobile-image="{{ block.settings.image | img_url: 'mobile' }}" /> <!-- Added mobile image as data attribute -->
+            data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" />
         </div>
       </div>
       {% endfor %}
@@ -35,7 +35,7 @@
     </div>
 
     <div class="fashion-slider-button-next fashion-slider-button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="http://www.w3.org/2000/svg" viewBox="160 350 90">
         <g class="fashion-slider-svg-wrap">
           <g class="fashion-slider-svg-circle-wrap">
             <circle cx="42" cy="42" r="40"></circle>
@@ -61,7 +61,7 @@
       if (imageElement) {
         const mobileImage = imageElement.getAttribute('data-mobile-image'); // Get mobile image URL from data attribute
         if (isMobile) {
-          imageElement.setAttribute('src', mobileImage); // Replace the image for mobile
+          imageElement.setAttribute('src', mobileImage); // Set the mobile image
         } else {
           imageElement.setAttribute('src', imageElement.src.replace('mobile', 'master')); // Reset to desktop version for larger screens
         }
@@ -87,7 +87,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Select Image"
+          "label": "Select Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Select Mobile Image"
         }
       ]
     }
