@@ -45,12 +45,25 @@
     <div class="swiper-wrapper slider_height">
       {% for block in section.blocks %}
       <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
+        <!-- slide title wrap -->
         <div class="fashion-slider-title" data-swiper-parallax="-130%">
+          <!-- slide title text -->
           <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
         </div>
+        <!-- slide image wrap -->
         <div class="fashion-slider-scale">
-          <img src="{{ block.settings.image | img_url: 'master' }}" class="desktop-image" alt="Desktop Image" />
-          <img src="{{ block.settings.mobile_image | img_url: 'master' }}" class="mobile-image" alt="Mobile Image" />
+          <!-- Desktop Image -->
+          <img 
+            src="{{ block.settings.image | img_url: 'master' }}" 
+            class="desktop-image" 
+            alt="Desktop Image"
+          />
+          <!-- Mobile Image -->
+          <img 
+            src="{{ block.settings.mobile_image | img_url: 'master' }}" 
+            class="mobile-image" 
+            alt="Mobile Image"
+          />
         </div>
       </div>
       {% endfor %}
@@ -59,9 +72,11 @@
     <div class="fashion-slider-button-prev fashion-slider-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
         <g class="fashion-slider-svg-wrap">
-          <circle cx="42" cy="42" r="40"></circle>
-          <path d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
-          <path d="M80,0H0"></path>
+          <g class="fashion-slider-svg-circle-wrap">
+            <circle cx="42" cy="42" r="40"></circle>
+          </g>
+          <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
         </g>
       </svg>
     </div>
@@ -69,9 +84,11 @@
     <div class="fashion-slider-button-next fashion-slider-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
         <g class="fashion-slider-svg-wrap">
-          <circle cx="42" cy="42" r="40"></circle>
-          <path d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
-          <path d="M80,0H0"></path>
+          <g class="fashion-slider-svg-circle-wrap">
+            <circle cx="42" cy="42" r="40"></circle>
+          </g>
+          <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
         </g>
       </svg>
     </div>
@@ -79,35 +96,40 @@
 </div>
 
 <script>
+  let resizeTimeout;
+  
   window.addEventListener('resize', () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(updateSliderImage, 100);
+    resizeTimeout = setTimeout(updateSliderImage, 100); // Debounce resize event (adjust 100ms if needed)
   });
 
   window.addEventListener('load', () => {
     updateSliderImage();
-    initializeSwiper();
+    initializeSwiper(); // Initialize Swiper after images are set
   });
 
   function updateSliderImage() {
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 768; // Adjust this value based on your mobile breakpoint
     const slides = document.querySelectorAll('.swiper-slide');
+
     slides.forEach(slide => {
       const desktopImage = slide.querySelector('img.desktop-image');
       const mobileImage = slide.querySelector('img.mobile-image');
+
       if (desktopImage && mobileImage) {
         if (isMobile) {
-          desktopImage.style.display = 'none';
-          mobileImage.style.display = 'block';
+          desktopImage.style.display = 'none'; // Hide desktop image on mobile
+          mobileImage.style.display = 'block'; // Show mobile image on mobile
         } else {
-          desktopImage.style.display = 'block';
-          mobileImage.style.display = 'none';
+          desktopImage.style.display = 'block'; // Show desktop image on desktop
+          mobileImage.style.display = 'none'; // Hide mobile image on desktop
         }
       }
     });
   }
 
   function initializeSwiper() {
+    // Initialize Swiper after images are set to ensure the slider functions properly
     const swiper = new Swiper('.swiper', {
       loop: true,
       navigation: {
@@ -115,13 +137,12 @@
         prevEl: '.fashion-slider-button-prev',
       },
       autoplay: {
-        delay: 5000,
+        delay: 5000, // Adjust autoplay speed (5 seconds)
       },
-      effect: 'slide',
+      effect: 'slide', // Adjust slider effect (you can use 'fade', 'slide', 'cube', etc.)
     });
   }
 </script>
-
 
 {% schema %}
 {
