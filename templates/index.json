@@ -294,6 +294,9 @@
         "product_ycrRdf",
         "product_aNndDr"
       ],
+      "custom_css": [
+        ".hotspots-wrapper {max-width: 1200px;}"
+      ],
       "settings": {
         "title": "Shop the look",
         "heading_size": "h1",
