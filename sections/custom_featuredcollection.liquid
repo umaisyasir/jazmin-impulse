@@ -17,9 +17,6 @@
 .slider-item {
   min-width: 100%;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -28,58 +25,6 @@
 .slider-item.active {
   opacity: 1;
   transform: scale(1);
-}
-
-.product-card {
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 275px;
-  background-color: #fff;
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.product-image img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.product-card:hover .product-image img {
-  transform: scale(1.05);
-}
-
-.product-info {
-  padding: 15px;
-  text-align: center;
-}
-
-.product-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.product-price {
-  font-size: 1rem;
-  color: #333;
-}
-
-.product-price__old {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 0.9rem;
-  margin-right: 8px;
-}
-
-.product-price__new {
-  font-weight: bold;
-  color: #333;
 }
 
 /* Custom Navigation Buttons */
@@ -164,20 +109,7 @@ h2.section-title {
     {% assign products = collections[section.settings.collection].products %}
     {% for product in products %}
       <div class="slider-item">
-        <div class="product-card">
-          <div class="product-image">
-            <img src="{{ product.featured_image | img_url: 'large' }}" alt="{{ product.title }}">
-          </div>
-          <div class="product-info">
-            <h3 class="product-title">{{ product.title }}</h3>
-            <p class="product-price">
-              {% if product.compare_at_price %}
-                <span class="product-price__old">{{ product.compare_at_price | money }}</span>
-              {% endif %}
-              <span class="product-price__new">{{ product.price | money }}</span>
-            </p>
-          </div>
-        </div>
+        {% render 'product-grid-item', product: product %}
       </div>
     {% endfor %}
   </div>
