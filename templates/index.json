@@ -184,7 +184,6 @@
         },
         "text_6i6gAW": {
           "type": "text",
-          "disabled": true,
           "settings": {
             "text": "<p>A short sentence describing what someone will receive by subscribing.</p>"
           }
