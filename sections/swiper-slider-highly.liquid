@@ -4,7 +4,7 @@
   .desktop_image {
     display: none !important;
   }
-  
+
   .mobile_image {
     display: block !important;
     width: 100%;
@@ -23,13 +23,13 @@
     width: 100%;
     height: auto;
   }
-  
+
   .mobile_image {
     display: none !important;
   }
 }
 
-/* Styling for the Swiper buttons to ensure they work on all views */
+/* Styling for the Swiper buttons */
 .fashion-slider-button-prev,
 .fashion-slider-button-next {
   position: absolute;
@@ -41,6 +41,7 @@
   background: transparent;
   border: none;
   outline: none;
+  transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
 
@@ -54,16 +55,17 @@
 
 .fashion-slider-button-prev:hover,
 .fashion-slider-button-next:hover {
-  transform: scale(1.1);
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* For smaller screens, adjust the size and placement of the buttons */
+/* Adjust button size and positioning on smaller screens */
 @media screen and (max-width: 768px) {
   .fashion-slider-button-prev,
   .fashion-slider-button-next {
     width: 40px;
     height: 40px;
     top: 90%;
+    transform: translateY(0);
   }
 
   .fashion-slider-button-prev {
@@ -73,6 +75,17 @@
   .fashion-slider-button-next {
     right: 5px;
   }
+}
+
+/* Fix z-index for mobile touch events */
+.swiper {
+  position: relative;
+  z-index: 1;
+}
+
+.fashion-slider-button-prev,
+.fashion-slider-button-next {
+  z-index: 2; /* Ensure buttons are clickable */
 }
 </style>
 
@@ -106,6 +119,8 @@
       </div>
       {% endfor %}
     </div>
+
+    <!-- Previous Button -->
     <div class="fashion-slider-button-prev fashion-slider-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
         <g class="fashion-slider-svg-wrap">
@@ -121,6 +136,7 @@
       </svg>
     </div>
 
+    <!-- Next Button -->
     <div class="fashion-slider-button-next fashion-slider-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
         <g class="fashion-slider-svg-wrap">
@@ -138,6 +154,7 @@
   </div>
 </div>
 
+<!-- Swiper JavaScript initialization -->
 <script>
   const swiper = new Swiper('.swiper', {
     loop: true,
@@ -145,6 +162,10 @@
       nextEl: '.fashion-slider-button-next',
       prevEl: '.fashion-slider-button-prev',
     },
+    // Enable touch interaction for mobile devices
+    simulateTouch: true,
+    touchEventsTarget: 'container',
+    followFinger: true,
   });
 </script>
 
