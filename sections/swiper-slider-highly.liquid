@@ -1,15 +1,15 @@
 <style>
-@media screen and (min-width: 769px) {
-  .slider_height {
-    height: calc(100vh - 42px) !important;
+  @media screen and (min-width: 769px) {
+    .slider_height {
+      height: calc(100vh - 42px) !important;
+    }
   }
-}
 
-@media screen and (max-width: 768px) {
-  .slider_height {
-    height: calc(100vh - 140px) !important;
+  @media screen and (max-width: 768px) {
+    .slider_height {
+      height: calc(100vh - 140px) !important;
+    }
   }
-}
 </style>
 
 <link rel="stylesheet" href="https://fashion-slider.uiinitiative.com/assets/index.fca86069.css"/>
@@ -17,65 +17,63 @@
 <script type="module" crossorigin src="https://fashion-slider.uiinitiative.com/assets/index.ff8f4572.js"></script>
 
 <div class="fashion-slider">
-      <div class="swiper">
-        <div class="swiper-wrapper slider_height">
-          {% for block in section.blocks %}
-          <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
-            <!-- slide title wrap -->
-            <div class="fashion-slider-title" data-swiper-parallax="-130%">
-              <!-- slide title text -->
-              <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
-            </div>
-            <!-- slide image wrap -->
-            <div class="fashion-slider-scale">
-              <!-- slide image -->
-              <img
-                src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
-                data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" />
-            </div>
-          </div>
-          {% endfor %}
+  <div class="swiper">
+    <div class="swiper-wrapper slider_height">
+      {% for block in section.blocks %}
+      <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
+        <!-- slide title wrap -->
+        <div class="fashion-slider-title" data-swiper-parallax="-130%">
+          <!-- slide title text -->
+          <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
         </div>
-        <div class="fashion-slider-button-prev fashion-slider-button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
-            <g class="fashion-slider-svg-wrap">
-              <g class="fashion-slider-svg-circle-wrap">
-                <circle cx="42" cy="42" r="40"></circle>
-              </g>
-              <path
-                class="fashion-slider-svg-arrow"
-                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
-              ></path>
-              <path class="fashion-slider-svg-line" d="M80,0H0"></path>
-            </g>
-          </svg>
-        </div>
-
-        <div class="fashion-slider-button-next fashion-slider-button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
-            <g class="fashion-slider-svg-wrap">
-              <g class="fashion-slider-svg-circle-wrap">
-                <circle cx="42" cy="42" r="40"></circle>
-              </g>
-              <path
-                class="fashion-slider-svg-arrow"
-                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
-              ></path>
-              <path class="fashion-slider-svg-line" d="M80,0H0"></path>
-            </g>
-          </svg>
+        <!-- slide image wrap -->
+        <div class="fashion-slider-scale">
+          <!-- slide image -->
+          <img
+            src="{{ block.settings.image | img_url: 'master' }}" 
+            class="desktop_image"
+            data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" 
+            alt="Slider Image"
+          />
         </div>
       </div>
+      {% endfor %}
     </div>
+
+    <div class="fashion-slider-button-prev fashion-slider-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+        <g class="fashion-slider-svg-wrap">
+          <g class="fashion-slider-svg-circle-wrap">
+            <circle cx="42" cy="42" r="40"></circle>
+          </g>
+          <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+        </g>
+      </svg>
+    </div>
+
+    <div class="fashion-slider-button-next fashion-slider-button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+        <g class="fashion-slider-svg-wrap">
+          <g class="fashion-slider-svg-circle-wrap">
+            <circle cx="42" cy="42" r="40"></circle>
+          </g>
+          <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
 
 <script>
   let resizeTimeout;
-  
+
   window.addEventListener('resize', () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateSliderImage, 100); // Debounce resize event (adjust 100ms if needed)
   });
-  
+
   window.addEventListener('load', updateSliderImage);
 
   function updateSliderImage() {
