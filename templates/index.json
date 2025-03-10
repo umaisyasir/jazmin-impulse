@@ -210,16 +210,14 @@
         "bottom_padding": true
       }
     },
-    "featured_collection_ndhJMQ": {
-      "type": "featured-collection",
+    "custom_featured_collection_FHcDzb": {
+      "type": "custom-featured_collection",
       "settings": {
-        "title": "Featured collection",
-        "home_featured_products": "shahkaar-luxury-lawn",
-        "per_row": 4,
-        "rows": 1,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "divider": false
+        "collection": "shahkaar-luxury-lawn",
+        "section_title": "Featured Collection",
+        "num_products": 4,
+        "autoplay": true,
+        "autoplay_delay": 5000
       }
     },
     "slideshow_YGwaYW": {
@@ -276,7 +274,7 @@
     "slideshow",
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
-    "featured_collection_ndhJMQ",
+    "custom_featured_collection_FHcDzb",
     "slideshow_YGwaYW",
     "featured-collection"
   ]
