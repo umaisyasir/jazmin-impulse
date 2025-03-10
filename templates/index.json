@@ -269,6 +269,42 @@
         "view_all": true,
         "divider": false
       }
+    },
+    "hotspots_nfXXPU": {
+      "type": "hotspots",
+      "blocks": {
+        "product_ycrRdf": {
+          "type": "product",
+          "settings": {
+            "featured_product": "digital-printed-lawn-use-9155",
+            "vertical": 26,
+            "horizontal": 27
+          }
+        },
+        "product_aNndDr": {
+          "type": "product",
+          "settings": {
+            "featured_product": "digital-printed-lawn-use-9154",
+            "vertical": 35,
+            "horizontal": 65
+          }
+        }
+      },
+      "block_order": [
+        "product_ycrRdf",
+        "product_aNndDr"
+      ],
+      "settings": {
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "heading_position": "center",
+        "image": "shopify://shop_images/STL.jpg",
+        "indent_image": false,
+        "image_position": "left",
+        "hotspot_style": "bag",
+        "hotspot_color": "#000000",
+        "lazyload_images": true
+      }
     }
   },
   "order": [
@@ -277,6 +313,7 @@
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
-    "featured-collection"
+    "featured-collection",
+    "hotspots_nfXXPU"
   ]
 }
