@@ -170,7 +170,6 @@
       "blocks": {
         "title_JxFYDb": {
           "type": "title",
-          "disabled": true,
           "settings": {
             "title": "Keep me updated",
             "heading_size": "h0"
