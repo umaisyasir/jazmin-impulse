@@ -98,7 +98,7 @@
           "type": "newsletter",
           "settings": {
             "show_footer_title": true,
-            "title": "",
+            "title": "Social",
             "text": "",
             "container_width": 100
           }
