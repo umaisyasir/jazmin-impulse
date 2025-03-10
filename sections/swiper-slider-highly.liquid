@@ -3,61 +3,56 @@
 <script type="module" crossorigin src="https://fashion-slider.uiinitiative.com/assets/index.ff8f4572.js"></script>
 
 <div class="fashion-slider">
-  <div class="swiper">
-    <div class="swiper-wrapper" style="height: calc(100vh - 42px);">
-      {% for block in section.blocks %}
-      <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
-        <!-- slide title wrap -->
-        <div class="fashion-slider-title" data-swiper-parallax="-130%">
-          <!-- slide title text -->
-          <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
+      <div class="swiper">
+        <div class="swiper-wrapper" style="height: calc(100vh - 42px);">
+          {% for block in section.blocks %}
+          <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
+            <!-- slide title wrap -->
+            <div class="fashion-slider-title" data-swiper-parallax="-130%">
+              <!-- slide title text -->
+              <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
+            </div>
+            <!-- slide image wrap -->
+            <div class="fashion-slider-scale">
+              <!-- slide image -->
+              <img
+                src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
+              />
+            </div>
+          </div>
+          {% endfor %}
         </div>
-        <!-- slide image wrap -->
-        <div class="fashion-slider-scale">
-          <!-- slide image for desktop -->
-          <img
-            src="{{ block.settings.image | img_url: 'master' }}" class="desktop_image"
-          />
-          <!-- slide image for mobile -->
-          <img
-            src="{{ block.settings.mobile_image | img_url: 'master' }}" class="mobile_image"
-            style="display: none;"
-          />
+        <div class="fashion-slider-button-prev fashion-slider-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+            <g class="fashion-slider-svg-wrap">
+              <g class="fashion-slider-svg-circle-wrap">
+                <circle cx="42" cy="42" r="40"></circle>
+              </g>
+              <path
+                class="fashion-slider-svg-arrow"
+                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
+              ></path>
+              <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+            </g>
+          </svg>
+        </div>
+
+        <div class="fashion-slider-button-next fashion-slider-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+            <g class="fashion-slider-svg-wrap">
+              <g class="fashion-slider-svg-circle-wrap">
+                <circle cx="42" cy="42" r="40"></circle>
+              </g>
+              <path
+                class="fashion-slider-svg-arrow"
+                d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
+              ></path>
+              <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+            </g>
+          </svg>
         </div>
       </div>
-      {% endfor %}
     </div>
-    <div class="fashion-slider-button-prev fashion-slider-button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
-        <g class="fashion-slider-svg-wrap">
-          <g class="fashion-slider-svg-circle-wrap">
-            <circle cx="42" cy="42" r="40"></circle>
-          </g>
-          <path
-            class="fashion-slider-svg-arrow"
-            d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
-          ></path>
-          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
-        </g>
-      </svg>
-    </div>
-
-    <div class="fashion-slider-button-next fashion-slider-button">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="http://www.w3.org/2000/svg" 160 90>
-        <g class="fashion-slider-svg-wrap">
-          <g class="fashion-slider-svg-circle-wrap">
-            <circle cx="42" cy="42" r="40"></circle>
-          </g>
-          <path
-            class="fashion-slider-svg-arrow"
-            d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"
-          ></path>
-          <path class="fashion-slider-svg-line" d="M80,0H0"></path>
-        </g>
-      </svg>
-    </div>
-  </div>
-</div>
 
 {% schema %}
 {
@@ -77,11 +72,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Select Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Select Mobile Image"
         }
       ]
     }
@@ -93,23 +83,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-  // To toggle mobile and desktop images based on screen width
-  window.addEventListener('resize', function() {
-    const width = window.innerWidth;
-    const desktopImages = document.querySelectorAll('.desktop_image');
-    const mobileImages = document.querySelectorAll('.mobile_image');
-
-    if (width <= 768) {
-      mobileImages.forEach(img => img.style.display = 'block');
-      desktopImages.forEach(img => img.style.display = 'none');
-    } else {
-      mobileImages.forEach(img => img.style.display = 'none');
-      desktopImages.forEach(img => img.style.display = 'block');
-    }
-  });
-
-  // Initial load behavior
-  window.dispatchEvent(new Event('resize'));
-</script>
