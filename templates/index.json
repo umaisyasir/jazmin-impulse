@@ -184,12 +184,14 @@
         },
         "text_6i6gAW": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>A short sentence describing what someone will receive by subscribing.</p>"
           }
         },
         "form_RBb7j4": {
           "type": "form",
+          "disabled": true,
           "settings": {}
         }
       },
