@@ -210,6 +210,16 @@
         "bottom_padding": true
       }
     },
+    "custom_featuredcollection_Ngwp7P": {
+      "type": "custom_featuredcollection",
+      "settings": {
+        "collection": "shahkaar-luxury-lawn",
+        "section_title": "New Arrivals",
+        "num_products": 4,
+        "autoplay": true,
+        "autoplay_delay": 5000
+      }
+    },
     "slideshow_YGwaYW": {
       "type": "slideshow",
       "blocks": {
@@ -264,6 +274,7 @@
     "slideshow",
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
+    "custom_featuredcollection_Ngwp7P",
     "slideshow_YGwaYW",
     "featured-collection"
   ]
