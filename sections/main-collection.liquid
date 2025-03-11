@@ -19,11 +19,7 @@
   <div id="CollectionAjaxContent">
     <div class="page-width">
       <div class="grid">
-        {%- if collection.metafields.custom.notes.value != blank -%}
-          <div class="rte collection__description">
-            {{ collection.metafields.custom.notes | metafield_tag }}
-          </div>
-        {%- elsif collection.description != blank and current_filter_size == 0 -%}
+        {%- if collection.description != blank and current_filter_size == 0 -%}
           <div class="rte collection__description">
             {{ collection.description }}
           </div>
@@ -88,6 +84,10 @@
     </div>
   </div>
 </div>
+
+<div class="rte collection__description">
+            {{ collection.metafields.custom.notes | metafield_tag }}
+          </div>
 
 {%- if section.settings.enable_sidebar == false or section.settings.filter_style == 'drawer' or collection.filters.size == 0 -%}
 {% comment %}
