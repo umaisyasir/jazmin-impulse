@@ -24,15 +24,6 @@
                     {{ collection.description }}
                   </div>
                 {%- endif -%} -->
-        {%- if collection.metafields.custom.notes.value != blank -%}
-          <div class="rte collection__description">
-            {{ collection.metafields.custom.notes | metafield_tag }}
-          </div>
-        {%- elsif collection.description != blank and current_filter_size == 0 -%}
-          <div class="rte collection__description">
-            {{ collection.description }}
-          </div>
-        {%- endif -%}
         <div class="grid__item medium-up--one-fifth grid__item--sidebar">
           {%- render 'collection-grid-filters',
             collection: collection,
