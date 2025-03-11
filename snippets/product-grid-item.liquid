@@ -90,7 +90,7 @@ Arguments
 {%- elsif custom_badges != blank -%}
   {%- for custom_badge in custom_badges limit: 3 -%}
     {%- if custom_badge == "New In" -%}
-      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-new-in"
+      <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }} hidden" id="badge-new-in"
             data-expiration-date="{{ expiration_time | date: '%Y-%m-%d' }}">
         {{ custom_badge }}
       </span>
