@@ -89,7 +89,7 @@ Arguments
   </span>
 {%- elsif custom_badges != blank -%}
   {%- for custom_badge in custom_badges limit: 3 -%}
-    {%- if custom_badge == "New In" -%}
+    {%- if custom_badge == "New In" and collection.handle != "new-arrivals" -%}
       <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-{{ custom_badge | handle }}"
             data-expiration-time="{{ expiration_time | date: '%s' }}">
         {{ custom_badge }}
@@ -117,7 +117,6 @@ Arguments
     }
   });
 </script>
-
 
 <style>
   .badge--custom {
