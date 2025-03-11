@@ -91,8 +91,36 @@
         </div>
       </div>
       <div class="rte collection__description" style="text-align: center;">
+        <div id="collection-description">
           {{ collection.metafields.custom.notes | metafield_tag }}
+        </div>
+        <button id="toggleButton" onclick="toggleReadMore()">Read More</button>
       </div>
+      <style>
+        #collection-description {
+          max-height: 100px; /* Adjust the height as per your requirement */
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
+        }
+      
+        #collection-description.show-more {
+          max-height: none; /* Show the full content when toggled */
+        }
+      </style>
+      <script>
+        function toggleReadMore() {
+          var content = document.getElementById("collection-description");
+          var button = document.getElementById("toggleButton");
+      
+          if (content.classList.contains("show-more")) {
+            content.classList.remove("show-more");
+            button.textContent = "Read More";
+          } else {
+            content.classList.add("show-more");
+            button.textContent = "Show Less";
+          }
+        }
+      </script>
     </div>
   </div>
 </div>
