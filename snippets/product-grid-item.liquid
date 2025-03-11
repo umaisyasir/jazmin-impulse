@@ -91,7 +91,7 @@ Arguments
   {%- for custom_badge in custom_badges limit: 3 -%}
     {%- if custom_badge == "New In" -%}
       <span class="badge badge--custom badge--{{ custom_badge | handle }} badge--position-{{ forloop.index }}" id="badge-new-in"
-            data-expiration-time="{{ expiration_time | date: '%s' }}">
+            data-expiration-date="{{ expiration_date | date: '%Y-%m-%d' }}">
         {{ custom_badge }}
       </span>
     {%- else -%}
@@ -107,14 +107,19 @@ Arguments
     var newInBadge = document.getElementById('badge-new-in');
     
     if (newInBadge) {
-      var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
-      var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+      var expirationDateStr = newInBadge.getAttribute('data-expiration-date');
+      
+      if (expirationDateStr) {
+        var expirationDate = new Date(expirationDateStr);
+        var currentDate = new Date(); // Get the current date
 
-      // Check if expiration time is valid
-      if (!isNaN(expirationTime)) {
-        // Hide the "New In" badge if the current time exceeds expiration time
-        if (currentTime > expirationTime) {
-          newInBadge.classList.add('hidden'); // Add a hidden class to hide the badge
+        // Reset time to 00:00:00 for both dates to ensure only date comparison
+        expirationDate.setHours(0, 0, 0, 0);
+        currentDate.setHours(0, 0, 0, 0);
+
+        // Hide the "New In" badge if the current date exceeds the expiration date
+        if (currentDate > expirationDate) {
+          newInBadge.classList.add('hidden');
         }
       }
     }
