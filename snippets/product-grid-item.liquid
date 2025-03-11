@@ -112,27 +112,22 @@ Arguments
       // Check if the expiration date is set
       if (expirationDateStr) {
         // Parse the expiration date from the data attribute
-        var expirationDate = new Date(expirationDateStr + 'T00:00:00'); // 'T00:00:00' to ensure date is parsed as midnight
+        var expirationDate = new Date(expirationDateStr + 'T00:00:00'); // Ensure correct date parsing
         var currentDate = new Date(); // Get today's date
 
-        // Set both dates to midnight for proper date-only comparison
+        // Set both dates to midnight for date-only comparison
         expirationDate.setHours(0, 0, 0, 0);
         currentDate.setHours(0, 0, 0, 0);
 
         // Hide the badge if the expiration date is earlier than today
         if (expirationDate < currentDate) {
-          newInBadge.classList.add('hidden'); // Add the 'hidden' class to hide the badge
+          // Add inline style to hide the badge
+          newInBadge.style.display = 'none';
         }
       }
     }
   });
 </script>
-
-<style>
-  .hidden {
-    display: none !important;
-  }
-</style>
       
 <style>
   .badge--custom {
