@@ -90,10 +90,10 @@
           {%- endpaginate -%}
         </div>
       </div>
+      <div class="rte collection__description">
+          {{ collection.metafields.custom.notes | metafield_tag }}
+      </div>
     </div>
-  </div>
-  <div class="rte collection__description">
-      {{ collection.metafields.custom.notes | metafield_tag }}
   </div>
 </div>
 
