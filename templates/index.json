@@ -110,6 +110,9 @@
         "image_bFzaq9",
         "image_49NFJC"
       ],
+      "custom_css": [
+        "@media screen and (min-width: 769px) {.slideshow-wrapper {display: none; }}"
+      ],
       "settings": {
         "section_height": "100vh",
         "mobile_height": "100vh",
