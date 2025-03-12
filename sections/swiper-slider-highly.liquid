@@ -200,36 +200,36 @@ document.addEventListener("DOMContentLoaded", function() {
   //   </svg>
   // `;
 
-  // // Append SVG to the Next button
-  // const nextButton = document.querySelector('.fashion-slider-button-next');
-  // if (nextButton) {
-  //   nextButton.innerHTML += nextSvg;
-  // }
+  // Append SVG to the Next button
+  const nextButton = document.querySelector('.fashion-slider-button-next');
+  if (nextButton) {
+    nextButton.innerHTML += nextSvg;
+  }
 
-  // // Append SVG to the Prev button
-  // const prevButton = document.querySelector('.fashion-slider-button-prev');
-  // if (prevButton) {
-  //   prevButton.innerHTML += prevSvg;
-  // }
+  // Append SVG to the Prev button
+  const prevButton = document.querySelector('.fashion-slider-button-prev');
+  if (prevButton) {
+    prevButton.innerHTML += prevSvg;
+  }
 
-  // // Function to trigger the next slide
-  // function nextSlide() {
-  //   nextButton.click(); // Simulate a click on the next button
-  // }
+  // Function to trigger the next slide
+  function nextSlide() {
+    nextButton.click(); // Simulate a click on the next button
+  }
 
-  // // Function to trigger the previous slide
-  // function prevSlide() {
-  //   prevButton.click(); // Simulate a click on the prev button
-  // }
+  // Function to trigger the previous slide
+  function prevSlide() {
+    prevButton.click(); // Simulate a click on the prev button
+  }
 
-  // // Listen for keydown events
-  // document.addEventListener('keydown', function(event) {
-  //   if (event.key === 'ArrowRight') {
-  //     nextSlide();
-  //   } else if (event.key === 'ArrowLeft') {
-  //     prevSlide();
-  //   }
-  // });
+  // Listen for keydown events
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      nextSlide();
+    } else if (event.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  });
 
   // Autoplay functionality
   const autoplayInterval = 8000; // Set autoplay interval (in milliseconds)
