@@ -380,7 +380,7 @@
         "product_aNndDr"
       ],
       "custom_css": [
-        ".hotspots-wrapper {max-width: 1200px;}"
+        ".hotspots-wrapper {max-width: 1200px; justify-content: center;}"
       ],
       "settings": {
         "title": "Shop the look",
