@@ -174,6 +174,8 @@
   }
 
 document.addEventListener("DOMContentLoaded", function() {
+  let autoplayDirection = 'next'; // Track the autoplay direction ('next' or 'prev')
+
   // Function to trigger the next slide
   function nextSlide() {
     const nextButton = document.querySelector('.fashion-slider-button-next');
@@ -182,9 +184,38 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Autoplay functionality
+  // Function to trigger the previous slide
+  function prevSlide() {
+    const prevButton = document.querySelector('.fashion-slider-button-prev');
+    if (prevButton) {
+      prevButton.click(); // Simulate a click on the previous button
+    }
+  }
+
+  // Autoplay functionality with alternating directions
   const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
-  let autoplay = setInterval(nextSlide, autoplayInterval);
+  let autoplay = setInterval(function() {
+    const slider = document.querySelector('.fashion-slider');
+    const totalSlides = slider ? slider.querySelectorAll('.slide').length : 0;
+    const activeSlide = slider ? slider.querySelector('.slide.active') : null;
+    const activeIndex = activeSlide ? Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide) : 0;
+
+    if (autoplayDirection === 'next') {
+      if (activeIndex < totalSlides - 1) {
+        nextSlide();
+      } else {
+        autoplayDirection = 'prev'; // Switch direction to previous after reaching the last slide
+        prevSlide();
+      }
+    } else {
+      if (activeIndex > 0) {
+        prevSlide();
+      } else {
+        autoplayDirection = 'next'; // Switch direction to next after reaching the first slide
+        nextSlide();
+      }
+    }
+  }, autoplayInterval);
 
   // Pause autoplay on mouse hover
   const sliderContainer = document.querySelector('.fashion-slider');
@@ -194,7 +225,26 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     sliderContainer.addEventListener('mouseout', function() {
-      autoplay = setInterval(nextSlide, autoplayInterval); // Restart autoplay when mouse leaves the slider
+      autoplay = setInterval(function() {
+        const activeSlide = slider.querySelector('.slide.active');
+        const activeIndex = Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide);
+
+        if (autoplayDirection === 'next') {
+          if (activeIndex < totalSlides - 1) {
+            nextSlide();
+          } else {
+            autoplayDirection = 'prev';
+            prevSlide();
+          }
+        } else {
+          if (activeIndex > 0) {
+            prevSlide();
+          } else {
+            autoplayDirection = 'next';
+            nextSlide();
+          }
+        }
+      }, autoplayInterval); // Restart autoplay when mouse leaves the slider
     });
   }
 });
