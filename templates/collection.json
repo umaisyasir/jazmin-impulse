@@ -96,6 +96,7 @@
         "product_grid"
       ],
       "settings": {
+        "enable_infinite_scroll": true,
         "enable_sidebar": true,
         "collapsed": false,
         "filter_style": "drawer",
