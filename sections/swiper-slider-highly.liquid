@@ -176,21 +176,21 @@
 document.addEventListener('DOMContentLoaded', function() {
   var swiper = new Swiper('.swiper', {
     autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
+      delay: 3000, // Slide will change every 3 seconds
+      disableOnInteraction: false, // Keep autoplay running after user interaction
     },
-    loop: true,
-    speed: 800,
-    parallax: true,
-    slidesPerView: 1,
-    spaceBetween: 0,
+    loop: true, // Makes the slider loop
+    speed: 800, // Transition speed between slides
+    parallax: true, // Enables parallax effect for elements
+    slidesPerView: 1, // Adjust to the number of slides you want visible
+    spaceBetween: 0, // Space between slides
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.fashion-slider-button-next',
+      prevEl: '.fashion-slider-button-prev',
     },
     pagination: {
       el: '.swiper-pagination',
-      clickable: true,
+      clickable: true, // Allows clicking on the pagination bullets
     },
   });
 });
