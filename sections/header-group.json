@@ -17,24 +17,24 @@
         "announcement-0": {
           "type": "announcement",
           "settings": {
-            "text": "",
-            "link_text": "Stitched Orders Placed Till 7th March Will Be Delivered Before Eid.",
+            "text": "Stitched Orders Placed Till 7th March Will Be Delivered Before Eid.",
+            "link_text": "",
             "link": ""
           }
         },
         "announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "",
-            "link_text": "Free Shipping Nationwide",
+            "text": "Free Shipping Nationwide",
+            "link_text": "",
             "link": ""
           }
         },
         "announcement_aPyy6a": {
           "type": "announcement",
           "settings": {
-            "text": "",
-            "link_text": "For delivery outside Pakisan visit: https://jazminpk.com",
+            "text": "For delivery outside Pakisan visit: https://jazminpk.com",
+            "link_text": "",
             "link": "https://jazminpk.com"
           }
         }
