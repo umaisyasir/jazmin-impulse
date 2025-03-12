@@ -9,6 +9,41 @@
  */
 {
   "sections": {
+    "swiper_slider_highly_i9KN4C": {
+      "type": "swiper-slider-highly",
+      "blocks": {
+        "image_CLYR3m": {
+          "type": "image",
+          "settings": {
+            "image_content": "SHAHKAAR LUXURY LAWN",
+            "image": "shopify://shop_images/wb-4_61cd3aa1-d279-49c9-bdfa-80c44fa60def.jpg",
+            "link": "shopify://collections/shahkaar-luxury-lawn"
+          }
+        },
+        "image_zB87cq": {
+          "type": "image",
+          "settings": {
+            "image_content": "UNSTITCHED SUMMER",
+            "image": "shopify://shop_images/wb_babc8079-9d6b-42dc-aaf6-5a20f9eca31d.jpg",
+            "link": "shopify://collections/summer"
+          }
+        },
+        "image_qxhV6A": {
+          "type": "image",
+          "settings": {
+            "image_content": "READY TO WEAR",
+            "image": "shopify://shop_images/wb1_e5237c95-29dc-48f2-b9de-425fa4dd0142.jpg",
+            "link": "shopify://collections/ready-to-wear"
+          }
+        }
+      },
+      "block_order": [
+        "image_CLYR3m",
+        "image_zB87cq",
+        "image_qxhV6A"
+      ],
+      "settings": {}
+    },
     "slideshow_p3Nm8p": {
       "type": "slideshow",
       "blocks": {
@@ -52,49 +87,14 @@
         "image_UYqjgh"
       ],
       "settings": {
-        "section_height": "650px",
+        "section_height": "100vh",
         "mobile_height": "auto",
         "parallax": true,
-        "style": "bars",
+        "style": "arrows",
         "autoplay": true,
         "autoplay_speed": 5,
         "lazyload_images": true
       }
-    },
-    "swiper_slider_highly_i9KN4C": {
-      "type": "swiper-slider-highly",
-      "blocks": {
-        "image_CLYR3m": {
-          "type": "image",
-          "settings": {
-            "image_content": "SHAHKAAR LUXURY LAWN",
-            "image": "shopify://shop_images/wb-4_61cd3aa1-d279-49c9-bdfa-80c44fa60def.jpg",
-            "link": "shopify://collections/shahkaar-luxury-lawn"
-          }
-        },
-        "image_zB87cq": {
-          "type": "image",
-          "settings": {
-            "image_content": "UNSTITCHED SUMMER",
-            "image": "shopify://shop_images/wb_babc8079-9d6b-42dc-aaf6-5a20f9eca31d.jpg",
-            "link": "shopify://collections/summer"
-          }
-        },
-        "image_qxhV6A": {
-          "type": "image",
-          "settings": {
-            "image_content": "READY TO WEAR",
-            "image": "shopify://shop_images/wb1_e5237c95-29dc-48f2-b9de-425fa4dd0142.jpg",
-            "link": "shopify://collections/ready-to-wear"
-          }
-        }
-      },
-      "block_order": [
-        "image_CLYR3m",
-        "image_zB87cq",
-        "image_qxhV6A"
-      ],
-      "settings": {}
     },
     "custom_circleslider_EHADMi": {
       "type": "custom_circleslider",
