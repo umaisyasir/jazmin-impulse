@@ -103,19 +103,17 @@ Arguments
 {%- endif -%}
 
 <script>
-   document.getElementById("buy-it-now").addEventListener("click", function () {
-      const currentProduct = document.querySelector('.product'); // Get the current product container
-      const submitButton = currentProduct.querySelector('.button[type="submit"]'); // Find the submit button for the current product
-              
-      if (submitButton) {
-      // Click the submit button for the current product to add it to the cart
-      submitButton.click();
-                  
-      // Redirect to checkout after 1 second
-      setTimeout(() => {
-            window.location.href = "/checkout"; // Redirect to checkout page
-      }, 1000);
+document.addEventListener("DOMContentLoaded", function() {
+    var newInBadge = document.getElementById('badge-new-in');
+          
+    if (newInBadge) {
+    var expirationTime = parseInt(newInBadge.getAttribute('data-expiration-time'), 10);
+    var currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
+        
+    if (currentTime > expirationTime) {
+      newInBadge.style.display = 'none';
     }
+  }
 });
 </script>
       
