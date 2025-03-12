@@ -182,28 +182,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Function to reset to the first slide
-  function goToFirstSlide() {
-    const firstButton = document.querySelector('.fashion-slider .swiper-pagination-bullet:first-child');
-    if (firstButton) {
-      firstButton.click(); // Simulate a click on the first slide's pagination button
-    }
-  }
-
   // Autoplay functionality
-  const autoplayInterval = 3000; // Set autoplay interval (in milliseconds)
-  let autoplay = setInterval(function() {
-    const slider = document.querySelector('.fashion-slider');
-    const totalSlides = slider ? slider.querySelectorAll('.slide').length : 0;
-    const activeSlide = slider ? slider.querySelector('.slide.active') : null;
-    const activeIndex = activeSlide ? Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide) : 0;
+  const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
+  let autoplay = setInterval(nextSlide, autoplayInterval);
 
-    if (activeIndex < totalSlides - 1) {
-      nextSlide(); // Go to the next slide
-    } else {
-      goToFirstSlide(); // Reset to the first slide when the last slide is reached
-    }
-  }, autoplayInterval);
+  // Pause autoplay on mouse hover
+  const sliderContainer = document.querySelector('.fashion-slider');
+  if (sliderContainer) {
+    sliderContainer.addEventListener('mouseover', function() {
+      clearInterval(autoplay); // Stop autoplay when mouse is over the slider
+    });
+
+    sliderContainer.addEventListener('mouseout', function() {
+      autoplay = setInterval(nextSlide, autoplayInterval); // Restart autoplay when mouse leaves the slider
+    });
+  }
 });
 </script>
 
