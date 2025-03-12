@@ -17,23 +17,32 @@
         "announcement-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free shipping",
-            "link_text": "On all orders over $100",
+            "text": "",
+            "link_text": "Stitched Orders Placed Till 7th March Will Be Delivered Before Eid.",
             "link": ""
           }
         },
         "announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "Hassle-free returns",
-            "link_text": "30-day postage paid returns",
+            "text": "",
+            "link_text": "Free Shipping Nationwide",
             "link": ""
+          }
+        },
+        "announcement_aPyy6a": {
+          "type": "announcement",
+          "settings": {
+            "text": "",
+            "link_text": "For delivery outside Pakisan visit: https://jazminpk.com",
+            "link": "https://jazminpk.com"
           }
         }
       },
       "block_order": [
         "announcement-0",
-        "announcement-1"
+        "announcement-1",
+        "announcement_aPyy6a"
       ],
       "settings": {
         "announcement_compact": true
