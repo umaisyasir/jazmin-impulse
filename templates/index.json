@@ -389,8 +389,8 @@
         "image": "shopify://shop_images/STL.jpg",
         "indent_image": false,
         "image_position": "left",
-        "hotspot_style": "bag",
-        "hotspot_color": "#000000",
+        "hotspot_style": "dot",
+        "hotspot_color": "#d40000",
         "lazyload_images": true
       }
     }
