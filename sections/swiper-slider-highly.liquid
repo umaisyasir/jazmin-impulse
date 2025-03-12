@@ -173,26 +173,79 @@
     });
   }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var swiper = new Swiper('.swiper-slide', {
-    autoplay: {
-      delay: 3000, // Slide will change every 3 seconds
-      disableOnInteraction: false, // Keep autoplay running after user interaction
-    },
-    loop: true, // Makes the slider loop
-    speed: 800, // Transition speed between slides
-    parallax: true, // Enables parallax effect for elements
-    slidesPerView: 1, // Adjust to the number of slides you want visible
-    spaceBetween: 0, // Space between slides
-    navigation: {
-      nextEl: '.fashion-slider-button-next',
-      prevEl: '.fashion-slider-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true, // Allows clicking on the pagination bullets
-    },
+document.addEventListener("DOMContentLoaded", function() {
+  // Create SVG for Next button
+  const nextSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+      <g class="fashion-slider-svg-wrap">
+        <g class="fashion-slider-svg-circle-wrap">
+          <circle cx="42" cy="42" r="40"></circle>
+        </g>
+        <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+        <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+      </g>
+    </svg>
+  `;
+
+  // Create SVG for Prev button
+  const prevSvg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+      <g class="fashion-slider-svg-wrap">
+        <g class="fashion-slider-svg-circle-wrap">
+          <circle cx="42" cy="42" r="40"></circle>
+        </g>
+        <path class="fashion-slider-svg-arrow" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+        <path class="fashion-slider-svg-line" d="M80,0H0"></path>
+      </g>
+    </svg>
+  `;
+
+  // Append SVG to the Next button
+  const nextButton = document.querySelector('.fashion-slider-button-next');
+  if (nextButton) {
+    nextButton.innerHTML += nextSvg;
+  }
+
+  // Append SVG to the Prev button
+  const prevButton = document.querySelector('.fashion-slider-button-prev');
+  if (prevButton) {
+    prevButton.innerHTML += prevSvg;
+  }
+
+  // Function to trigger the next slide
+  function nextSlide() {
+    nextButton.click(); // Simulate a click on the next button
+  }
+
+  // Function to trigger the previous slide
+  function prevSlide() {
+    prevButton.click(); // Simulate a click on the prev button
+  }
+
+  // Listen for keydown events
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      nextSlide();
+    } else if (event.key === 'ArrowLeft') {
+      prevSlide();
+    }
   });
+
+  // Autoplay functionality
+  const autoplayInterval = 3000; // Set autoplay interval (in milliseconds)
+  let autoplay = setInterval(nextSlide, autoplayInterval);
+
+  // Pause autoplay on mouse hover
+  const sliderContainer = document.querySelector('.fashion-slider');
+  if (sliderContainer) {
+    sliderContainer.addEventListener('mouseover', function() {
+      clearInterval(autoplay); // Stop autoplay when mouse is over the slider
+    });
+
+    sliderContainer.addEventListener('mouseout', function() {
+      autoplay = setInterval(nextSlide, autoplayInterval); // Restart autoplay when mouse leaves the slider
+    });
+  }
 });
 </script>
 
