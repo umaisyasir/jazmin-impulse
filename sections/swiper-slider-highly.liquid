@@ -132,7 +132,6 @@
           <img
             src="{{ block.settings.image | img_url: 'master' }}" 
             class="desktop_image"
-            data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" 
             alt="Slider Image"
           />
           </a>
@@ -167,50 +166,6 @@
   </div>
 </div>
 
-<script>
-let resizeTimeout;
-
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(updateSliderImage, 100); // Debounced resize event
-});
-
-window.addEventListener('load', updateSliderImage);
-
-function updateSliderImage() {
-  const isMobile = window.innerWidth <= 768;
-  document.querySelectorAll('.swiper-slide img.desktop_image').forEach(img => {
-    const mobileImage = img.getAttribute('data-mobile-image');
-    img.src = isMobile && !img.src.includes(mobileImage) ? mobileImage : img.src.replace('mobile', 'master');
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.querySelector('.fashion-slider');
-  const nextButton = document.querySelector('.fashion-slider-button-next');
-  const firstButton = document.querySelector('.fashion-slider-button-first');
-  const swiperInstance = slider ? slider.swiper : null;
-  const autoplayInterval = 5000;
-  let autoplay;
-
-  function nextSlide() {
-    const activeSlide = document.querySelector('.fashion-slider .swiper-slide-active');
-    const lastSlide = document.querySelector('.fashion-slider .swiper-slide:last-child');
-    activeSlide === lastSlide ? goToFirstSlide() : nextButton?.click();
-  }
-
-  function goToFirstSlide() {
-    firstButton?.click() || swiperInstance?.slideToLoop(0);
-  }
-
-  if (slider) {
-    autoplay = setInterval(nextSlide, autoplayInterval);
-    slider.addEventListener('mouseover', () => clearInterval(autoplay));
-    slider.addEventListener('mouseout', () => autoplay = setInterval(nextSlide, autoplayInterval));
-  }
-});
-</script>
-
 {% schema %}
 {
   "name": "Custom Slider",
@@ -229,11 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "type": "image_picker",
           "id": "image",
           "label": "Select Desktop Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Select Mobile Image"
         },
         {
           "type": "url",
