@@ -17,7 +17,8 @@
           "settings": {
             "image_content": "Shahkaar Luxury Lawn",
             "image": "shopify://shop_images/wb1_4da1629a-01c9-479c-aba0-c322eaf6960c.jpg",
-            "mobile_image": "shopify://shop_images/MOB-BANNER-1.jpg"
+            "mobile_image": "shopify://shop_images/MOB-BANNER-1.jpg",
+            "link": "shopify://collections/shahkaar-luxury-lawn"
           }
         },
         "image_CLYR3m": {
@@ -25,7 +26,8 @@
           "settings": {
             "image_content": "Lawn",
             "image": "shopify://shop_images/wb-4_61cd3aa1-d279-49c9-bdfa-80c44fa60def.jpg",
-            "mobile_image": "shopify://shop_images/0073_2_a98cfaf8-9af8-48fe-bce0-e35a8458f8f7.png"
+            "mobile_image": "shopify://shop_images/0073_2_a98cfaf8-9af8-48fe-bce0-e35a8458f8f7.png",
+            "link": "shopify://collections/new-arrivals"
           }
         }
       },
