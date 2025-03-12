@@ -20,9 +20,9 @@
   <div class="swiper">
     <div class="swiper-wrapper slider_height">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.link }}">
       <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
         <!-- slide title wrap -->
+        <a href="{{ block.settings.link }}">
         <div class="fashion-slider-title" data-swiper-parallax="-130%">
           <!-- slide title text -->
           <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
@@ -37,8 +37,8 @@
             alt="Slider Image"
           />
         </div>
-      </div>
         </a>
+        </div>
       {% endfor %}
     </div>
 
