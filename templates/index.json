@@ -79,6 +79,8 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -96,6 +98,8 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -108,8 +112,8 @@
       ],
       "settings": {
         "section_height": "100vh",
-        "mobile_height": "auto",
-        "parallax": true,
+        "mobile_height": "100vh",
+        "parallax": false,
         "style": "arrows",
         "autoplay": true,
         "autoplay_speed": 5,
