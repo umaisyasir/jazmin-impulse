@@ -17,7 +17,6 @@
           "settings": {
             "image_content": "SHAHKAAR LUXURY LAWN",
             "image": "shopify://shop_images/wb-4_61cd3aa1-d279-49c9-bdfa-80c44fa60def.jpg",
-            "mobile_image": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
             "link": "shopify://collections/shahkaar-luxury-lawn"
           }
         },
@@ -26,7 +25,6 @@
           "settings": {
             "image_content": "UNSTITCHED SUMMER",
             "image": "shopify://shop_images/wb_babc8079-9d6b-42dc-aaf6-5a20f9eca31d.jpg",
-            "mobile_image": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
             "link": "shopify://collections/summer"
           }
         },
@@ -35,7 +33,6 @@
           "settings": {
             "image_content": "READY TO WEAR",
             "image": "shopify://shop_images/wb1_e5237c95-29dc-48f2-b9de-425fa4dd0142.jpg",
-            "mobile_image": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
             "link": "shopify://collections/ready-to-wear"
           }
         }
@@ -46,80 +43,6 @@
         "image_qxhV6A"
       ],
       "settings": {}
-    },
-    "slideshow": {
-      "type": "slideshow",
-      "blocks": {
-        "image_JfUz3R": {
-          "type": "image",
-          "settings": {
-            "top_subheading": "",
-            "title": "Two line\ntitle slide.",
-            "title_size": 80,
-            "subheading": "And optional subtext",
-            "link": "",
-            "link_text": "Optional button",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "rgba(0,0,0,0)",
-            "text_align": "vertical-center horizontal-center",
-            "parallax_direction": "top",
-            "overlay_opacity": 0
-          }
-        },
-        "slideshow-0": {
-          "type": "image",
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 80,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#000000",
-            "text_align": "vertical-center horizontal-center",
-            "image": "shopify://shop_images/1920-1080_6570fd61-7b94-4373-81bc-0a8e72331f82.jpg",
-            "image_mobile": "shopify://shop_images/1200-2400_2736f6f4-e116-4976-ae2a-c2d66f667611.jpg",
-            "parallax_direction": "top",
-            "overlay_opacity": 0
-          }
-        },
-        "slideshow-1": {
-          "type": "image",
-          "settings": {
-            "top_subheading": "",
-            "title": "",
-            "title_size": 80,
-            "subheading": "",
-            "link": "",
-            "link_text": "",
-            "link_2": "",
-            "link_text_2": "",
-            "color_accent": "#000000",
-            "text_align": "vertical-bottom horizontal-left",
-            "image": "shopify://shop_images/1920-1080-2_c9bbd05b-04d1-43ca-aa0b-c87930cb3e14.jpg",
-            "image_mobile": "shopify://shop_images/1200-2400-2_be455ece-957c-4f67-9062-d4ef3f7012a6.jpg",
-            "parallax_direction": "top",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "image_JfUz3R",
-        "slideshow-0",
-        "slideshow-1"
-      ],
-      "settings": {
-        "section_height": "100vh",
-        "mobile_height": "100vh",
-        "parallax": false,
-        "style": "bars",
-        "autoplay": true,
-        "autoplay_speed": 7,
-        "lazyload_images": true
-      }
     },
     "custom_circleslider_EHADMi": {
       "type": "custom_circleslider",
@@ -395,7 +318,6 @@
   },
   "order": [
     "swiper_slider_highly_i9KN4C",
-    "slideshow",
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
