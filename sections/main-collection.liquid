@@ -70,8 +70,19 @@
                     mobile_flush_grid: block.settings.mobile_flush_grid,
                     quick_shop_enable: settings.quick_shop_enable
                   %}
-                  {%- if paginate.pages > 1 -%}
-                    {%- render 'pagination', paginate: paginate -%}
+                  {%- if paginate.next and section.settings.enable_infinite_scroll -%}
+                    <div class="infinite__scroll--button-wrap">
+                      <a
+                        id="ajaxcall"
+                        href="{{ paginate.next.url }}{{ anchor }}"
+                        class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
+                        aria-label="{{ 'general.pagination.next' | t }}"
+                        hidden
+                      ></a>
+                      <button id="loadmore" class="button button--primary">Loading More</button>
+                    </div>
+                  {% elsif paginate.pages > 1 %}
+                    {% render 'pagination', paginate: paginate, anchor: '' %}
                   {%- endif -%}
                 </div>
               {%- endcase -%}
@@ -147,6 +158,73 @@
   {% endif %}
   "name": {{ collection.title | json }}
 }
+</script>
+
+<script>
+
+        // Infinite scroll function
+        function infiniteScroll() {
+            const mainGrid = document.querySelector('#product-grid');
+            const infiniteScrollElement = document.querySelector('.infinite__scroll--button-wrap');
+            let isLoading = false;
+
+            if (infiniteScrollElement && mainGrid) {
+                const Ajaxbutton = infiniteScrollElement.querySelector("#ajaxcall");
+                let nextPageURL = Ajaxbutton.getAttribute('href');
+                let Loading_More = infiniteScrollElement.querySelector('#loadmore');
+
+                const loadMoreContent = () => {
+                    if (isLoading || !nextPageURL) return;
+
+                    isLoading = true;
+
+                    fetch(nextPageURL)
+                        .then((response) => {
+                            if (!response.ok) {
+                                var error = new Error(response.status);
+                                throw error;
+                            }
+                            return response.text();
+                        })
+                        .then((text) => {
+                            let parsedHTML = new DOMParser().parseFromString(text, 'text/html');
+                            let productGrid = parsedHTML.querySelector('#product-grid');
+                            let nextUrl = parsedHTML.querySelector('#ajaxcall');
+
+                            if (!nextUrl) {
+                                Loading_More.innerText = "No More Products";
+                                nextPageURL = null;
+                            } else {
+                                nextPageURL = nextUrl.href;
+                            }
+
+                            if (productGrid) {
+                                mainGrid.insertAdjacentHTML('beforeend', productGrid.innerHTML);
+                                initializeSwipers(); // Reinitialize Swipers for new content
+                            }
+                            isLoading = false;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching data:", error);
+                            isLoading = false;
+                        });
+                };
+
+                window.addEventListener('scroll', function () {
+                    const mainGridRect = mainGrid.getBoundingClientRect();
+                    const scrollHeight = document.documentElement.scrollHeight;
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    const triggerOffset = mainGridRect.height / 2;
+
+                    if (scrollTop + windowHeight >= mainGridRect.top + triggerOffset) {
+                        loadMoreContent();
+                    }
+                });
+            }
+        }
+
+        infiniteScroll();
 </script>
 
 {% schema %}
