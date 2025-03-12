@@ -51,32 +51,51 @@
           "type": "image",
           "settings": {
             "top_subheading": "",
-            "title": "Endless\npossibilities.",
+            "title": "",
             "title_size": 80,
-            "subheading": "Bring your brand to life",
+            "subheading": "",
             "link": "",
-            "link_text": "Optional button",
+            "link_text": "Shop Now",
             "link_2": "",
             "link_text_2": "",
-            "color_accent": "rgba(0,0,0,0)",
-            "text_align": "vertical-center horizontal-center",
+            "color_accent": "#000000",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
         },
-        "image_UYqjgh": {
+        "image_bFzaq9": {
           "type": "image",
           "settings": {
             "top_subheading": "",
-            "title": "Two line\ntitle slide.",
+            "title": "",
             "title_size": 80,
-            "subheading": "And big, beautiful imagery",
+            "subheading": "",
             "link": "",
-            "link_text": "Optional button",
+            "link_text": "Shop Now",
             "link_2": "",
             "link_text_2": "",
-            "color_accent": "rgba(0,0,0,0)",
-            "text_align": "vertical-center horizontal-center",
+            "color_accent": "#000000",
+            "text_align": "vertical-bottom horizontal-center",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "image_49NFJC": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 80,
+            "subheading": "",
+            "link": "",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#000000",
+            "text_align": "vertical-bottom horizontal-center",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -84,7 +103,8 @@
       },
       "block_order": [
         "image_gh3HWr",
-        "image_UYqjgh"
+        "image_bFzaq9",
+        "image_49NFJC"
       ],
       "settings": {
         "section_height": "100vh",
