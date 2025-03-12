@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Autoplay functionality
-  const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
+  const autoplayInterval = 3000; // Set autoplay interval (in milliseconds)
   let autoplay = setInterval(function() {
     const slider = document.querySelector('.fashion-slider');
     const totalSlides = slider ? slider.querySelectorAll('.slide').length : 0;
@@ -214,8 +214,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     sliderContainer.addEventListener('mouseout', function() {
       autoplay = setInterval(function() {
-        const activeSlide = slider.querySelector('.slide.active');
-        const activeIndex = Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide);
+        const slider = document.querySelector('.fashion-slider');
+        const totalSlides = slider ? slider.querySelectorAll('.slide').length : 0;
+        const activeSlide = slider ? slider.querySelector('.slide.active') : null;
+        const activeIndex = activeSlide ? Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide) : 0;
 
         if (activeIndex < totalSlides - 1) {
           nextSlide(); // Go to the next slide
