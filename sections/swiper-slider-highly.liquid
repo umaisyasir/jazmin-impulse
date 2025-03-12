@@ -174,8 +174,6 @@
   }
 
 document.addEventListener("DOMContentLoaded", function() {
-  let autoplayDirection = 'next'; // Track the autoplay direction ('next' or 'prev')
-
   // Function to trigger the next slide
   function nextSlide() {
     const nextButton = document.querySelector('.fashion-slider-button-next');
@@ -184,15 +182,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Function to trigger the previous slide
-  function prevSlide() {
-    const prevButton = document.querySelector('.fashion-slider-button-prev');
-    if (prevButton) {
-      prevButton.click(); // Simulate a click on the previous button
+  // Function to reset to the first slide
+  function goToFirstSlide() {
+    const firstButton = document.querySelector('.fashion-slider .swiper-pagination-bullet:first-child');
+    if (firstButton) {
+      firstButton.click(); // Simulate a click on the first slide's pagination button
     }
   }
 
-  // Autoplay functionality with alternating directions
+  // Autoplay functionality
   const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
   let autoplay = setInterval(function() {
     const slider = document.querySelector('.fashion-slider');
@@ -200,20 +198,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const activeSlide = slider ? slider.querySelector('.slide.active') : null;
     const activeIndex = activeSlide ? Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide) : 0;
 
-    if (autoplayDirection === 'next') {
-      if (activeIndex < totalSlides - 1) {
-        nextSlide();
-      } else {
-        autoplayDirection = 'prev'; // Switch direction to previous after reaching the last slide
-        prevSlide();
-      }
+    if (activeIndex < totalSlides - 1) {
+      nextSlide(); // Go to the next slide
     } else {
-      if (activeIndex > 0) {
-        prevSlide();
-      } else {
-        autoplayDirection = 'next'; // Switch direction to next after reaching the first slide
-        nextSlide();
-      }
+      goToFirstSlide(); // Reset to the first slide when the last slide is reached
     }
   }, autoplayInterval);
 
@@ -229,20 +217,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const activeSlide = slider.querySelector('.slide.active');
         const activeIndex = Array.from(slider.querySelectorAll('.slide')).indexOf(activeSlide);
 
-        if (autoplayDirection === 'next') {
-          if (activeIndex < totalSlides - 1) {
-            nextSlide();
-          } else {
-            autoplayDirection = 'prev';
-            prevSlide();
-          }
+        if (activeIndex < totalSlides - 1) {
+          nextSlide(); // Go to the next slide
         } else {
-          if (activeIndex > 0) {
-            prevSlide();
-          } else {
-            autoplayDirection = 'next';
-            nextSlide();
-          }
+          goToFirstSlide(); // Reset to the first slide when the last slide is reached
         }
       }, autoplayInterval); // Restart autoplay when mouse leaves the slider
     });
