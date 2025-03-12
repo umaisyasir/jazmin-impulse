@@ -103,30 +103,20 @@ Arguments
 {%- endif -%}
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var newInBadge = document.getElementById('badge-new-in');
-
-    if (newInBadge) {
-      var expirationDateStr = newInBadge.getAttribute('data-expiration-date');
-
-      // Check if the expiration date is set
-      if (expirationDateStr) {
-        // Parse the expiration date from the data attribute
-        var expirationDate = new Date(expirationDateStr + 'T00:00:00'); // Ensure correct date parsing
-        var currentDate = new Date(); // Get today's date
-
-        // Set both dates to midnight for date-only comparison
-        expirationDate.setHours(0, 0, 0, 0);
-        currentDate.setHours(0, 0, 0, 0);
-
-        // Hide the badge if the expiration date is earlier than today
-        if (expirationDate < currentDate) {
-          // Add inline style to hide the badge
-          newInBadge.style.display = 'none';
-        }
-      }
+   document.getElementById("buy-it-now").addEventListener("click", function () {
+      const currentProduct = document.querySelector('.product'); // Get the current product container
+      const submitButton = currentProduct.querySelector('.button[type="submit"]'); // Find the submit button for the current product
+              
+      if (submitButton) {
+      // Click the submit button for the current product to add it to the cart
+      submitButton.click();
+                  
+      // Redirect to checkout after 1 second
+      setTimeout(() => {
+            window.location.href = "/checkout"; // Redirect to checkout page
+      }, 1000);
     }
-  });
+});
 </script>
       
 <style>
