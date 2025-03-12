@@ -390,8 +390,8 @@
         "indent_image": false,
         "image_position": "left",
         "hotspot_style": "dot",
-        "hotspot_color": "#ffffff",
-        "lazyload_images": true
+        "hotspot_color": "#000000",
+        "lazyload_images": false
       }
     }
   },
