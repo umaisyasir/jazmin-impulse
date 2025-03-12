@@ -81,6 +81,7 @@
           {%- endpaginate -%}
         </div>
       </div>
+      {% if collection.metafields.custom.notes %}
       <div class="rte collection__description" style="text-align: center;">
         <div id="collection-description">
           {{ collection.metafields.custom.notes | metafield_tag }}
@@ -112,6 +113,7 @@
           }
         }
       </script>
+      {% endif %}
     </div>
   </div>
 </div>
