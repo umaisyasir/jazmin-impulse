@@ -108,7 +108,7 @@
     {%- sections 'header-group' -%}
     {%- sections 'popup-group' -%}
 
-      <main class="main-content" id="MainContent">
+      <main class="main-content {% if template == 'product' %}product-page{% endif %}" id="MainContent">
         {{ content_for_layout }}
       </main>
 
