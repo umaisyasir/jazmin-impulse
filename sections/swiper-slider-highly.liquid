@@ -34,7 +34,68 @@
         <div class="fashion-slider-title" data-swiper-parallax="-130%">
           <!-- slide title text -->
           <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
-          <a href="{{ block.settings.link }}">Shop Now</a>
+          <a href="{{ block.settings.link }}" class="custom-button">Shop Now</a>
+          <style>
+            .custom-button {
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: black;
+              color: white;
+              font-size: 16px;
+              font-weight: bold;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              border: 2px solid transparent;
+              border-radius: 50px;
+              transition: all 0.4s ease;
+              position: relative;
+              overflow: hidden;
+              z-index: 1;
+            }
+            
+            .custom-button::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: white;
+              z-index: -1;
+              transition: all 0.4s ease;
+              transform: scaleX(0);
+              transform-origin: right;
+            }
+            
+            .custom-button:hover::before {
+              transform: scaleX(1);
+              transform-origin: left;
+            }
+            
+            .custom-button:hover {
+              color: black;
+              border-color: black;
+            }
+            
+            /* Adding high-end animation */
+            @keyframes bounceIn {
+              0% {
+                opacity: 0;
+                transform: scale(0.5);
+              }
+              80% {
+                transform: scale(1.05);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1);
+              }
+            }
+            
+            .custom-button {
+              animation: bounceIn 0.8s ease-in-out;
+            }
+          </style>
         </div>
         <!-- slide image wrap -->
         <div class="fashion-slider-scale">
