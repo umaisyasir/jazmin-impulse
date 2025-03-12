@@ -22,7 +22,6 @@
       {% for block in section.blocks %}
       <div class="swiper-slide" data-slide-bg-color="#D1C4B4">
         <!-- slide title wrap -->
-        <a href="{{ block.settings.link }}">
         <div class="fashion-slider-title" data-swiper-parallax="-130%">
           <!-- slide title text -->
           <div class="fashion-slider-title-text">{{ block.settings.image_content }}</div>
@@ -30,14 +29,15 @@
         <!-- slide image wrap -->
         <div class="fashion-slider-scale">
           <!-- slide image -->
+          <a href="{{ block.settings.link }}">
           <img
             src="{{ block.settings.image | img_url: 'master' }}" 
             class="desktop_image"
             data-mobile-image="{{ block.settings.mobile_image | img_url: 'master' }}" 
             alt="Slider Image"
           />
+          </a>
         </div>
-        </a>
         </div>
       {% endfor %}
     </div>
