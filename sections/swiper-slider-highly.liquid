@@ -174,48 +174,28 @@
   }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Function to trigger the next slide
-  function nextSlide() {
-    const nextButton = document.querySelector('.fashion-slider-button-next');
-    const lastSlide = document.querySelector('.fashion-slider .swiper-slide:last-child');
-    const activeSlide = document.querySelector('.fashion-slider .swiper-slide-active');
-
-    if (nextButton && lastSlide && activeSlide) {
-      if (activeSlide === lastSlide) {
-        goToFirstSlide(); // Go to the first slide if the last slide is active
-      } else {
-        nextButton.click(); // Simulate a click on the next button
-      }
+  // Initialize Swiper (if not already initialized in your HTML/JS)
+  const swiper = new Swiper('.fashion-slider', {
+    loop: true, // Enable looping
+    navigation: {
+      nextEl: '.fashion-slider-button-next',
+      prevEl: '.fashion-slider-button-prev',
+    },
+    autoplay: {
+      delay: 5000, // Autoplay delay in milliseconds
+      disableOnInteraction: false, // Allow autoplay to continue after user interactions
     }
-  }
-
-  // Function to go to the first slide
-  function goToFirstSlide() {
-    const firstButton = document.querySelector('.fashion-slider-button-first');
-    if (firstButton) {
-      firstButton.click(); // Simulate a click on the first button (or use a Swiper function)
-    } else {
-      // Fallback method: Use Swiper's internal method if available
-      const swiperInstance = document.querySelector('.fashion-slider').swiper;
-      if (swiperInstance) {
-        swiperInstance.slideTo(0); // Swiper's method to go to the first slide
-      }
-    }
-  }
-
-  // Autoplay functionality
-  const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
-  let autoplay = setInterval(nextSlide, autoplayInterval);
+  });
 
   // Pause autoplay on mouse hover
   const sliderContainer = document.querySelector('.fashion-slider');
   if (sliderContainer) {
     sliderContainer.addEventListener('mouseover', function() {
-      clearInterval(autoplay); // Stop autoplay when mouse is over the slider
+      swiper.autoplay.stop(); // Stop autoplay when mouse is over the slider
     });
 
     sliderContainer.addEventListener('mouseout', function() {
-      autoplay = setInterval(nextSlide, autoplayInterval); // Restart autoplay when mouse leaves the slider
+      swiper.autoplay.start(); // Restart autoplay when mouse leaves the slider
     });
   }
 });
