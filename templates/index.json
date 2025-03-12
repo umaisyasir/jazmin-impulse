@@ -390,7 +390,7 @@
         "indent_image": false,
         "image_position": "left",
         "hotspot_style": "dot",
-        "hotspot_color": "#d40000",
+        "hotspot_color": "#ffffff",
         "lazyload_images": true
       }
     }
