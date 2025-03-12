@@ -136,9 +136,9 @@ Arguments
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #fff;
-    background-color: #333;
-    border: 2px solid transparent;
+    color: #333; /* Black text */
+    background-color: #fff; /* White background */
+    border: 2px solid #333; /* Black border */
     transition: all 0.3s ease;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -154,38 +154,47 @@ Arguments
   }
 
   .badge--position-2 {
-    top: 55px; /* Adjusted for spacing between badges */
+    top: 55px;
     left: 10px;
     font-size: 12px;
-    padding: 4px 8px; /* Smaller size */
-  }
-
-  .badge--position-3 {
-    top: 90px; /* Further adjust spacing */
-    left: 10px;
-    font-size: 10px;
-    padding: 2px 6px; /* Even smaller size */
-  }
-
-  .badge--custom.badge--best-seller {
-    background-color: #ff6f61;
+    padding: 4px 8px;
+    color: #fff; /* White text */
+    background-color: #ff6f61; /* Custom color for position 2 */
     border-color: #ff6f61;
   }
 
-  .badge--custom.badge--new-in {
-    background-color: #2ecc71;
+  .badge--position-3 {
+    top: 90px;
+    left: 10px;
+    font-size: 10px;
+    padding: 2px 6px;
+    color: #fff; /* White text */
+    background-color: #2ecc71; /* Custom color for position 3 */
     border-color: #2ecc71;
   }
 
+  .badge--custom.badge--best-seller {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+  }
+
+  .badge--custom.badge--new-in {
+    background-color: #fff;
+    color: #333;
+    border-color: #333;
+  }
+
   .badge--custom.badge--exclusive {
-    background-color: #333;
+    background-color: #fff;
+    color: #333;
     border-color: #333;
   }
 
   .badge--custom:hover {
-    background-color: #fff;
-    color: #333;
-    border-color: #333;
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 
@@ -195,54 +204,63 @@ Arguments
 
   @media (max-width: 767px) {
     .badge--custom {
-      padding: 4px 8px; /* Reduced padding for mobile */
-      font-size: 9px; /* Smaller font size */
-      letter-spacing: 0.5px; /* Slightly tighter letter spacing */
-      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08); /* Slightly lighter shadow */
+      padding: 4px 8px;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
     }
-  
+
     /* Badge position adjustments for mobile */
     .badge--position-1 {
       top: 5px;
-      left: 5px; /* Closer to the edges */
+      left: 5px;
     }
-  
+
     .badge--position-2 {
-      top: 30px; /* Adjusted spacing between badges */
+      top: 30px;
       left: 5px;
-      font-size: 8px; /* Reduced font size */
-      padding: 3px 6px; /* Smaller padding */
-    }
-  
-    .badge--position-3 {
-      top: 55px; /* Adjusted further for spacing */
-      left: 5px;
-      font-size: 7px; /* Smaller font size */
-      padding: 2px 5px; /* Even smaller padding */
-    }
-  
-    .badge--custom.badge--best-seller {
+      font-size: 8px;
+      padding: 3px 6px;
+      color: #fff;
       background-color: #ff6f61;
       border-color: #ff6f61;
     }
-  
-    .badge--custom.badge--new-in {
+
+    .badge--position-3 {
+      top: 55px;
+      left: 5px;
+      font-size: 7px;
+      padding: 2px 5px;
+      color: #fff;
       background-color: #2ecc71;
       border-color: #2ecc71;
     }
-  
-    .badge--custom.badge--exclusive {
-      background-color: #333;
-      border-color: #333;
-    }
-  
-    .badge--custom:hover {
+
+    .badge--custom.badge--best-seller {
       background-color: #fff;
       color: #333;
       border-color: #333;
+    }
+
+    .badge--custom.badge--new-in {
+      background-color: #fff;
+      color: #333;
+      border-color: #333;
+    }
+
+    .badge--custom.badge--exclusive {
+      background-color: #fff;
+      color: #333;
+      border-color: #333;
+    }
+
+    .badge--custom:hover {
+      background-color: #333;
+      color: #fff;
+      border-color: #fff;
       box-shadow: 0 5px 6px rgba(0, 0, 0, 0.12);
     }
-  
+
     .badge--custom[data-expiration-time] {
       position: relative;
     }
