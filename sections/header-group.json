@@ -45,7 +45,7 @@
         "announcement_aPyy6a"
       ],
       "settings": {
-        "announcement_compact": true
+        "announcement_compact": false
       }
     },
     "header": {
