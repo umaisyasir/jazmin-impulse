@@ -198,12 +198,12 @@ document.addEventListener("DOMContentLoaded", function() {
       // Fallback method: Use Swiper's internal method if available
       const swiperInstance = document.querySelector('.fashion-slider').swiper;
       if (swiperInstance) {
-        swiperInstance.slideTo(0); // Swiper's method to go to the first slide
+        swiperInstance.slideToLoop(0); // Swiper's method to loop back to the first slide
       }
     }
   }
 
-  // Autoplay functionality
+  // Autoplay functionality with loop
   const autoplayInterval = 5000; // Set autoplay interval (in milliseconds)
   let autoplay = setInterval(nextSlide, autoplayInterval);
 
