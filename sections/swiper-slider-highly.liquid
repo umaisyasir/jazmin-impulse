@@ -176,13 +176,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   // Function to trigger the next slide
   function nextSlide() {
-    const slides = document.querySelectorAll('.fashion-slider .slide'); // Get all slides
-    const activeSlide = document.querySelector('.fashion-slider .slide.active'); // Get the current active slide
-    const nextButton = document.querySelector('.fashion-slider-button-next'); // Next button
+    const nextButton = document.querySelector('.fashion-slider-button-next');
+    const lastSlide = document.querySelector('.fashion-slider .swiper-slide:last-child');
+    const activeSlide = document.querySelector('.fashion-slider .swiper-slide-active');
 
-    if (nextButton && activeSlide && slides.length) {
-      const lastSlide = slides[slides.length - 1]; // Last slide element
-
+    if (nextButton && lastSlide && activeSlide) {
       if (activeSlide === lastSlide) {
         goToFirstSlide(); // Go to the first slide if the last slide is active
       } else {
@@ -193,9 +191,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Function to go to the first slide
   function goToFirstSlide() {
-    const slides = document.querySelectorAll('.fashion-slider .slide'); // Get all slides
-    slides.forEach(slide => slide.classList.remove('active')); // Remove 'active' class from all slides
-    slides[0].classList.add('active'); // Add 'active' class to the first slide
+    const firstButton = document.querySelector('.fashion-slider-button-first');
+    if (firstButton) {
+      firstButton.click(); // Simulate a click on the first button (or use a Swiper function)
+    } else {
+      // Fallback method: Use Swiper's internal method if available
+      const swiperInstance = document.querySelector('.fashion-slider').swiper;
+      if (swiperInstance) {
+        swiperInstance.slideTo(0); // Swiper's method to go to the first slide
+      }
+    }
   }
 
   // Autoplay functionality
