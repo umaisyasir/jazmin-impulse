@@ -130,6 +130,17 @@
                             }
                         }
                       </style>
+                      <script>
+                        document.getElementById('loadmore').addEventListener('click', function() {
+                            this.classList.add('loading');
+                            
+                            // Simulate loading process
+                            setTimeout(() => {
+                                this.classList.remove('loading');
+                                // Additional actions after loading can go here
+                            }, 3000); // Simulate 3-second load
+                        });
+                      </script>
                     </div>
                   {% elsif paginate.pages > 1 %}
                     {% render 'pagination', paginate: paginate, anchor: '' %}
