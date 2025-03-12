@@ -117,7 +117,7 @@
         "section_height": "100vh",
         "mobile_height": "500px",
         "parallax": false,
-        "style": "arrows",
+        "style": "dots",
         "autoplay": true,
         "autoplay_speed": 5,
         "lazyload_images": true
