@@ -254,7 +254,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     initializeProductDetails();
 
-    const swiper = new Swiper(".custom-reels-section", {
+    const swiper = new Swiper(".section-{{ section.id }}.swiper-wrapper", {
       slidesPerView: 2,
       spaceBetween: 20,
       navigation: {
