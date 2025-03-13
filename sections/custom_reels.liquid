@@ -6,7 +6,7 @@
   <div class="section-{{ section.id }} swiper-container">
     <div class="swiper-wrapper">
         {% for reel in section.blocks %}
-          <div class="swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
+          <div class="section-{{ section.id }} swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
             <div class="reel-wrapper">
               <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline></video>
               <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden" muted onclick="openPopup(this)" playsinline></video>
@@ -74,7 +74,7 @@
 
   // Initialize product details and video elements
   function initializeProductDetails() {
-    const slides = document.querySelectorAll(".swiper-slide");
+    const slides = document.querySelectorAll(".section-{{ section.id }}.swiper-slide");
     slides.forEach((slide, index) => {
       const productHandle = slide.getAttribute("data-product-handle");
       const productInfo = slide.querySelector(".product-info");
@@ -128,7 +128,7 @@
     const popupAddToCartForm = document.getElementById("popupAddToCartForm");
     const popupProductId = document.getElementById("popupProductId");
 
-    const reelWrapper = videoElement.closest(".swiper-slide");
+    const reelWrapper = videoElement.closest(".section-{{ section.id }}.swiper-slide");
     currentVideoIndex = Array.from(reelWrapper.closest('.swiper-wrapper').children).indexOf(reelWrapper);
     const product = productDetails[currentVideoIndex];
 
