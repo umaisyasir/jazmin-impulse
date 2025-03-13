@@ -205,3 +205,16 @@ let currentVideoIndex = 0;
       loop: false,
     });
   });
+
+// Check if in theme editor (Shopify Design Mode)
+if (window.Shopify && Shopify.designMode) {
+    // Listen for section changes and reinitialize the JavaScript with the new settings
+    document.addEventListener('shopify:section:load', function(event) {
+        var sectionSettings = {{ section.settings | json }};
+        initCustomReels(sectionSettings);
+    });
+
+    document.addEventListener('shopify:section:unload', function(event) {
+        // Cleanup if necessary
+    });
+}
