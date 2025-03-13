@@ -193,13 +193,13 @@ let currentVideoIndex = 0;
       },
       breakpoints: {
         1024: {
-          slidesPerView: 5,
+          slidesPerView: {{ section.settings.laptop-pc_slides }},
         },
         768: {
-          slidesPerView: 3,
+          slidesPerView: {{ section.settings.tablet_slides }},
         },
         480: {
-          slidesPerView: 2,
+          slidesPerView: {{ section.settings.mobile_slides }},
         }
       },
       loop: false,
