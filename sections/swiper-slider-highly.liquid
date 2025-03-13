@@ -1,52 +1,7 @@
+{{ 'fashion-slider.css' | asset_url | stylesheet_tag: preload: true }}
+<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
 <style>
-  @media screen and (min-width: 769px) {
-    .slider_height {
-      height: calc(100vh - 133px) !important;
-    }
-
-    .fashion-slider-title-text {
-      font-size: 50px !important;
-      letter-spacing: 2px !important;
-      margin-bottom: 10px;
-    }
-
-    .fashion-slider .swiper-slide {
-      align-items: flex-end !important;
-    }
-
-    .fashion-slider-title {
-      margin-bottom: 20px !important;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .fashion-slider {
-      display: none;
-    }
-    
-    .slider_height {
-      height: calc(100vh - 140px) !important;
-    }
-
-    .fashion-slider-title-text {
-        font-size: 25px !important;
-        letter-spacing: 2px !important;
-        margin-bottom: 20px !important;
-    }
-
-    .fashion-slider .swiper-slide {
-      align-items: flex-end !important;
-    }
-
-    .fashion-slider-title {
-      margin-bottom: 30px !important;
-    }
-
-    .custom-button {
-      padding: 5px 10px !important;
-      font-size: 13px !important;
-    }
-  }
 </style>
 
 <link rel="stylesheet" href="https://fashion-slider.uiinitiative.com/assets/index.fca86069.css"/>
