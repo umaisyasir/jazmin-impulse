@@ -1,4 +1,6 @@
- let currentVideoIndex = 0;
+  var sectionSettings = {{ section.settings | json }};
+
+let currentVideoIndex = 0;
   let productDetails = [];
 
   // Initialize product details and video elements
