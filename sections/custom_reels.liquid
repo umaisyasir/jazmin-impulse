@@ -4,7 +4,7 @@
 
 <div class="custom-reels-section" id="video-gallery">
   <div class="section-{{ section.id }} swiper-container">
-    <div class="swiper-wrapper">
+    <div class="section-{{ section.id }} swiper-wrapper">
         {% for reel in section.blocks %}
           <div class="section-{{ section.id }} swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
             <div class="reel-wrapper">
@@ -129,7 +129,7 @@
     const popupProductId = document.getElementById("popupProductId");
 
     const reelWrapper = videoElement.closest(".section-{{ section.id }}.swiper-slide");
-    currentVideoIndex = Array.from(reelWrapper.closest('.swiper-wrapper').children).indexOf(reelWrapper);
+    currentVideoIndex = Array.from(reelWrapper.closest('.section-{{ section.id }}.swiper-wrapper').children).indexOf(reelWrapper);
     const product = productDetails[currentVideoIndex];
 
     popupVideo.src = product.videoSrc || "{{ section.settings.default_video_url }}"; 
