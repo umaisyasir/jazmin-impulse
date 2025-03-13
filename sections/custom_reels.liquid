@@ -1,6 +1,151 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="custom-reels-section" id="video-gallery">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        {% for reel in section.blocks %}
+          <div class="swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
+            <div class="reel-wrapper">
+              <video src="{{ reel.settings.reel_url }}" muted autoplay loop id="frontVideo{{ forloop.index }}" onclick="openPopup(this)" onended="repeatVideo(this)" playsinline></video>
+              <video src="{{ reel.settings.reel_url }}" id="mainVideo{{ forloop.index }}" class="main-video hidden" muted onclick="openPopup(this)" playsinline></video>
+            </div>
+
+            {% if reel.settings.product_handle %}
+              {% assign product = all_products[reel.settings.product_handle] %}
+              {% if product %}
+                <div class="product-info">
+                  <h3>{{ product.title }}</h3>
+                  <p class="product-price">{{ product.price | money }}</p>
+
+                  <!-- Add to Cart Form -->
+                  <form action="/cart/add" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                    <button type="submit" class="product-link">Add to Cart</button>
+                  </form>
+                </div>
+              {% else %}
+                <p>Product not available.</p>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-button-next fas fa-chevron-right"></div>
+    <div class="swiper-button-prev fas fa-chevron-left"></div>
+  </div>
+</div>
+
+<div id="reelPopup" class="reel-popup">
+  <div class="popup-content">
+    <span class="close-popup fas fa-times" onclick="closePopup()"></span>
+    <a href="{{ section.settings.logo_link }}">
+      <img id="popupLogo" class="popup-logo" src="" alt="Logo" />
+    </a>
+    <video id="popupVideo" autoplay muted loop></video>
+    <div class="popup-product-details" id="popupProductDetails">
+      <div class="product_main-details">
+        <img id="popupProductImage" src="" class="product-image">
+        <h3 id="popupProductTitle">Loading...</h3>
+        <p id="popupProductPrice"></p>
+      </div>
+      <form id="popupAddToCartForm" class="popup-add-to-cart-form" action="/cart/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" id="popupProductId">
+        <button type="submit" class="popup-add-to-cart">Add to Cart</button>
+      </form>
+    </div>
+    <div class="popup-navigation">
+      <button class="popup-prev fas fa-chevron-left" onclick="prevVideo()"></button>
+      <button class="popup-next fas fa-chevron-right" onclick="nextVideo()"></button>
+    </div>
+    <div class="popup-controls">
+      <button class="popup-mute fas fa-volume-mute" onclick="toggleMute()"></button>
+      <button class="popup-fullscreen fas fa-expand" onclick="toggleFullscreen()"></button>
+      <button class="popup-share fas fa-share" onclick="shareVideo()"></button>
+      <button class="popup-position fas fa-arrows-alt" onclick="togglePosition()"></button>
+    </div>
+  </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "VB - Custom Reels",
+  "settings": [
+    {
+      "type": "url",
+      "id": "logo_url",
+      "label": "Logo Image URL"
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo URL"
+    },
+    {
+      "type": "select",
+      "id": "arrows_position",
+      "label": "Arrows Position - Top",
+      "options": [
+        {
+          "value": "42",
+          "label": "40%"
+        },
+        {
+          "value": "54",
+          "label": "50%"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "laptop-pc_slides",
+      "label": "Laptop/PC Slides",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "tablet_slides",
+      "label": "Tablet Slides",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "mobile_slides",
+      "label": "Mobile Slides",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reel",
+      "name": "Reel",
+      "settings": [
+        {
+          "type": "url",
+          "label": "Reel Video URL",
+          "id": "reel_url"
+        },
+        {
+          "type": "text",
+          "label": "Product Handle",
+          "id": "product_handle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "VB - Custom Reels",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
