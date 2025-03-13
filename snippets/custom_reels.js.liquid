@@ -33,7 +33,7 @@ let currentVideoIndex = 0;
         // If no product handle exists, mark it as no product and hide product info
         productDetails.push({
           hasProduct: false,
-          videoSrc: videoSrc || "{{ section.settings.default_video_url }}" // Assign a fallback video if no product handle
+          videoSrc: videoSrc || "{{ block.settings.default_video_url }}" // Assign a fallback video if no product handle
         });
 
         if (productInfo) {
@@ -62,7 +62,7 @@ let currentVideoIndex = 0;
     const product = productDetails[currentVideoIndex];
 
     // Check if video source is valid; fallback if undefined
-    popupVideo.src = product.videoSrc || "{{ section.settings.default_video_url }}"; 
+    popupVideo.src = product.videoSrc || "{{ block.settings.default_video_url }}"; 
     popupLogo.src = "{{ section.settings.logo_url }}";
 
     if (product.hasProduct) {
