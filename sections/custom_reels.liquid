@@ -132,7 +132,6 @@
     currentVideoIndex = Array.from(reelWrapper.closest('.swiper-wrapper').children).indexOf(reelWrapper);
     const product = productDetails[currentVideoIndex];
 
-    // Check if video source is valid; fallback if undefined
     popupVideo.src = product.videoSrc || "{{ section.settings.default_video_url }}"; 
     popupLogo.src = "{{ section.settings.logo_url }}";
 
