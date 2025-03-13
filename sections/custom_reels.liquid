@@ -1,5 +1,17 @@
 {{ 'custom_reels.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'custom_reels.js.liquid' | asset_url }}" type="text/javascript"></script>
+<script type="text/javascript">
+  // Fetch the asset URL for custom_reels.js.liquid
+  var reelsScriptUrl = "{{ 'custom_reels.js.liquid' | asset_url }}";
+  console.log(reelsScriptUrl);
+
+  // Example of rendering Shopify Liquid inside JS
+  var productTitle = "{{ product.title | json }}";
+  var productPrice = "{{ product.price | money }}";
+
+  // You can now use these values inside your JS
+  console.log('Product Title:', productTitle);
+  console.log('Product Price:', productPrice);
+</script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
