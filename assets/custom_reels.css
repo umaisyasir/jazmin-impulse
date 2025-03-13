@@ -11,6 +11,51 @@
   margin-bottom: 10px;
 }
 
+.custom-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.slider-slide {
+  min-width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-slide.active {
+  display: block;
+}
+
+.custom-slider-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.custom-prev, .custom-next {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.reel-popup {
+  /* Your existing popup styles */
+}
+
+
 .product-info p {
   font-size: 13px;
   color: #333;
