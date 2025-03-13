@@ -120,7 +120,7 @@
         "style": "arrows",
         "autoplay": true,
         "autoplay_speed": 5,
-        "lazyload_images": true
+        "lazyload_images": false
       }
     },
     "custom_circleslider_EHADMi": {
