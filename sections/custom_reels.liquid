@@ -23,7 +23,11 @@
                   <!-- Add to Cart Form -->
                   <form action="/cart/add" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                    <button type="submit" class="product-link">Add to Cart</button>
+                    <button type="submit" name="add" data-add-to-cart="" class="btn btn--full add-to-cart btn--secondary">
+                      <span data-add-to-cart-text="" data-default-text="Add to cart">
+                        Add to cart
+                      </span>
+                    </button>
                   </form>
                 </div>
               {% else %}
