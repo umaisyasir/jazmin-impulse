@@ -4,7 +4,7 @@
 
 <div class="custom-reels-section" id="video-gallery">
   <div class="swiper-container">
-    <div class="swiper-wrapper">
+    <div class="section-{{ section.id }} swiper-wrapper">
         {% for reel in section.blocks %}
           <div class="swiper-slide" style="flex-wrap: wrap;" data-product-handle="{{ reel.settings.product_handle }}">
             <div class="reel-wrapper">
