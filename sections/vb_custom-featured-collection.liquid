@@ -4,6 +4,184 @@
   Featured Collection Section with Swiper Slider
 {% endcomment %}
 
+<style>
+/* Swiper Slider Styling */
+.section-{{ section.id }} .swiper-container {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.section-{{ section.id }} .swiper-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.section-{{ section.id }} .swiper-container.featured-collection-slider.swiper-initialized.swiper-horizontal .medium-up--one-quarter {
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.section-{{ section.id }} .swiper-slide {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.section-{{ section.id }} .product-card {
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 275px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.section-{{ section.id }} .product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-{{ section.id }} .product-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.section-{{ section.id }} .product-card:hover .product-image img {
+  transform: scale(1.05);
+}
+
+.section-{{ section.id }} .product-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.section-{{ section.id }} .product-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.section-{{ section.id }} .product-price {
+  font-size: 1rem;
+  color: #333;
+}
+
+.section-{{ section.id }} .product-price__old {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9rem;
+  margin-right: 8px;
+}
+
+.section-{{ section.id }} .product-price__new {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Swiper Navigation Buttons */
+.section-{{ section.id }} .swiper-button-next,
+.section-{{ section.id }} .swiper-button-prev {
+  color: black;
+  font-size: 22px;
+  z-index: 10;
+  position: absolute;
+  top: 47%;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-{{ section.id }} .swiper-button-next:before,
+.section-{{ section.id }} .swiper-button-prev:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.section-{{ section.id }} .swiper-button-next {
+  right: 20px;
+}
+
+.section-{{ section.id }} .swiper-button-prev {
+  left: 20px;
+}
+
+/* Hover effect for navigation buttons */
+.section-{{ section.id }} .swiper-button-next:hover,
+.section-{{ section.id }} .swiper-button-prev:hover {
+  background-color: #333;
+  color: white;
+}
+
+/* Hide pagination */
+.section-{{ section.id }} .swiper-pagination {
+  display: none;
+}
+
+.section-{{ section.id }} h2.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-{{ section.id }} .container_featuredcollection {
+    max-width: 100%;
+    overflow: hidden;
+    width: 95% !important;
+    margin: 0 auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .section-{{ section.id }} .swiper-slide {
+    width: 100% !important;
+  }
+
+  .section-{{ section.id }} .swiper-container {
+    padding: 15px 0;
+    max-width: 75%;
+  }
+
+  .section-{{ section.id }} .swiper-button-next,
+  .section-{{ section.id }} .swiper-button-prev {
+    font-size: 24px;
+    padding: 8px;
+  }
+
+  .section-{{ section.id }} .swiper-button-next {
+      right: 10px;
+  }
+
+  .section-{{ section.id }} .swiper-button-prev {
+      left: 10px;
+  }
+
+  .section-{{ section.id }} .container_featuredcollection {
+      width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .section-{{ section.id }} .swiper-slide {
+    width: calc(25% - 20px);
+  }
+
+  .section-{{ section.id }} .swiper-container {
+    padding: 30px 0;
+  }
+}
+</style>
+
 <div class="container_featuredcollection">
   <div class="section-{{ section.id }} swiper-container featured-collection-slider">
     <!-- Heading from Schema Settings -->
