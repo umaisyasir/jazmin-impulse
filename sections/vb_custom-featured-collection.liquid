@@ -11,7 +11,7 @@
   
     <div class="swiper-wrapper">
         {% assign products = collections[section.settings.collection].products %}
-        {% for product in products %}
+        {% for product in products limit: 4 %}
           <div class="swiper-slide">
             {% render 'product-grid-item', product: product %}
           </div>
