@@ -464,19 +464,6 @@
         "tablet_slides": 3,
         "mobile_slides": 2
       }
-    },
-    "vb_custom_featured_collection_UeMCQr": {
-      "type": "vb_custom-featured-collection",
-      "custom_css": [
-        ".medium-up--one-quarter {width: 100%;}"
-      ],
-      "settings": {
-        "collection": "formals",
-        "section_title": "Featured Collection",
-        "num_products": 4,
-        "autoplay": true,
-        "autoplay_delay": 5000
-      }
     }
   },
   "order": [
@@ -488,7 +475,6 @@
     "featured-collection",
     "testimonials_AthRxb",
     "hotspots_nfXXPU",
-    "custom_reels_37UbUx",
-    "vb_custom_featured_collection_UeMCQr"
+    "custom_reels_37UbUx"
   ]
 }
