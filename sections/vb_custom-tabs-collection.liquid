@@ -17,7 +17,7 @@
       <div id="tab-{{ block.id }}" class="tab-pane{% if forloop.first %} active{% endif %}">
         <!-- Swiper Slider for Products -->
         <div class="swiper-container section-{{ section.id }}-{{ block.id }}">
-          <div class="swiper-wrapper">
+          <div class="section-{{ section.id }} swiper-wrapper">
             {% for product in block.settings.collection.products limit: block.settings.product_limit %}
               <div class="swiper-slide product-grid-item">
                 {% render 'product-grid-item', product: product %}
