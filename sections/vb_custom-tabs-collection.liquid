@@ -15,7 +15,7 @@
         <!-- Swiper Slider for Products -->
         <div class="section-{{ section.id }} swiper-container">
           <div class="swiper-wrapper">
-            {% for product in block.settings.collection.products limit: block.settings.product_limit %}
+            {% for block in block.settings.collection.products limit: block.settings.product_limit %}
               <div class="swiper-slide product-grid-item">
                 {% render 'product-grid-item', product: product %}
               </div>
