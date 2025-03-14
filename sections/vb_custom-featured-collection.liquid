@@ -197,9 +197,9 @@
     </div>
   
     <!-- Pagination controls for Swiper (hidden) -->
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
-    <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+    <div class="section-{{ section.id }} swiper-pagination"></div>
+    <div class="section-{{ section.id }}swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+    <div class="section-{{ section.id }} swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
   </div>
 </div>
 
@@ -214,12 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     loop: true,
     pagination: {
-      el: '.swiper-pagination',
+      el: '.section-{{ section.id }}.swiper-pagination',
       clickable: true,
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.section-{{ section.id }}.swiper-button-next',
+      prevEl: '.section-{{ section.id }}.swiper-button-prev',
     },
     breakpoints: {
       768: {
