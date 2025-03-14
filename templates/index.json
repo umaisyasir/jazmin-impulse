@@ -465,30 +465,14 @@
         "mobile_slides": 2
       }
     },
-    "vb_custom_tabs_collection_faB6ma": {
-      "type": "vb_custom-tabs-collection",
-      "blocks": {
-        "collection_tab_DMCdkD": {
-          "type": "collection_tab",
-          "settings": {
-            "collection": "formals",
-            "product_limit": 4
-          }
-        },
-        "collection_tab_Wj8dep": {
-          "type": "collection_tab",
-          "settings": {
-            "collection": "shahkaar-luxury-lawn",
-            "product_limit": 4
-          }
-        }
-      },
-      "block_order": [
-        "collection_tab_DMCdkD",
-        "collection_tab_Wj8dep"
-      ],
+    "vb_custom_featured_collection_UeMCQr": {
+      "type": "vb_custom-featured-collection",
       "settings": {
-        "product_limit": 4
+        "collection": "formals",
+        "section_title": "Featured Collection",
+        "num_products": 4,
+        "autoplay": true,
+        "autoplay_delay": 5000
       }
     }
   },
@@ -502,6 +486,6 @@
     "testimonials_AthRxb",
     "hotspots_nfXXPU",
     "custom_reels_37UbUx",
-    "vb_custom_tabs_collection_faB6ma"
+    "vb_custom_featured_collection_UeMCQr"
   ]
 }
