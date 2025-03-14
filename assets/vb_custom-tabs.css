@@ -25,10 +25,6 @@
   display: none; /* Hide all tab content initially */
 }
 
-.tabs-content .tab-pane {
-  display: none; /* Hide all tab panes */
-}
-
 .tabs-content .tab-pane.active {
   display: block; /* Show the active tab pane */
 }
