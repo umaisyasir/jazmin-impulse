@@ -467,10 +467,27 @@
     },
     "vb_custom_tabs_collection_faB6ma": {
       "type": "vb_custom-tabs-collection",
+      "blocks": {
+        "collection_tab_DMCdkD": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "formals",
+            "product_limit": 4
+          }
+        },
+        "collection_tab_Wj8dep": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "shahkaar-luxury-lawn",
+            "product_limit": 4
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_DMCdkD",
+        "collection_tab_Wj8dep"
+      ],
       "settings": {
-        "collections": [
-          "formals"
-        ],
         "product_limit": 4
       }
     }
