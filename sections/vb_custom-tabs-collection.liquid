@@ -1,6 +1,101 @@
+{{ 'vb_custom-tabs.css' | asset_url | stylesheet_tag }}
+
+<div class="section-{{ section.id }} cstm-tabs-container">
+  <!-- Tabs Navigation -->
+  <div class="tabs-nav">
+    {% for collection in settings.collections %}
+      <button class="tab-link" data-tab="tab-{{ forloop.index }}">{{ collection.title }}</button>
+    {% endfor %}
+  </div>
+
+  <!-- Tabs Content -->
+  <div class="tabs-content">
+    {% for collection in settings.collections %}
+      <div id="tab-{{ forloop.index }}" class="tab-pane">
+        <!-- Swiper Slider for Products -->
+        <div class="section-{{ section.id }} swiper-container">
+          <div class="swiper-wrapper">
+            {% for product in collection.products limit: settings.product_limit %}
+              <div class="swiper-slide product-grid-item">
+                {% render 'product-card', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+          <!-- Add Pagination, Next/Prev Buttons -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabLinks = document.querySelectorAll('.tab-link');
+    var tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabLinks.forEach(function (link, index) {
+      link.addEventListener('click', function () {
+        tabLinks.forEach(l => l.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        link.classList.add('active');
+        document.getElementById('tab-' + (index + 1)).classList.add('active');
+      });
+    });
+
+    // Initialize Swiper sliders
+    new Swiper('.section-{{ section.id }}.swiper-container', {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1280: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Tabs Collections",
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Select Collections"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Number of products per tab",
+      "default": 4,
+      "min": 1,
+      "max": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Tabs Collections"
+    }
+  ]
+}
 {% endschema %}
