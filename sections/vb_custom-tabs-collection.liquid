@@ -1,21 +1,24 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 {{ 'vb_custom-tabs.css' | asset_url | stylesheet_tag }}
 
 <div class="section-{{ section.id }} cstm-tabs-container">
   <!-- Tabs Navigation -->
   <div class="tabs-nav">
     {% for block in section.blocks %}
-      <button class="tab-link" data-tab="tab-{{ block.id }}">{{ block.settings.collection.title }}</button>
+      <button class="tab-link{% if forloop.first %} active{% endif %}" data-tab="tab-{{ block.id }}">{{ block.settings.collection.title }}</button>
     {% endfor %}
   </div>
 
   <!-- Tabs Content -->
   <div class="tabs-content">
     {% for block in section.blocks %}
-      <div id="tab-{{ block.id }}" class="tab-pane">
+      <div id="tab-{{ block.id }}" class="tab-pane{% if forloop.first %} active{% endif %}">
         <!-- Swiper Slider for Products -->
-        <div class="section-{{ section.id }} swiper-container">
+        <div class="swiper-container section-{{ section.id }}-{{ block.id }}">
           <div class="swiper-wrapper">
-            {% for block in block.settings.collection.products limit: block.settings.product_limit %}
+            {% for product in block.settings.collection.products limit: block.settings.product_limit %}
               <div class="swiper-slide product-grid-item">
                 {% render 'product-grid-item', product: product %}
               </div>
@@ -36,28 +39,34 @@
     var tabLinks = document.querySelectorAll('.tab-link');
     var tabPanes = document.querySelectorAll('.tab-pane');
 
-    tabLinks.forEach(function (link, index) {
+    // Handle Tab Click
+    tabLinks.forEach(function (link) {
       link.addEventListener('click', function () {
+        var tabId = link.getAttribute('data-tab');
+
+        // Remove active class from all tabs and contents
         tabLinks.forEach(l => l.classList.remove('active'));
         tabPanes.forEach(p => p.classList.remove('active'));
 
+        // Add active class to the clicked tab and the corresponding tab content
         link.classList.add('active');
-        document.getElementById('tab-' + (index + 1)).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
       });
     });
 
-    // Initialize Swiper sliders
-    new Swiper('.section-{{ section.id }}.swiper-container', {
+    // Initialize Swiper sliders for each tab pane
+    {% for block in section.blocks %}
+    new Swiper('.section-{{ section.id }}-{{ block.id }} .swiper-container', {
       slidesPerView: 4,
       spaceBetween: 30,
       loop: true,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.section-{{ section.id }}-{{ block.id }} .swiper-pagination',
         clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: '.section-{{ section.id }}-{{ block.id }} .swiper-button-next',
+        prevEl: '.section-{{ section.id }}-{{ block.id }} .swiper-button-prev',
       },
       breakpoints: {
         768: {
@@ -71,6 +80,7 @@
         },
       },
     });
+    {% endfor %}
   });
 </script>
 
