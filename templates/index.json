@@ -289,6 +289,77 @@
       ],
       "settings": {}
     },
+    "custom_reels_37UbUx": {
+      "type": "custom_reels",
+      "blocks": {
+        "reel_an3UCQ": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/d51dece7503640c1afeadc329040c440.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_DdCV3f": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a5fb9f03f3a041ffaa8fd0a2934b1951.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_GH3Jed": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/c770378873f0451e83a961e6178d5043.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_af9w7N": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/60f3eb9bfde04ee1af59a600f9d0d07a.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_7Qz8fn": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a252bd37dc334c18aeb7d55798fe8bcb.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_y6iBGJ": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/bdb41bdfe2ae48429416eee4ed83e4f7.mp4",
+            "product_handle": ""
+          }
+        },
+        "reel_BPPVAc": {
+          "type": "reel",
+          "settings": {
+            "reel_url": "https://cdn.shopify.com/videos/c/o/v/31574e53aacd49e4a3fb8d18209a92cb.mp4",
+            "product_handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "reel_an3UCQ",
+        "reel_DdCV3f",
+        "reel_GH3Jed",
+        "reel_af9w7N",
+        "reel_7Qz8fn",
+        "reel_y6iBGJ",
+        "reel_BPPVAc"
+      ],
+      "settings": {
+        "logo_url": "https://cdn.shopify.com/s/files/1/0011/0277/4316/files/Jazmin_White_Logo.png?v=1739607771",
+        "logo_link": "/",
+        "arrows_position": "54",
+        "laptop-pc_slides": 5,
+        "tablet_slides": 3,
+        "mobile_slides": 2
+      }
+    },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
@@ -393,77 +464,6 @@
         "hotspot_color": "#000000",
         "lazyload_images": false
       }
-    },
-    "custom_reels_37UbUx": {
-      "type": "custom_reels",
-      "blocks": {
-        "reel_an3UCQ": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/d51dece7503640c1afeadc329040c440.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_DdCV3f": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a5fb9f03f3a041ffaa8fd0a2934b1951.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_GH3Jed": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/c770378873f0451e83a961e6178d5043.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_af9w7N": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/60f3eb9bfde04ee1af59a600f9d0d07a.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_7Qz8fn": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/a252bd37dc334c18aeb7d55798fe8bcb.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_y6iBGJ": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/bdb41bdfe2ae48429416eee4ed83e4f7.mp4",
-            "product_handle": ""
-          }
-        },
-        "reel_BPPVAc": {
-          "type": "reel",
-          "settings": {
-            "reel_url": "https://cdn.shopify.com/videos/c/o/v/31574e53aacd49e4a3fb8d18209a92cb.mp4",
-            "product_handle": ""
-          }
-        }
-      },
-      "block_order": [
-        "reel_an3UCQ",
-        "reel_DdCV3f",
-        "reel_GH3Jed",
-        "reel_af9w7N",
-        "reel_7Qz8fn",
-        "reel_y6iBGJ",
-        "reel_BPPVAc"
-      ],
-      "settings": {
-        "logo_url": "https://cdn.shopify.com/s/files/1/0011/0277/4316/files/Jazmin_White_Logo.png?v=1739607771",
-        "logo_link": "/",
-        "arrows_position": "54",
-        "laptop-pc_slides": 5,
-        "tablet_slides": 3,
-        "mobile_slides": 2
-      }
     }
   },
   "order": [
@@ -472,9 +472,9 @@
     "custom_circleslider_EHADMi",
     "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
+    "custom_reels_37UbUx",
     "featured-collection",
     "testimonials_AthRxb",
-    "hotspots_nfXXPU",
-    "custom_reels_37UbUx"
+    "hotspots_nfXXPU"
   ]
 }
