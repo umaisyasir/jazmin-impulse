@@ -3,19 +3,19 @@
 <div class="section-{{ section.id }} cstm-tabs-container">
   <!-- Tabs Navigation -->
   <div class="tabs-nav">
-    {% for collection in settings.collections %}
-      <button class="tab-link" data-tab="tab-{{ forloop.index }}">{{ collection.title }}</button>
+    {% for block in section.blocks %}
+      <button class="tab-link" data-tab="tab-{{ block.id }}">{{ block.settings.collection.title }}</button>
     {% endfor %}
   </div>
 
   <!-- Tabs Content -->
   <div class="tabs-content">
-    {% for collection in settings.collections %}
-      <div id="tab-{{ forloop.index }}" class="tab-pane">
+    {% for block in section.blocks %}
+      <div id="tab-{{ block.id }}" class="tab-pane">
         <!-- Swiper Slider for Products -->
         <div class="section-{{ section.id }} swiper-container">
           <div class="swiper-wrapper">
-            {% for product in collection.products limit: settings.product_limit %}
+            {% for product in block.settings.collection.products limit: block.settings.product_limit %}
               <div class="swiper-slide product-grid-item">
                 {% render 'product-card', product: product %}
               </div>
@@ -79,22 +79,39 @@
   "name": "Custom Tabs Collections",
   "settings": [
     {
-      "type": "collection_list",
-      "id": "collections",
-      "label": "Select Collections"
-    },
-    {
       "type": "range",
       "id": "product_limit",
-      "label": "Number of products per tab",
+      "label": "Number of products per tab (Global)",
       "default": 4,
       "min": 1,
       "max": 10
     }
   ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "range",
+          "id": "product_limit",
+          "label": "Number of products for this tab",
+          "default": 4,
+          "min": 1,
+          "max": 10
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Custom Tabs Collections"
+      "name": "Custom Tabs Collections",
+      "category": "Collection"
     }
   ]
 }
