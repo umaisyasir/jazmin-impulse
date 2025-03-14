@@ -190,7 +190,7 @@
     <div class="section-{{ section.id }} swiper-wrapper">
         {% assign products = collections[section.settings.collection].products %}
         {% for product in products %}
-          <div class="swiper-slide">
+          <div class="section-{{ section.id }} swiper-slide">
             {% render 'product-grid-item', product: product %}
           </div>
         {% endfor %}
