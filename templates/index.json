@@ -467,6 +467,9 @@
     },
     "vb_custom_featured_collection_UeMCQr": {
       "type": "vb_custom-featured-collection",
+      "custom_css": [
+        ".medium-up--one-quarter {width: 100%;}"
+      ],
       "settings": {
         "collection": "formals",
         "section_title": "Featured Collection",
