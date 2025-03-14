@@ -464,6 +464,15 @@
         "tablet_slides": 3,
         "mobile_slides": 2
       }
+    },
+    "vb_custom_tabs_collection_faB6ma": {
+      "type": "vb_custom-tabs-collection",
+      "settings": {
+        "collections": [
+          "formals"
+        ],
+        "product_limit": 4
+      }
     }
   },
   "order": [
@@ -475,6 +484,7 @@
     "featured-collection",
     "testimonials_AthRxb",
     "hotspots_nfXXPU",
-    "custom_reels_37UbUx"
+    "custom_reels_37UbUx",
+    "vb_custom_tabs_collection_faB6ma"
   ]
 }
