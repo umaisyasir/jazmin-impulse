@@ -187,7 +187,7 @@
     <!-- Heading from Schema Settings -->
     <h2 class="section-title">{{ section.settings.section_title }}</h2>
   
-    <div class="swiper-wrapper">
+    <div class="section-{{ section.id }} swiper-wrapper">
         {% assign products = collections[section.settings.collection].products %}
         {% for product in products %}
           <div class="swiper-slide">
