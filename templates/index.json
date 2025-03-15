@@ -16,7 +16,6 @@
           "type": "image",
           "settings": {
             "image_content": "SHAHKAAR LUXURY LAWN",
-            "image": "shopify://shop_images/wb-4_61cd3aa1-d279-49c9-bdfa-80c44fa60def.jpg",
             "link": "shopify://collections/shahkaar-luxury-lawn"
           }
         },
@@ -24,7 +23,6 @@
           "type": "image",
           "settings": {
             "image_content": "UNSTITCHED SUMMER",
-            "image": "shopify://shop_images/wb_babc8079-9d6b-42dc-aaf6-5a20f9eca31d.jpg",
             "link": "shopify://collections/summer"
           }
         },
@@ -32,7 +30,6 @@
           "type": "image",
           "settings": {
             "image_content": "READY TO WEAR",
-            "image": "shopify://shop_images/wb1_e5237c95-29dc-48f2-b9de-425fa4dd0142.jpg",
             "link": "shopify://collections/ready-to-wear"
           }
         }
@@ -60,8 +57,6 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
-            "image_mobile": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -79,8 +74,6 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
-            "image_mobile": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -98,8 +91,6 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
-            "image": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
-            "image_mobile": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -129,7 +120,6 @@
         "block_YemzLK": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -137,7 +127,6 @@
         "block_Kwdz7H": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -145,7 +134,6 @@
         "block_GxWpyn": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-luxe.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -153,7 +141,6 @@
         "block_RHT8G8": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -161,7 +148,6 @@
         "block_fFnaf8": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -169,7 +155,6 @@
         "block_deaVkw": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -177,7 +162,6 @@
         "block_9hEkVA": {
           "type": "block",
           "settings": {
-            "image": "shopify://shop_images/13thfeb25-ethnic-jackets.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -247,36 +231,31 @@
         "image_hpMtn7": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/0073_6_de1ad4fb-915b-4dd4-b071-32123ced60c1.png"
+            "link": ""
           }
         },
         "image_3VKgRq": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/0073_2_a98cfaf8-9af8-48fe-bce0-e35a8458f8f7.png"
+            "link": ""
           }
         },
         "image_6LJH79": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/0073_3_d7eecc98-e80d-4892-aca7-96f1d3c37239.png"
+            "link": ""
           }
         },
         "image_CUPCct": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/0073_4_712ed70a-6aa0-4d46-9de3-fdb7efe0461a.png"
+            "link": ""
           }
         },
         "image_XHmdQ4": {
           "type": "image",
           "settings": {
-            "link": "",
-            "image": "shopify://shop_images/0073_5_6230063c-64da-41d7-9eeb-5893921c2af2.png"
+            "link": ""
           }
         }
       },
@@ -364,7 +343,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "New Arrivals",
-        "home_featured_products": "shahkaar-luxury-lawn",
+        "home_featured_products": "shahkaar",
         "per_row": 4,
         "rows": 1,
         "mobile_scrollable": true,
