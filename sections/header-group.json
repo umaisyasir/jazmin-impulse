@@ -64,7 +64,7 @@
         "header-0"
       ],
       "settings": {
-        "main_menu_link_list": "test-menu",
+        "main_menu_link_list": "main-menu-qasim",
         "hover_menu": true,
         "mega_menu_images": true,
         "main_menu_alignment": "center-drawer",
