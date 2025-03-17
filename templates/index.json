@@ -129,6 +129,7 @@
         "block_YemzLK": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/mail_1.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -136,6 +137,7 @@
         "block_Kwdz7H": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-matching-separates.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -143,6 +145,7 @@
         "block_GxWpyn": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-animal-print.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -150,6 +153,7 @@
         "block_RHT8G8": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-luxe.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -157,6 +161,7 @@
         "block_fFnaf8": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-mommy-_-me.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -164,6 +169,7 @@
         "block_deaVkw": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-modest-wear-whats-new.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -171,6 +177,7 @@
         "block_9hEkVA": {
           "type": "block",
           "settings": {
+            "image": "shopify://shop_images/13thfeb25-jacquard.jpg",
             "heading": "Jazmin",
             "url": ""
           }
@@ -240,31 +247,36 @@
         "image_hpMtn7": {
           "type": "image",
           "settings": {
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/DSC2017_fc81e99e-0cc4-42ed-8397-ccf79a9913ba.jpg"
           }
         },
         "image_3VKgRq": {
           "type": "image",
           "settings": {
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/0073_5_6230063c-64da-41d7-9eeb-5893921c2af2.png"
           }
         },
         "image_6LJH79": {
           "type": "image",
           "settings": {
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/MAIL.jpg"
           }
         },
         "image_CUPCct": {
           "type": "image",
           "settings": {
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/7_e3a85821-11c6-4631-863d-5ec543dadea3.jpg"
           }
         },
         "image_XHmdQ4": {
           "type": "image",
           "settings": {
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/mail_1.jpg"
           }
         }
       },
