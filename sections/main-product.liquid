@@ -4,6 +4,7 @@
     assign isModal = true
   endif
 -%}
+{% for block in section.blocks %}
 {% if product.metafields.custom.unstitched_lining.value == true or product.metafields.custom.lining_in_sleeves.value == true %}       
   {%- if block.settings.label != blank -%}
     {%- capture name -%}properties[{{ block.settings.label | escape }}]{%- endcapture -%}
@@ -31,6 +32,7 @@
               </div>
             {%- endif -%}
            {% endif %}
+  {% endfor %}
 
 {%- render 'product-template',
   product: product,
