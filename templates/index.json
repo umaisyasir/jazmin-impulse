@@ -16,20 +16,23 @@
           "type": "image",
           "settings": {
             "image_content": "SHAHKAAR LUXURY LAWN",
-            "link": "shopify://collections/shahkaar"
+            "image": "shopify://shop_images/Layer_1_copy_3f68585e-39b0-4463-9fc8-529d5a8526a2.jpg",
+            "link": "shopify://collections/shahkaar-luxury-lawn"
           }
         },
         "image_zB87cq": {
           "type": "image",
           "settings": {
             "image_content": "UNSTITCHED SUMMER",
-            "link": "shopify://collections/unstitched-summer"
+            "image": "shopify://shop_images/wb_babc8079-9d6b-42dc-aaf6-5a20f9eca31d.jpg",
+            "link": "shopify://collections/summer"
           }
         },
         "image_qxhV6A": {
           "type": "image",
           "settings": {
             "image_content": "READY TO WEAR",
+            "image": "shopify://shop_images/wb1_e5237c95-29dc-48f2-b9de-425fa4dd0142.jpg",
             "link": "shopify://collections/ready-to-wear"
           }
         }
@@ -57,6 +60,8 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER_cc5db656-98c7-4898-86b4-7fd80db8c9b7.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -74,6 +79,8 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER-2_6ee4a212-b44e-40b9-83f7-6a4cc5ba943f.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
@@ -91,6 +98,8 @@
             "link_text_2": "",
             "color_accent": "#000000",
             "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
+            "image_mobile": "shopify://shop_images/MOB-BANNER--3jpg_b9cc37b8-bdd7-48c9-9b29-dece70ddcb4c.jpg",
             "parallax_direction": "top",
             "overlay_opacity": 0
           }
