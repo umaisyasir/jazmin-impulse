@@ -244,6 +244,13 @@
     "custom_slider_11_W3FHmL": {
       "type": "custom_slider-11",
       "blocks": {
+        "image_6LJH79": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "image": "shopify://shop_images/MAIL.jpg"
+          }
+        },
         "image_hpMtn7": {
           "type": "image",
           "settings": {
@@ -256,13 +263,6 @@
           "settings": {
             "link": "",
             "image": "shopify://shop_images/0073_5_6230063c-64da-41d7-9eeb-5893921c2af2.png"
-          }
-        },
-        "image_6LJH79": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "image": "shopify://shop_images/MAIL.jpg"
           }
         },
         "image_CUPCct": {
@@ -281,9 +281,9 @@
         }
       },
       "block_order": [
+        "image_6LJH79",
         "image_hpMtn7",
         "image_3VKgRq",
-        "image_6LJH79",
         "image_CUPCct",
         "image_XHmdQ4"
       ],
