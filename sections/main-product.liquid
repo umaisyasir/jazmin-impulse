@@ -273,11 +273,11 @@
 },
     {
       "type": "line_item_property",
-      "name": "t:sections.main_product.blocks.line_item_property.name",
+      "name": "Line item property",
       "settings": [
         {
           "type": "paragraph",
-          "content": "t:sections.main_product.blocks.line_item_property.line_item_info"
+          "content": "Line item properties are used to collect customization information for an item added to the cart."
         },
         {
           "type": "checkbox",
@@ -287,7 +287,7 @@
         {
           "type": "text",
           "id": "label",
-          "label": "t:sections.main_product.blocks.line_item_property.line_item_label",
+          "label": "Label",
           "default": "Your label"
         },
          {
@@ -298,19 +298,19 @@
         {
           "type": "select",
           "id": "type",
-          "label": "t:sections.main_product.blocks.line_item_property.line_item_type",
+          "label": "Type",
           "options": [
             {
               "value": "text",
-              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.text"
+              "label": "Text"
             },
             {
               "value": "checkbox",
-              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.checkbox"
+              "label": "Checkbox"
             },
             {
               "value": "dropdown",
-              "label": "t:sections.main_product.blocks.line_item_property.line_item_type_options.dropdown"
+              "label": "Dropdown"
             }
           ],
           "default": "text"
@@ -318,48 +318,48 @@
         {
           "type": "checkbox",
           "id": "required",
-          "label": "t:sections.main_product.blocks.line_item_property.required",
-          "info": "t:sections.main_product.blocks.line_item_property.required_info",
+          "label": "Required",
+          "info": "If required, the customer must write a text (for text property) or tick the box (for checkbox property) to add to the cart.",
           "default": false
         },
         {
           "type": "header",
-          "content": "t:sections.main_product.blocks.line_item_property.text_type_category",
-          "info": "t:sections.main_product.blocks.line_item_property.text_type_category_info"
+          "content": "Text",
+          "info": "Only applicable for line item property of type Text."
         },
         {
           "type": "checkbox",
           "id": "allow_long_text",
-          "label": "t:sections.main_product.blocks.line_item_property.text_type_allow_long_text",
+          "label": "Allow long text",
           "default": false
         },
         {
           "type": "number",
           "id": "max_length",
-          "label": "t:sections.main_product.blocks.line_item_property.text_type_max_length"
+          "label": "Maximum number of characters"
         },
         {
           "type": "header",
-          "content": "t:sections.main_product.blocks.line_item_property.checkbox_type_category",
-          "info": "t:sections.main_product.blocks.line_item_property.checkbox_type_category_info"
+          "content": "Checkbox",
+          "info": "Only applicable for line item property of type Checkbox."
         },
         {
           "type": "text",
           "id": "checkbox_value",
-          "label": "t:sections.main_product.blocks.line_item_property.checkbox_value",
-          "info": "t:sections.main_product.blocks.line_item_property.checkbox_value_info",
+          "label": "Value",
+          "info": "Appears on the order when checked.",
           "default": "Yes"
         },
         {
           "type": "header",
-          "content": "t:sections.main_product.blocks.line_item_property.dropdown_type_category",
-          "info": "t:sections.main_product.blocks.line_item_property.dropdown_type_category_info"
+          "content": "Dropdown",
+          "info": "Only applicable for line item property of type Dropdown."
         },
         {
           "type": "text",
           "id": "select_values",
-          "label": "t:sections.main_product.blocks.line_item_property.dropdown_values",
-          "info": "t:sections.main_product.blocks.line_item_property.dropdown_values_info",
+          "label": "Values",
+          "info": "Separate each values by a comma.",
           "default": "Value 1,Value 2,Value 3"
         }
       ]
