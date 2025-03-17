@@ -1,3 +1,32 @@
+           {% if product.metafields.custom.unstitched_lining.value == true or product.metafields.custom.lining_in_sleeves.value == true %}       
+            {%- if block.settings.label != blank -%}
+              {%- capture name -%}properties[{{ block.settings.label | escape }}]{%- endcapture -%}
+
+              <div class="line-item-property {% if block.settings.show_in_stitched != blank %} show-in-stitched {% else %} show-in-unstitched {% endif %}">
+                  {% if block.settings.heading != blank %}
+                      <div class="h-stack gap-1">
+                        <legend>{{ block.settings.heading }}</legend>
+                      </div>
+                  {% endif %}
+                
+                {%- liquid
+                  if block.settings.type == 'text'
+                    if block.settings.allow_long_text
+                      render 'input', label: block.settings.label, name: name, form: product_form_id, multiline: 4, required: block.settings.required, maxlength: block.settings.max_length
+                    else
+                      render 'input', type: 'text', label: block.settings.label, name: name, form: product_form_id, required: block.settings.required, maxlength: block.settings.max_length
+                    endif
+                  elsif block.settings.type == 'checkbox'
+                    render 'checkbox', label: block.settings.label, name: name, form: product_form_id, value: block.settings.checkbox_value, required: block.settings.required
+                  elsif block.settings.type == 'dropdown' and block.settings.select_values != blank
+                    assign option_values = block.settings.select_values | split: ','
+                    render 'select', label: block.settings.label, option_values: option_values, show_empty_value: true, name: name, form: product_form_id, required: block.settings.required
+                  endif
+                -%}
+              </div>
+            {%- endif -%}
+           {% endif %}
+
 {% if product.metafields.custom.unstitched_lining.value == true or product.metafields.custom.lining_in_sleeves.value == true %}
   {%- if block.settings.label != blank -%}
     {%- capture name -%}properties[{{ block.settings.label | escape }}]{%- endcapture -%}
