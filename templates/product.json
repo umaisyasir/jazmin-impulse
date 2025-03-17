@@ -21,7 +21,7 @@
         "line_item_property_yBhFEn": {
           "type": "line_item_property",
           "settings": {
-            "show_in_stitched": true,
+            "show_in_stitched": false,
             "label": "Lining (+Rs. 2000)",
             "heading": "ADD ON:",
             "type": "checkbox",
