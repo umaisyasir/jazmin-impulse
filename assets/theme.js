@@ -8526,3 +8526,31 @@ sizeRadioInputs.forEach(function(radio, index) {
     }
 });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.body.classList.contains('template-product')) {
+    const typeVariants = document.querySelectorAll('.variant-picker__option input[type="radio"][name="option1"]');
+    const liningUnstitched = document.querySelector('.line-item-property.show-in-unstitched input');
+    const liningStitched = document.querySelectorAll('.line-item-property.show-in-stitched .select option');
+    if (typeVariants) {
+      typeVariants.forEach(radioInput => {
+        const radioVariantValue = radioInput.getAttribute('value');
+        if (radioVariantValue === 'Unstitched' && radioInput.checked) {
+              liningStitched[0].selected = true;
+        } else if (radioVariantValue === 'Stitched' && radioInput.checked) {
+              liningUnstitched.checked = false  
+        }
+        radioInput.addEventListener('change', function(event) {
+          const dataVariantValue = this.getAttribute('value');
+    
+          if (dataVariantValue === 'Unstitched') {
+              liningStitched[0].selected = true;
+          } else if (dataVariantValue === 'Stitched') {
+              liningUnstitched.checked = false;
+            
+          }
+        });
+      });
+    }
+  }
+});
