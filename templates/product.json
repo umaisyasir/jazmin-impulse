@@ -28,7 +28,7 @@
             "required": false,
             "allow_long_text": true,
             "checkbox_value": "Lining (+Rs. 2000)",
-            "select_values": ""
+            "select_values": "Lining (+Rs. 2000)"
           }
         },
         "price": {
