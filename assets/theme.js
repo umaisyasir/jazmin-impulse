@@ -8555,6 +8555,31 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+import { Delegate } from "vendor";
+var _delegate, _onQuantityChanged, onQuantityChanged_fn, _onChangeLinkClicked, onChangeLinkClicked_fn, _changeLineItemQuantity, changeLineItemQuantity_fn;
+var LineItemQuantity = class extends HTMLElement {
+  constructor() {
+    super();
+    __privateAdd(this, _onQuantityChanged);
+    __privateAdd(this, _onChangeLinkClicked);
+    __privateAdd(this, _changeLineItemQuantity);
+    __privateAdd(this, _delegate, new Delegate(this));
+    __privateGet(this, _delegate).on("change", "[data-line-key]", __privateMethod(this, _onQuantityChanged, onQuantityChanged_fn).bind(this));
+    __privateGet(this, _delegate).on("click", '[href*="/cart/change"]', __privateMethod(this, _onChangeLinkClicked, onChangeLinkClicked_fn).bind(this));
+  }
+};
+_delegate = new WeakMap();
+_onQuantityChanged = new WeakSet();
+onQuantityChanged_fn = function(event, target) {
+  __privateMethod(this, _changeLineItemQuantity, changeLineItemQuantity_fn).call(this, target.getAttribute("data-line-key"), parseInt(target.value));
+};
+_onChangeLinkClicked = new WeakSet();
+onChangeLinkClicked_fn = function(event, target) {
+  event.preventDefault();
+  const url = new URL(target.href);
+  __privateMethod(this, _changeLineItemQuantity, changeLineItemQuantity_fn).call(this, url.searchParams.get("id"), parseInt(url.searchParams.get("quantity")));
+};
+_changeLineItemQuantity = new WeakSet();
 changeLineItemQuantity_fn = async function(lineKey, targetQuantity) {
   if (window.themeVariables.settings.pageType === "cart") {
     window.location.href = `${Shopify.routes.root}cart/change?id=${lineKey}&quantity=${targetQuantity}`;
