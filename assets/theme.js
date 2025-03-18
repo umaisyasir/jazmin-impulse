@@ -8554,3 +8554,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+changeLineItemQuantity_fn = async function(lineKey, targetQuantity) {
+  if (window.themeVariables.settings.pageType === "cart") {
+    window.location.href = `${Shopify.routes.root}cart/change?id=${lineKey}&quantity=${targetQuantity}`;
+  } else {
+    document.documentElement.dispatchEvent(new CustomEvent("theme:loading:start", { bubbles: true }));
+    const lineItem = this.closest("line-item");
+    lineItem?.dispatchEvent(new CustomEvent("line-item:will-change", { bubbles: true, detail: { targetQuantity } }));
+    let sectionsToBundle = [];
+    document.documentElement.dispatchEvent(new CustomEvent("cart:prepare-bundled-sections", { bubbles: true, detail: { sections: sectionsToBundle } }));
+    const cartContent = await (await fetch(`${Shopify.routes.root}cart/change.js`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: lineKey,
+        quantity: targetQuantity,
+        sections: sectionsToBundle.join(",")
+      })
+    })).json();
+    document.documentElement.dispatchEvent(new CustomEvent("theme:loading:end", { bubbles: true }));
+    const lineItemAfterChange = cartContent["items"].filter((lineItem2) => lineItem2["key"] === lineKey);
+    lineItem?.dispatchEvent(new CustomEvent("line-item:change", {
+      bubbles: true,
+      detail: {
+        quantity: lineItemAfterChange.length === 0 ? 0 : lineItemAfterChange[0]["quantity"],
+        cart: cartContent
+      }
+    }));
+    document.documentElement.dispatchEvent(new CustomEvent("cart:change", {
+      bubbles: true,
+      detail: {
+        baseEvent: "line-item:change",
+        cart: cartContent
+      }
+    }));
+  }
+};
+
+if (!window.customElements.get("line-item-quantity")) {
+  window.customElements.define("line-item-quantity", LineItemQuantity);
+}
