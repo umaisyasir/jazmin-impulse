@@ -196,51 +196,6 @@
         "heading": "<p>What's New</p>"
       }
     },
-    "newsletter_9KbQxr": {
-      "type": "newsletter",
-      "blocks": {
-        "title_JxFYDb": {
-          "type": "title",
-          "settings": {
-            "title": "Keep me updated",
-            "heading_size": "h0"
-          }
-        },
-        "title_qwNcqi": {
-          "type": "title",
-          "settings": {
-            "title": "Newsletter",
-            "heading_size": "h1"
-          }
-        },
-        "text_6i6gAW": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A short sentence describing what someone will receive by subscribing.</p>"
-          }
-        },
-        "form_RBb7j4": {
-          "type": "form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "title_JxFYDb",
-        "title_qwNcqi",
-        "text_6i6gAW",
-        "form_RBb7j4"
-      ],
-      "settings": {
-        "align_text": "center",
-        "image_width": "33",
-        "image_mask": "none",
-        "image_position": "right",
-        "color_background": "#202020",
-        "color_text": "#ffffff",
-        "top_padding": true,
-        "bottom_padding": true
-      }
-    },
     "custom_slider_11_W3FHmL": {
       "type": "custom_slider-11",
       "blocks": {
@@ -364,11 +319,11 @@
       "type": "featured-collection",
       "settings": {
         "title": "New Arrivals",
-        "home_featured_products": "shahkaar-luxury-lawn",
+        "home_featured_products": "this-weeks-top-4",
         "per_row": 4,
         "rows": 1,
-        "mobile_scrollable": true,
-        "view_all": true,
+        "mobile_scrollable": false,
+        "view_all": false,
         "divider": true
       }
     },
@@ -464,17 +419,62 @@
         "hotspot_color": "#000000",
         "lazyload_images": false
       }
+    },
+    "newsletter_9KbQxr": {
+      "type": "newsletter",
+      "blocks": {
+        "title_JxFYDb": {
+          "type": "title",
+          "settings": {
+            "title": "Keep me updated",
+            "heading_size": "h0"
+          }
+        },
+        "title_qwNcqi": {
+          "type": "title",
+          "settings": {
+            "title": "Newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "text_6i6gAW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A short sentence describing what someone will receive by subscribing.</p>"
+          }
+        },
+        "form_RBb7j4": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_JxFYDb",
+        "title_qwNcqi",
+        "text_6i6gAW",
+        "form_RBb7j4"
+      ],
+      "settings": {
+        "align_text": "center",
+        "image_width": "33",
+        "image_mask": "none",
+        "image_position": "right",
+        "color_background": "#ffffff",
+        "color_text": "#000000",
+        "top_padding": true,
+        "bottom_padding": true
+      }
     }
   },
   "order": [
     "swiper_slider_highly_i9KN4C",
     "slideshow_p3Nm8p",
     "custom_circleslider_EHADMi",
-    "newsletter_9KbQxr",
     "custom_slider_11_W3FHmL",
     "custom_reels_37UbUx",
     "featured-collection",
     "testimonials_AthRxb",
-    "hotspots_nfXXPU"
+    "hotspots_nfXXPU",
+    "newsletter_9KbQxr"
   ]
 }
