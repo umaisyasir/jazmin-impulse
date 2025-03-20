@@ -120,19 +120,17 @@ document.addEventListener("DOMContentLoaded", function() {
 <style>
   .badge--custom {
     display: inline-block;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 4px 6px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     color: #333; /* Black text */
     background-color: #fff; /* White background */
-    border: 2px solid #333; /* Black border */
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     white-space: nowrap;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: absolute !important;
     z-index: 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* Badge position adjustments */
@@ -142,62 +140,25 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   .badge--position-2 {
-    top: 55px;
+    top: 40px;
     left: 10px;
-    font-size: 12px;
-    padding: 4px 8px;
-    color: #fff; /* White text */
-    background-color: #ff6f61; /* Custom color for position 2 */
-    border-color: #ff6f61;
   }
 
   .badge--position-3 {
-    top: 90px;
+    top: 70px;
     left: 10px;
-    font-size: 10px;
-    padding: 2px 6px;
-    color: #fff; /* White text */
-    background-color: #2ecc71; /* Custom color for position 3 */
-    border-color: #2ecc71;
-  }
-
-  .badge--custom.badge--best-seller {
-    background-color: #fff;
-    color: #333;
-    border-color: #333;
-    top: 10px;
-    left: 10px;
-  }
-
-  .badge--custom.badge--new-in {
-    background-color: #fff;
-    color: #333;
-    border-color: #333;
-  }
-
-  .badge--custom.badge--exclusive {
-    background-color: #fff;
-    color: #333;
-    border-color: #333;
   }
 
   .badge--custom:hover {
     background-color: #333;
     color: #fff;
-    border-color: #fff;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 
-  .badge--custom[data-expiration-time] {
-    position: relative;
-  }
-
+  /* Mobile adjustments */
   @media (max-width: 767px) {
     .badge--custom {
-      padding: 3px 5px;
-      font-size: 8px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
+      padding: 2px 4px;
+      font-size: 10px;
     }
 
     /* Badge position adjustments for mobile */
@@ -207,54 +168,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     .badge--position-2 {
-      top: 30px;
+      top: 25px;
       left: 5px;
-      font-size: 8px;
-      padding: 3px 6px;
-      color: #fff;
-      background-color: #ff6f61;
-      border-color: #ff6f61;
     }
 
     .badge--position-3 {
-      top: 55px;
+      top: 45px;
       left: 5px;
-      font-size: 7px;
-      padding: 2px 5px;
-      color: #fff;
-      background-color: #2ecc71;
-      border-color: #2ecc71;
-    }
-
-    .badge--custom.badge--best-seller {
-      background-color: #fff;
-      color: #333;
-      border-color: #333;
-      top: 5px;
-      left: 5px;
-    }
-
-    .badge--custom.badge--new-in {
-      background-color: #fff;
-      color: #333;
-      border-color: #333;
-    }
-
-    .badge--custom.badge--exclusive {
-      background-color: #fff;
-      color: #333;
-      border-color: #333;
-    }
-
-    .badge--custom:hover {
-      background-color: #333;
-      color: #fff;
-      border-color: #fff;
-      box-shadow: 0 5px 6px rgba(0, 0, 0, 0.12);
-    }
-
-    .badge--custom[data-expiration-time] {
-      position: relative;
     }
   }
 </style>
