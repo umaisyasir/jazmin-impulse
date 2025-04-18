@@ -61,7 +61,295 @@
         assign button_text = 'products.product.sold_out' | t
       endunless
     -%}
+{% if product.metafields.custom.add_on_dupatta %}
+  {% assign dupatta_products = product.metafields.custom.add_on_dupatta.value %}
 
+  <div class="fbt-box">
+    <h3 class="fbt-heading">Complete the Look</h3>
+
+    {% for dupatta_product in dupatta_products %}
+      <div class="fbt-item" data-addon-item>
+        <a class="fbt-link-icon" href="{{ dupatta_product.url }}" target="_blank" title="View Product">
+          &#128279;
+        </a>
+        <div class="fbt-img">
+          <img src="{{ dupatta_product.featured_image | img_url: '300x' }}" alt="{{ dupatta_product.title }}">
+        </div>
+        <div class="fbt-info">
+          <h4 class="fbt-title">{{ dupatta_product.title }}</h4>
+          <p class="fbt-price">{{ dupatta_product.price | money }}</p>
+          <div class="fbt-qty">
+            <label for="qty-{{ dupatta_product.handle }}">Qty:</label>
+            <input
+              id="qty-{{ dupatta_product.handle }}"
+              class="addon-qty"
+              type="number"
+              min="1"
+              value="1"
+            >
+          </div>
+        </div>
+        <div class="fbt-check">
+          <input
+            id="fbt-{{ section.id }}-{{ dupatta_product.handle }}"
+            type="checkbox"
+            name="properties[Add on: {{ dupatta_product.title }}]"
+            form="{{ product_form_id }}"
+            value="{{ dupatta_product.title }}"
+            data-variant-id="{{ dupatta_product.variants.first.id }}"
+          >
+          <label for="fbt-{{ section.id }}-{{ dupatta_product.handle }}"></label>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+    <style>
+    .fbt-box {
+      color: #000;
+      padding: 30px 0;
+      border-radius: 12px;
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .fbt-heading {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+    }
+
+    .fbt-qty {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 5px;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+    
+    .fbt-qty label {
+      white-space: nowrap;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .fbt-price .money {
+        font-size: 13px !important;
+    }
+    
+    .fbt-qty .addon-qty {
+      width: 70px;
+      padding: 3px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      background-color: #fafafa;
+      color: #222;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .fbt-qty .addon-qty:focus {
+      outline: none;
+      border-color: #000;
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .fbt-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
+      background: #f9f9f9;
+      padding: 16px;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+
+    .fbt-img img {
+      width: 100px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: filter 0.4s ease;
+    }
+
+    .fbt-info {
+      flex-grow: 1;
+    }
+
+    .fbt-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+
+    .fbt-price {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .fbt-link-icon {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #000;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .fbt-link-icon:hover {
+      opacity: 1;
+    }
+
+    .fbt-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fbt-check input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #000;
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .fbt-check input[type="checkbox"]:checked {
+      background: #000;
+    }
+
+    .fbt-check input[type="checkbox"]:checked::after {
+      content: '✔';
+      color: #fff;
+      font-size: 11px;
+      position: absolute;
+      left: 3px;
+      top: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .fbt-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .fbt-link-icon {
+        top: 12px;
+        right: 12px;
+      }
+    }
+  </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const formId = "{{ product_form_id }}";
+  const formWrapper = document.querySelector(`[data-product-id="${formId}"]`) || document;
+
+  const productForm = formWrapper.querySelector('form[is="product-form"]');
+  const addToCartBtn = productForm.querySelector('button[type="submit"]');
+  const checkboxes = formWrapper.querySelectorAll('.fbt-check input[type="checkbox"]');
+
+  if (!productForm) return;
+
+  // 🟢 If flagged, click the cart icon after 1 second
+  if (sessionStorage.getItem("openCartAfterReload") === "true") {
+    sessionStorage.removeItem("openCartAfterReload");
+
+    setTimeout(() => {
+      const cartLink = document.querySelector('a[aria-controls="cart-drawer"]');
+      if (cartLink) {
+        cartLink.click();
+      }
+    }, 500); // 1 second delay
+  }
+
+  productForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    addToCartBtn.disabled = true;
+    addToCartBtn.classList.add("loading");
+
+    const formData = new FormData(productForm);
+    const mainProductTitle = formWrapper.querySelector('.product-title')?.textContent?.trim();
+    const hasAddons = Array.from(checkboxes).some(cb => cb.checked);
+
+    try {
+      // 1. Add main product
+      await fetch("/cart/add.js", {
+        method: "POST",
+        headers: {
+          Accept: "application/json"
+        },
+        body: formData
+      });
+
+      // 2. If any add-ons selected, add them
+      if (hasAddons) {
+        for (const checkbox of checkboxes) {
+          if (checkbox.checked) {
+            const parentItem = checkbox.closest('[data-addon-item]');
+            const qtyInput = parentItem.querySelector('.addon-qty');
+            const quantity = parseInt(qtyInput.value) || 1;
+            const variantId = checkbox.dataset.variantId;
+
+            await fetch("/cart/add.js", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+              },
+              body: JSON.stringify({
+                id: variantId,
+                quantity: quantity,
+                properties: {
+                  "Add-on For": mainProductTitle
+                }
+              })
+            });
+          }
+        }
+
+        // ✅ Set flag and reload page
+        sessionStorage.setItem("openCartAfterReload", "true");
+        window.location.reload();
+      }
+
+    } catch (error) {
+      console.error("❌ Error adding products:", error);
+    } finally {
+      addToCartBtn.disabled = false;
+      addToCartBtn.classList.remove("loading");
+    }
+  });
+});
+</script>
     <button
       {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
       name="add"
