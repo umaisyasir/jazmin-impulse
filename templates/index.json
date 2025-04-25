@@ -319,7 +319,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "This Weeks Top 4",
-        "home_featured_products": "this-weeks-top-4",
+        "home_featured_products": "this-weeks-top-3",
         "per_row": 4,
         "rows": 1,
         "mobile_scrollable": false,
